@@ -8,8 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static hmd.teatroABC.model.entities.Teatro.TELA_IMPRIMIR_INGRESSO;
-import static hmd.teatroABC.model.entities.Teatro.TELA_INICIAL;
+import static hmd.teatroABC.model.entities.Teatro.*;
 
 /**
  * @author Davy Lopes, Murilo Nunes, Hartur Sales
@@ -27,7 +26,7 @@ public class CompraFinalizadaController {
         stageCompraFinalizada.close();
 
         FXMLLoader imprimirLoader = FXMLLoaderUtil.loadFXML(TELA_IMPRIMIR_INGRESSO);
-        Scene imprimirScene = new Scene(imprimirLoader.getRoot(), 1189, 770);
+        Scene imprimirScene = new Scene(imprimirLoader.getRoot(), STAGE_WIDTH, STAGE_HEIGHT);
         ImprimirIngressoController controllerImprimir = imprimirLoader.getController();
         stageAnterior.setScene(imprimirScene);
         controllerImprimir.setCpfBuscado(cpfDigitado);
@@ -40,7 +39,7 @@ public class CompraFinalizadaController {
         stageCompraFinalizada.close();
 
         FXMLLoader telaInicialLoader = FXMLLoaderUtil.loadFXML(TELA_INICIAL);
-        Scene telaInicialScene = new Scene(telaInicialLoader.getRoot(), 1189, 770);
+        Scene telaInicialScene = new Scene(telaInicialLoader.getRoot(), STAGE_WIDTH, STAGE_HEIGHT);
         stageAnterior.setScene(telaInicialScene);
         stageAnterior.show();
     }

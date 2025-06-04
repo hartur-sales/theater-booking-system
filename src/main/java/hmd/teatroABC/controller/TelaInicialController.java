@@ -10,10 +10,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -32,7 +34,7 @@ public class TelaInicialController {
 
     @FXML private HBox botoesBox, postersBox;
 
-    @FXML private VBox rootBox;
+    @FXML private AnchorPane rootBox;
 
     @FXML private ImageView imagem1, imagem2, imagem3;
 
@@ -49,29 +51,23 @@ public class TelaInicialController {
         DoubleProperty stageWidth = new SimpleDoubleProperty();
         DoubleProperty stageHeight = new SimpleDoubleProperty();
 
-        imagem1.fitWidthProperty().bind(Bindings.multiply(stageWidth, 0.5));
-        imagem1.fitHeightProperty().bind(Bindings.multiply(stageHeight, 0.5));
+        imagem1.fitWidthProperty().bind(Bindings.multiply(stageWidth, 0.62));
+        imagem1.fitHeightProperty().bind(Bindings.multiply(stageHeight, 0.62));
         imagem1.setPreserveRatio(true);
 
-        imagem2.fitWidthProperty().bind(Bindings.multiply(stageWidth, 0.5));
-        imagem2.fitHeightProperty().bind(Bindings.multiply(stageHeight, 0.5));
+        imagem2.fitWidthProperty().bind(Bindings.multiply(stageWidth, 0.62));
+        imagem2.fitHeightProperty().bind(Bindings.multiply(stageHeight, 0.62));
         imagem2.setPreserveRatio(true);
 
-        imagem3.fitWidthProperty().bind(Bindings.multiply(stageWidth, 0.5));
-        imagem3.fitHeightProperty().bind(Bindings.multiply(stageHeight, 0.5));
+        imagem3.fitWidthProperty().bind(Bindings.multiply(stageWidth, 0.62));
+        imagem3.fitHeightProperty().bind(Bindings.multiply(stageHeight, 0.62));
         imagem3.setPreserveRatio(true);
 
         // Vincular a largura e altura do stage (Scene) à propriedade stageWidth e stageHeight
         stageWidth.bind(rootBox.widthProperty());
         stageHeight.bind(rootBox.heightProperty());
 
-        pecaSelecionada.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> {
-            botoesBox.setVisible(newToggle != null);
-        });
-    }
-
-    public void pecaSelecionada() {
-//        botoesBox.setVisible(true);
+        pecaSelecionada.selectedToggleProperty().addListener((_, _, newToggle) -> botoesBox.setVisible(newToggle != null));
     }
 
     public void comprarIngressoTrigger(ActionEvent event) throws IOException {
@@ -120,7 +116,7 @@ public class TelaInicialController {
 
     public void verEstatisticasTrigger() throws IOException {
         FXMLLoader estatisticaLoader = FXMLLoaderUtil.loadFXML(TELA_ESTATISTICAS);
-        Scene estatisticasScene = new Scene(estatisticaLoader.getRoot(), 1189, 770);
+        Scene estatisticasScene = new Scene(estatisticaLoader.getRoot(), STAGE_WIDTH, STAGE_HEIGHT);
         Stage estatisticasTelaStage = (Stage) estatisticasBotao.getScene().getWindow();
         estatisticasTelaStage.setScene(estatisticasScene);
         estatisticasTelaStage.show();
@@ -128,7 +124,7 @@ public class TelaInicialController {
 
     private void abrirImprimir(String cpfDigitado) throws IOException {
         FXMLLoader imprimirLoader = FXMLLoaderUtil.loadFXML(TELA_IMPRIMIR_INGRESSO);
-        Scene imprimirScene = new Scene(imprimirLoader.getRoot(), 1189, 770);
+        Scene imprimirScene = new Scene(imprimirLoader.getRoot(), STAGE_WIDTH, STAGE_HEIGHT);
         ImprimirIngressoController controllerImprimir = imprimirLoader.getController();
         Stage imprimirStage = (Stage) imprimirBotao.getScene().getWindow();
         imprimirStage.setScene(imprimirScene);

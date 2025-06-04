@@ -6,22 +6,35 @@
 }
 
 .button {
+    -fx-cursor: hand;
+}
+
+.horario-botao {
     -fx-background-color: white;
     -fx-text-fill: black;
     -fx-background-radius: 10;
 }
 
+.top-button:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(255, 255, 255, 0.75);
+}
+
+.top-button:pressed {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(255, 255, 255, 0.5);
+}
+
 .top-button {
     -fx-background-color: transparent;
     -fx-text-fill: white;
-    -fx-cursor: hand;
 }
 
-.button:hover {
+.horario-botao:hover {
     -fx-background-color: #d2d1d1;
 }
 
-.button:pressed {
+.horario-botao:pressed {
     -fx-background-color: #b0b0b0;
 }
 
@@ -31,6 +44,7 @@
 
 .toggle-button {
     -fx-background-color: transparent;
+    -fx-cursor: hand;
 }
 
 .toggle-button:selected {

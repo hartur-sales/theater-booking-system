@@ -23,8 +23,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static hmd.teatroABC.model.entities.Teatro.TELA_FINALIZAR_COMPRA;
-import static hmd.teatroABC.model.entities.Teatro.TELA_INICIAL;
+import static hmd.teatroABC.model.entities.Teatro.*;
 
 /**
  * @author Davy Lopes, Murilo Nunes, Hartur Sales
@@ -258,7 +257,7 @@ public class TelaIngressoController {
 
     public void telaInicialTrigger() throws IOException {
         FXMLLoader telaInicialLoader = FXMLLoaderUtil.loadFXML(TELA_INICIAL);
-        Scene telaInicialScene = new Scene(telaInicialLoader.getRoot(), 1189, 770);
+        Scene telaInicialScene = new Scene(telaInicialLoader.getRoot(), STAGE_WIDTH, STAGE_HEIGHT);
         Stage telaInicialStage = (Stage) voltarBotao.getScene().getWindow();
         telaInicialStage.setScene(telaInicialScene);
         telaInicialStage.show();
