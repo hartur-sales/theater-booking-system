@@ -7,6 +7,7 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -29,13 +30,15 @@ import static hmd.teatroABC.model.entities.Teatro.*;
 public class TelaInicialController {
     public Button botaoManha, botaoTarde, botaoNoite, imprimirBotao, estatisticasBotao;
 
-    public HBox botoesBox, postersBox;
+    @FXML private HBox botoesBox, postersBox;
 
-    public VBox rootBox;
+    @FXML private VBox rootBox;
 
-    public ImageView imagem1, imagem2, imagem3;
+    @FXML private ImageView imagem1, imagem2, imagem3;
 
-    public ToggleButton peca1Botao, peca2Botao, peca3Botao;
+    @FXML private ToggleButton peca1Botao, peca2Botao, peca3Botao;
+
+    @FXML private ToggleGroup pecaSelecionada;
 
     public void initialize() {
         botoesBox.setVisible(false);
@@ -54,7 +57,6 @@ public class TelaInicialController {
         imagem2.fitHeightProperty().bind(Bindings.multiply(stageHeight, 0.5));
         imagem2.setPreserveRatio(true);
 
-
         imagem3.fitWidthProperty().bind(Bindings.multiply(stageWidth, 0.5));
         imagem3.fitHeightProperty().bind(Bindings.multiply(stageHeight, 0.5));
         imagem3.setPreserveRatio(true);
@@ -62,10 +64,14 @@ public class TelaInicialController {
         // Vincular a largura e altura do stage (Scene) à propriedade stageWidth e stageHeight
         stageWidth.bind(rootBox.widthProperty());
         stageHeight.bind(rootBox.heightProperty());
+
+        pecaSelecionada.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> {
+            botoesBox.setVisible(newToggle != null);
+        });
     }
 
     public void pecaSelecionada() {
-        botoesBox.setVisible(true);
+//        botoesBox.setVisible(true);
     }
 
     public void comprarIngressoTrigger(ActionEvent event) throws IOException {
