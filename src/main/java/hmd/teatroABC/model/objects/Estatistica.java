@@ -62,7 +62,7 @@ public class Estatistica {
     private void calcularVendas() {
         for (Peca peca : pecasEstatisticas) {
             String nome = peca.getNome();
-            String sessao = peca.getSessao().getNomeTraduzido();
+            String sessao = peca.getSessao().getNome();
             int ingressosVendidos = peca.getIngressosVendidos();
             if (nome.equals("Wicked")) {
                 vendasWicked += ingressosVendidos;
@@ -133,7 +133,8 @@ public class Estatistica {
         if (vendasWicked >= vendasReiLeao && vendasWicked >= vendasAuto) {
             pecaMaisVendida = "Wicked";
         } else if (vendasReiLeao >= vendasWicked && vendasReiLeao >= vendasAuto) {
-            pecaMaisVendida = BUNDLE.getString("Rei Leão");
+//            pecaMaisVendida = BUNDLE.getString("Rei Leão");
+            pecaMaisVendida = "Rei Leao";
         } else {
             pecaMaisVendida = "Auto da Compadecida";
         }
@@ -145,7 +146,8 @@ public class Estatistica {
         if (vendasWicked <= vendasReiLeao && vendasWicked <= vendasAuto) {
             pecaMenosVendida = "Wicked";
         } else if (vendasReiLeao <= vendasWicked && vendasReiLeao <= vendasAuto) {
-            pecaMenosVendida = BUNDLE.getString("Rei Leao");
+//            pecaMenosVendida = BUNDLE.getString("Rei Leao");
+            pecaMenosVendida = "Rei Leao";
         } else {
             pecaMenosVendida = "Auto da Compadecida";
         }
@@ -155,11 +157,14 @@ public class Estatistica {
     public String calcularSessaoMaisOcupada() {
         String sessaoMaisOcupada;
         if (vendasManha >= vendasTarde && vendasManha >= vendasNoite) {
-            sessaoMaisOcupada = BUNDLE.getString("sessao.manha");
+//            sessaoMaisOcupada = BUNDLE.getString("sessao.manha");
+            sessaoMaisOcupada = "Manha";
         } else if (vendasTarde >= vendasManha && vendasTarde >= vendasNoite) {
-            sessaoMaisOcupada = BUNDLE.getString("sessao.tarde");
+//            sessaoMaisOcupada = BUNDLE.getString("sessao.tarde");
+            sessaoMaisOcupada = "Tarde";
         } else {
-            sessaoMaisOcupada = BUNDLE.getString("sessao.noite");
+//            sessaoMaisOcupada = BUNDLE.getString("sessao.noite");
+            sessaoMaisOcupada = "Noite";
         }
         return sessaoMaisOcupada;
     }
@@ -167,11 +172,14 @@ public class Estatistica {
     public String calcularSessaoMenosOcupada() {
         String sessaoMenosOcupada;
         if (vendasManha <= vendasTarde && vendasManha <= vendasNoite) {
-            sessaoMenosOcupada = BUNDLE.getString("sessao.manha");
+//            sessaoMenosOcupada = BUNDLE.getString("sessao.manha");
+            sessaoMenosOcupada = "Manha";
         } else if (vendasTarde <= vendasManha && vendasTarde <= vendasNoite) {
-            sessaoMenosOcupada = BUNDLE.getString("sessao.tarde");
+//            sessaoMenosOcupada = BUNDLE.getString("sessao.tarde");
+            sessaoMenosOcupada = "Tarde";
         } else {
-            sessaoMenosOcupada = BUNDLE.getString("sessao.noite");
+//            sessaoMenosOcupada = BUNDLE.getString("sessao.noite");
+            sessaoMenosOcupada = "Noite";
         }
         return sessaoMenosOcupada;
     }
@@ -189,11 +197,14 @@ public class Estatistica {
         double lucroTarde = calcularLucroPorSessao(lucroWicked, vendasTardeWicked);
         double lucroNoite = calcularLucroPorSessao(lucroWicked, vendasNoiteWicked);
         if (lucroManha >= lucroTarde && lucroManha >= lucroNoite) {
-            return BUNDLE.getString("sessao.manha");
+//            return BUNDLE.getString("sessao.manha");
+            return "Manha";
         } else if (lucroTarde >= lucroManha && lucroTarde >= lucroNoite) {
-            return BUNDLE.getString("sessao.tarde");
+//            return BUNDLE.getString("sessao.tarde");
+            return "Tarde";
         } else {
-            return BUNDLE.getString("sessao.noite");
+//            return BUNDLE.getString("sessao.noite");
+            return "Noite";
         }
     }
 
@@ -202,11 +213,14 @@ public class Estatistica {
         double lucroTarde = calcularLucroPorSessao(lucroWicked, vendasTardeWicked);
         double lucroNoite = calcularLucroPorSessao(lucroWicked, vendasNoiteWicked);
         if (lucroManha <= lucroTarde && lucroManha <= lucroNoite) {
-            return BUNDLE.getString("sessao.manha");
+//            return BUNDLE.getString("sessao.manha");
+            return "Manha";
         } else if (lucroTarde <= lucroManha && lucroTarde <= lucroNoite) {
-            return BUNDLE.getString("sessao.tarde");
+//            return BUNDLE.getString("sessao.tarde");
+            return "Tarde";
         } else {
-            return BUNDLE.getString("sessao.noite");
+//            return BUNDLE.getString("sessao.noite");
+            return "Noite";
         }
     }
 
@@ -215,11 +229,14 @@ public class Estatistica {
         double lucroTarde = calcularLucroPorSessao(lucroReiLeao, vendasTardeReiLeao);
         double lucroNoite = calcularLucroPorSessao(lucroReiLeao, vendasNoiteReiLeao);
         if (lucroManha >= lucroTarde && lucroManha >= lucroNoite) {
-            return BUNDLE.getString("sessao.manha");
+//            return BUNDLE.getString("sessao.manha");
+            return "Manha";
         } else if (lucroTarde >= lucroManha && lucroTarde >= lucroNoite) {
-            return BUNDLE.getString("sessao.tarde");
+//            return BUNDLE.getString("sessao.tarde");
+            return "Tarde";
         } else {
-            return BUNDLE.getString("sessao.noite");
+//            return BUNDLE.getString("sessao.noite");
+            return "Noite";
         }
     }
 
@@ -228,11 +245,14 @@ public class Estatistica {
         double lucroTarde = calcularLucroPorSessao(lucroReiLeao, vendasTardeReiLeao);
         double lucroNoite = calcularLucroPorSessao(lucroReiLeao, vendasNoiteReiLeao);
         if (lucroManha <= lucroTarde && lucroManha <= lucroNoite) {
-            return BUNDLE.getString("sessao.manha");
+//            return BUNDLE.getString("sessao.manha");
+            return "Manha";
         } else if (lucroTarde <= lucroManha && lucroTarde <= lucroNoite) {
-            return BUNDLE.getString("sessao.tarde");
+//            return BUNDLE.getString("sessao.tarde");
+            return "Tarde";
         } else {
-            return BUNDLE.getString("sessao.noite");
+//            return BUNDLE.getString("sessao.noite");
+            return "Noite";
         }
     }
 
@@ -241,11 +261,14 @@ public class Estatistica {
         double lucroTarde = calcularLucroPorSessao(lucroAuto, vendasTardeAuto);
         double lucroNoite = calcularLucroPorSessao(lucroAuto, vendasNoiteAuto);
         if (lucroManha >= lucroTarde && lucroManha >= lucroNoite) {
-            return BUNDLE.getString("sessao.manha");
+//            return BUNDLE.getString("sessao.manha");
+            return "Manha";
         } else if (lucroTarde >= lucroManha && lucroTarde >= lucroNoite) {
-            return BUNDLE.getString("sessao.tarde");
+//            return BUNDLE.getString("sessao.tarde");
+            return "Tarde";
         } else {
-            return BUNDLE.getString("sessao.noite");
+//            return BUNDLE.getString("sessao.noite");
+            return "Noite";
         }
     }
 
@@ -254,11 +277,14 @@ public class Estatistica {
         double lucroTarde = calcularLucroPorSessao(lucroAuto, vendasTardeAuto);
         double lucroNoite = calcularLucroPorSessao(lucroAuto, vendasNoiteAuto);
         if (lucroManha <= lucroTarde && lucroManha <= lucroNoite) {
-            return BUNDLE.getString("sessao.manha");
+//            return BUNDLE.getString("sessao.manha");
+            return "Manha";
         } else if (lucroTarde <= lucroManha && lucroTarde <= lucroNoite) {
-            return BUNDLE.getString("sessao.tarde");
+//            return BUNDLE.getString("sessao.tarde");
+            return "Tarde";
         } else {
-            return BUNDLE.getString("sessao.noite");
+//            return BUNDLE.getString("sessao.noite");
+            return "Noite";
         }
     }
 

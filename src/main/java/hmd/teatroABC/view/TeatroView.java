@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+import static hmd.teatroABC.model.entities.Teatro.TELA_INICIAL;
 import static hmd.teatroABC.util.FXMLLoaderUtil.BUNDLE;
 
 /**
@@ -26,11 +27,12 @@ public class TeatroView extends Application {
     public void start(Stage stage) throws IOException {
         teatro.carregarPecas();
         teatro.carregarPessoas();
-        FXMLLoader fxmlLoader = FXMLLoaderUtil.loadFXML("/hmd/teatroABC/tela_inicial.fxml");
+        FXMLLoader fxmlLoader = FXMLLoaderUtil.loadFXML(TELA_INICIAL);
         Scene scene = new Scene(fxmlLoader.getRoot(), 1188, 770);
 
         stage.getIcons().add(new Image(Objects.requireNonNull(TeatroView.class.getResourceAsStream("/images/icon.png"))));
-        stage.setTitle(BUNDLE.getString("stage_titulo"));
+//        stage.setTitle(BUNDLE.getString("stage_titulo"));
+        stage.setTitle("Teatro ABC");
         stage.setScene(scene);
         stage.show();
     }

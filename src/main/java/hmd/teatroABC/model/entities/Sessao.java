@@ -11,17 +11,30 @@ import static hmd.teatroABC.util.FXMLLoaderUtil.BUNDLE;
  */
 
 public enum Sessao {
-    MANHA("sessao.manha"),
-    TARDE("sessao.tarde"),
-    NOITE("sessao.noite");
+    MANHA("Manha"),
+    TARDE("Tarde"),
+    NOITE("Noite");
 
-    private final String chave;
+    private final String nome;
 
-    Sessao(String chave) {
-        this.chave = chave;
+    public String getNome() {
+        return nome;
     }
 
-    public String getNomeTraduzido() {
-        return BUNDLE.getString(chave);
+    Sessao(String nome) {
+        this.nome = nome;
     }
+//    MANHA("sessao.manha"),
+//    TARDE("sessao.tarde"),
+//    NOITE("sessao.noite");
+//
+//    private final String chave;
+//
+//    Sessao(String chave) {
+//        this.chave = chave;
+//    }
+//
+//    public String getNomeTraduzido() {
+//        return BUNDLE.getString(chave);
+//    }
 }

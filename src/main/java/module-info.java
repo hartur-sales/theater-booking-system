@@ -1,8 +1,6 @@
 module hmd.teatroABC {
     requires javafx.controls;
     requires javafx.fxml;
-    requires jdk.unsupported.desktop;
-
 
     opens hmd.teatroABC to javafx.fxml;
     exports hmd.teatroABC.controller;

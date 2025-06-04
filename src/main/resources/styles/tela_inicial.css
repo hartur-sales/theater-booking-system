@@ -11,6 +11,11 @@
     -fx-background-radius: 10;
 }
 
+.top-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
 .button:hover {
     -fx-background-color: #d2d1d1;
 }

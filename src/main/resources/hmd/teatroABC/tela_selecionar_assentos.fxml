@@ -35,20 +35,31 @@
                 </graphic>
             </Button>
             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                <Label alignment="CENTER" text="%selecionar_assento" textAlignment="CENTER" textFill="#fff9f9">
+                <Label alignment="CENTER" text="Selecione seu assento:" textAlignment="CENTER" textFill="#fff9f9">
                     <font>
                         <Font name="System Bold" size="18.0"/>
                     </font>
                 </Label>
+                <!--                <Label alignment="CENTER" text="%selecionar_assento" textAlignment="CENTER" textFill="#fff9f9">-->
+                <!--                    <font>-->
+                <!--                        <Font name="System Bold" size="18.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
                 <StackPane>
                     <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#717579" height="76.0" stroke="TRANSPARENT"
                                strokeLineCap="ROUND" strokeType="INSIDE" width="579.0"/>
-                    <Label alignment="CENTER" text="%palco" textAlignment="CENTER" textFill="WHITE"
+                    <Label alignment="CENTER" text="PALCO" textAlignment="CENTER" textFill="WHITE"
                            StackPane.alignment="BOTTOM_CENTER">
                         <font>
                             <Font name="System Bold" size="36.0"/>
                         </font>
                     </Label>
+                    <!--                    <Label alignment="CENTER" text="%palco" textAlignment="CENTER" textFill="WHITE"-->
+                    <!--                           StackPane.alignment="BOTTOM_CENTER">-->
+                    <!--                        <font>-->
+                    <!--                            <Font name="System Bold" size="36.0"/>-->
+                    <!--                        </font>-->
+                    <!--                    </Label>-->
                 </StackPane>
             </VBox>
         </HBox>
@@ -59,11 +70,16 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </padding>
                     <ToggleButton fx:id="F1" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
-                    <Label text="%frisa1" textFill="WHITE">
+                    <Label text="FRISA 01" textFill="WHITE">
                         <font>
                             <Font name="System Bold" size="14.0"/>
                         </font>
                     </Label>
+                    <!--                    <Label text="%frisa1" textFill="WHITE">-->
+                    <!--                        <font>-->
+                    <!--                            <Font name="System Bold" size="14.0"/>-->
+                    <!--                        </font>-->
+                    <!--                    </Label>-->
                 </VBox>
                 <VBox fx:id="frisa2Box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0"
                       styleClass="vbox-frisa">
@@ -71,11 +87,16 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </padding>
                     <ToggleButton fx:id="F2" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
-                    <Label text="%frisa2" textFill="WHITE">
+                    <Label text="FRISA 02" textFill="WHITE">
                         <font>
                             <Font name="System Bold" size="14.0"/>
                         </font>
                     </Label>
+                    <!--                    <Label text="%frisa2" textFill="WHITE">-->
+                    <!--                        <font>-->
+                    <!--                            <Font name="System Bold" size="14.0"/>-->
+                    <!--                        </font>-->
+                    <!--                    </Label>-->
                 </VBox>
                 <VBox fx:id="frisa3Box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0"
                       styleClass="vbox-frisa">
@@ -83,11 +104,16 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </padding>
                     <ToggleButton fx:id="F3" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
-                    <Label text="%frisa3" textFill="WHITE">
+                    <Label text="FRISA 03" textFill="WHITE">
                         <font>
                             <Font name="System Bold" size="14.0"/>
                         </font>
                     </Label>
+                    <!--                    <Label text="%frisa3" textFill="WHITE">-->
+                    <!--                        <font>-->
+                    <!--                            <Font name="System Bold" size="14.0"/>-->
+                    <!--                        </font>-->
+                    <!--                    </Label>-->
                 </VBox>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
@@ -285,11 +311,16 @@
                             </font>
                         </ToggleButton>
                     </GridPane>
-                    <Label text="%plateia_a" textFill="#f3f3f3">
+                    <Label text="PLATEIA A" textFill="#f3f3f3">
                         <font>
                             <Font name="System Bold" size="14.0"/>
                         </font>
                     </Label>
+                    <!--                    <Label text="%plateia_a" textFill="#f3f3f3">-->
+                    <!--                        <font>-->
+                    <!--                            <Font name="System Bold" size="14.0"/>-->
+                    <!--                        </font>-->
+                    <!--                    </Label>-->
                 </VBox>
                 <VBox alignment="CENTER" maxHeight="Infinity" maxWidth="Infinity" styleClass="vbox-plateiaB">
                     <GridPane fx:id="plateiaBGrid" hgap="5.0" vgap="5.0" VBox.vgrow="ALWAYS">
@@ -1001,13 +1032,17 @@
                                 <Font size="8.0"/>
                             </font>
                         </ToggleButton>
-
                     </GridPane>
-                    <Label text="%plateia_b" textFill="#f3f3f3">
+                    <Label text="PLATEIA B" textFill="#f3f3f3">
                         <font>
                             <Font name="System Bold" size="14.0"/>
                         </font>
                     </Label>
+                    <!--                    <Label text="%plateia_b" textFill="#f3f3f3">-->
+                    <!--                        <font>-->
+                    <!--                            <Font name="System Bold" size="14.0"/>-->
+                    <!--                        </font>-->
+                    <!--                    </Label>-->
                 </VBox>
             </VBox>
             <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="372.0" spacing="5.0">
@@ -1017,11 +1052,16 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </padding>
                     <ToggleButton fx:id="F4" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
-                    <Label text="%frisa4" textFill="WHITE">
+                    <Label text="FRISA 04" textFill="WHITE">
                         <font>
                             <Font name="System Bold" size="14.0"/>
                         </font>
                     </Label>
+                    <!--                    <Label text="%frisa4" textFill="WHITE">-->
+                    <!--                        <font>-->
+                    <!--                            <Font name="System Bold" size="14.0"/>-->
+                    <!--                        </font>-->
+                    <!--                    </Label>-->
                 </VBox>
                 <VBox fx:id="frisa5Box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0"
                       styleClass="vbox-frisa">
@@ -1029,11 +1069,16 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </padding>
                     <ToggleButton fx:id="F5" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
-                    <Label text="%frisa5" textFill="WHITE">
+                    <Label text="FRISA 05" textFill="WHITE">
                         <font>
                             <Font name="System Bold" size="14.0"/>
                         </font>
                     </Label>
+                    <!--                    <Label text="%frisa5" textFill="WHITE">-->
+                    <!--                        <font>-->
+                    <!--                            <Font name="System Bold" size="14.0"/>-->
+                    <!--                        </font>-->
+                    <!--                    </Label>-->
                 </VBox>
                 <VBox fx:id="frisa6Box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0"
                       styleClass="vbox-frisa">
@@ -1041,11 +1086,16 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </padding>
                     <ToggleButton fx:id="F6" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
-                    <Label text="%frisa6" textFill="WHITE">
+                    <Label text="FRISA 06" textFill="WHITE">
                         <font>
                             <Font name="System Bold" size="14.0"/>
                         </font>
                     </Label>
+                    <!--                    <Label text="%frisa6" textFill="WHITE">-->
+                    <!--                        <font>-->
+                    <!--                            <Font name="System Bold" size="14.0"/>-->
+                    <!--                        </font>-->
+                    <!--                    </Label>-->
                 </VBox>
             </VBox>
         </HBox>
@@ -1063,11 +1113,16 @@
                     </padding>
                     <ToggleButton fx:id="C1" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
                 </GridPane>
-                <Label text="%camarote1" textFill="WHITE">
+                <Label text="CAMAROTE 01" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0"/>
                     </font>
                 </Label>
+                <!--                <Label text="%camarote1" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font name="System Bold" size="14.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
             </VBox>
             <VBox alignment="CENTER" styleClass="vbox-camarote" HBox.hgrow="ALWAYS">
                 <GridPane fx:id="camarote2Grid">
@@ -1082,11 +1137,16 @@
                     </padding>
                     <ToggleButton fx:id="C2" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
                 </GridPane>
-                <Label text="%camarote2" textFill="WHITE">
+                <Label text="CAMAROTE 02" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0"/>
                     </font>
                 </Label>
+                <!--                <Label text="%camarote2" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font name="System Bold" size="14.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
             </VBox>
             <VBox alignment="CENTER" layoutX="193.0" layoutY="10.0" styleClass="vbox-camarote" HBox.hgrow="ALWAYS">
                 <GridPane fx:id="camarote3Grid">
@@ -1101,11 +1161,16 @@
                     </padding>
                     <ToggleButton fx:id="C3" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
                 </GridPane>
-                <Label text="%camarote3" textFill="WHITE">
+                <Label text="CAMAROTE 03" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0"/>
                     </font>
                 </Label>
+                <!--                <Label text="%camarote3" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font name="System Bold" size="14.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
             </VBox>
             <VBox alignment="CENTER" layoutX="372.0" layoutY="10.0" styleClass="vbox-camarote" HBox.hgrow="ALWAYS">
                 <GridPane fx:id="camarote4Grid">
@@ -1120,11 +1185,16 @@
                     </padding>
                     <ToggleButton fx:id="C4" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
                 </GridPane>
-                <Label text="%camarote4" textFill="WHITE">
+                <Label text="CAMAROTE 04" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0"/>
                     </font>
                 </Label>
+                <!--                <Label text="%camarote4" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font name="System Bold" size="14.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
             </VBox>
             <VBox alignment="CENTER" layoutX="552.0" layoutY="10.0" styleClass="vbox-camarote" HBox.hgrow="ALWAYS">
                 <GridPane fx:id="camarote5Grid">
@@ -1139,11 +1209,16 @@
                     </padding>
                     <ToggleButton fx:id="C5" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
                 </GridPane>
-                <Label text="%camarote5" textFill="WHITE">
+                <Label text="CAMAROTE 05" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0"/>
                     </font>
                 </Label>
+                <!--                <Label text="%camarote5" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font name="System Bold" size="14.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
             </VBox>
         </HBox>
         <VBox alignment="CENTER" styleClass="vbox-balcao">
@@ -1271,11 +1346,16 @@
                               GridPane.columnIndex="9" GridPane.rowIndex="4"/>
 
             </GridPane>
-            <Label text="%balcao_nobre" textFill="WHITE">
+            <Label text="BALCÃO NOBRE" textFill="WHITE">
                 <font>
                     <Font name="System Bold" size="14.0"/>
                 </font>
             </Label>
+            <!--            <Label text="%balcao_nobre" textFill="WHITE">-->
+            <!--                <font>-->
+            <!--                    <Font name="System Bold" size="14.0"/>-->
+            <!--                </font>-->
+            <!--            </Label>-->
         </VBox>
     </VBox>
     <VBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" spacing="10.0">
@@ -1289,51 +1369,81 @@
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
             </padding>
-            <Label text="%legenda" textFill="WHITE">
+            <Label text="LEGENDA:" textFill="WHITE">
                 <font>
                     <Font size="24.0"/>
                 </font>
             </Label>
+            <!--            <Label text="%legenda" textFill="WHITE">-->
+            <!--                <font>-->
+            <!--                    <Font size="24.0"/>-->
+            <!--                </font>-->
+            <!--            </Label>-->
             <HBox alignment="CENTER_LEFT" spacing="10.0">
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" stroke="BLACK"
                            strokeType="INSIDE" strokeWidth="0.0" width="20.0"/>
-                <Label text="%disponivel" textFill="WHITE">
+                <Label text="Disponível" textFill="WHITE">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Label>
+                <!--                <Label text="%disponivel" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font size="18.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="51.0" spacing="10.0">
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#830808" height="20.0" stroke="BLACK"
                            strokeType="INSIDE" strokeWidth="0.0" width="20.0"/>
-                <Label text="%selecionado" textFill="WHITE">
+                <Label text="Selecionado" textFill="WHITE">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Label>
+                <!--                <Label text="%selecionado" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font size="18.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="88.0" spacing="10.0">
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7d7c7c" height="20.0" stroke="BLACK"
                            strokeType="INSIDE" strokeWidth="0.0" width="20.0"/>
-                <Label text="%ocupado" textFill="WHITE">
+                <Label text="Ocupado" textFill="WHITE">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Label>
+                <!--                <Label text="%ocupado" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font size="18.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
             </HBox>
         </VBox>
         <VBox>
-            <Label text="%valores" textFill="WHITE">
+            <Label text="VALORES:" textFill="WHITE">
                 <font>
                     <Font size="24.0"/>
                 </font>
             </Label>
+            <!--            <Label text="%valores" textFill="WHITE">-->
+            <!--                <font>-->
+            <!--                    <Font size="24.0"/>-->
+            <!--                </font>-->
+            <!--            </Label>-->
             <VBox styleClass="vbox-valores-cima">
-                <Label text="%plateia_a" textFill="WHITE">
+                <Label text="PLATEIA A" textFill="WHITE">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Label>
+                <!--                <Label text="%plateia_a" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font size="18.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
                 <Label text="R$ 40,00" textFill="WHITE">
                     <font>
                         <Font size="18.0"/>
@@ -1344,11 +1454,16 @@
                 </padding>
             </VBox>
             <VBox styleClass="vbox-valores-meio">
-                <Label text="%plateia_b" textFill="WHITE">
+                <Label text="PLATEIA B" textFill="WHITE">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Label>
+                <!--                <Label text="%plateia_b" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font size="18.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
                 <Label text="R$ 60,00" textFill="WHITE">
                     <font>
                         <Font size="18.0"/>
@@ -1359,16 +1474,26 @@
                 </padding>
             </VBox>
             <VBox styleClass="vbox-valores-meio">
-                <Label text="%camarote" textFill="WHITE">
+                <Label text="CAMAROTE" textFill="WHITE">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Label>
-                <Label layoutX="16.0" layoutY="16.0" text="%assentos_camarote" textFill="WHITE">
+                <!--                <Label text="%camarote" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font size="18.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
+                <Label layoutX="16.0" layoutY="16.0" text="10 assentos por camarote" textFill="WHITE">
                     <font>
                         <Font size="11.0"/>
                     </font>
                 </Label>
+                <!--                <Label layoutX="16.0" layoutY="16.0" text="%assentos_camarote" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font size="11.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
                 <Label text="R$ 80,00" textFill="WHITE">
                     <font>
                         <Font size="18.0"/>
@@ -1379,16 +1504,26 @@
                 </padding>
             </VBox>
             <VBox styleClass="vbox-valores-meio">
-                <Label text="%frisa" textFill="WHITE">
+                <Label text="FRISA" textFill="WHITE">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Label>
-                <Label layoutX="16.0" layoutY="16.0" text="%assentos_frisa" textFill="WHITE">
+                <!--                <Label text="%frisa" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font size="18.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
+                <Label layoutX="16.0" layoutY="16.0" text="5 assentos por frisa" textFill="WHITE">
                     <font>
                         <Font size="11.0"/>
                     </font>
                 </Label>
+                <!--                <Label layoutX="16.0" layoutY="16.0" text="%assentos_frisa" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font size="11.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
                 <Label text="R$ 120,00" textFill="WHITE">
                     <font>
                         <Font size="18.0"/>
@@ -1399,11 +1534,16 @@
                 </padding>
             </VBox>
             <VBox styleClass="vbox-valores-baixo">
-                <Label text="%balcao_nobre" textFill="WHITE">
+                <Label text="BALCÃO NOBRE" textFill="WHITE">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Label>
+                <!--                <Label text="%balcao_nobre" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font size="18.0"/>-->
+                <!--                    </font>-->
+                <!--                </Label>-->
                 <Label text="R$ 250,00" textFill="WHITE">
                     <font>
                         <Font size="18.0"/>
@@ -1415,11 +1555,16 @@
             </VBox>
         </VBox>
         <VBox styleClass="vbox-total">
-            <Label text="%valor_total" textFill="WHITE">
+            <Label text="VALOR TOTAL:" textFill="WHITE">
                 <font>
                     <Font size="24.0"/>
                 </font>
             </Label>
+            <!--            <Label text="%valor_total" textFill="WHITE">-->
+            <!--                <font>-->
+            <!--                    <Font size="24.0"/>-->
+            <!--                </font>-->
+            <!--            </Label>-->
             <Label fx:id="labelPrecoTotal" text="R$ XX" textFill="WHITE">
                 <font>
                     <Font size="36.0"/>
@@ -1431,10 +1576,17 @@
         </VBox>
         <Button fx:id="continuarBotao" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                 mnemonicParsing="false" onAction="#finalizarCompraTrigger" styleClass="botao-continuar"
-                text="%continuar">
+                text="CONTINUAR">
             <font>
                 <Font size="14.0"/>
             </font>
         </Button>
+        <!--        <Button fx:id="continuarBotao" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"-->
+        <!--                mnemonicParsing="false" onAction="#finalizarCompraTrigger" styleClass="botao-continuar"-->
+        <!--                text="%continuar">-->
+        <!--            <font>-->
+        <!--                <Font size="14.0"/>-->
+        <!--            </font>-->
+        <!--        </Button>-->
     </VBox>
 </HBox>

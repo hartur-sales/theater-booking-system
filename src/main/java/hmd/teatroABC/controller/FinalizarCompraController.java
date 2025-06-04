@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static hmd.teatroABC.model.entities.Teatro.TELA_COMPRA_FINALIZADA;
+import static hmd.teatroABC.model.entities.Teatro.TELA_SELECIONAR_ASSENTOS;
+
 /**
  * @author Davy Lopes, Murilo Nunes, Hartur Sales
  * @date 24/11/2024
@@ -158,7 +161,7 @@ public class FinalizarCompraController {
     }
 
     public void voltarTrigger() throws IOException {
-        FXMLLoader compraSceneLoader = FXMLLoaderUtil.loadFXML("/hmd/teatroABC/tela_selecionar_assentos.fxml");
+        FXMLLoader compraSceneLoader = FXMLLoaderUtil.loadFXML(TELA_SELECIONAR_ASSENTOS);
         Scene compraScene = new Scene(compraSceneLoader.getRoot());
         TelaIngressoController controller = compraSceneLoader.getController();
         controller.chamarOutroMetodo();
@@ -175,7 +178,7 @@ public class FinalizarCompraController {
         Teatro.adicionarPessoa(pessoaCriada);
         Teatro.escreverLog();
         Teatro.atualizarPecas();
-        FXMLLoader compraFinalizada = FXMLLoaderUtil.loadFXML("/hmd/teatroABC/compra_finalizada_tela.fxml");
+        FXMLLoader compraFinalizada = FXMLLoaderUtil.loadFXML(TELA_COMPRA_FINALIZADA);
         Scene compraFinalizadaScene = new Scene(compraFinalizada.getRoot());
         CompraFinalizadaController controller = compraFinalizada.getController();
         controller.setStageAnterior((Stage) finalizarBotao.getScene().getWindow());

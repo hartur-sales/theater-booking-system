@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import static hmd.teatroABC.model.entities.Teatro.TELA_INICIAL;
 import static hmd.teatroABC.util.FXMLLoaderUtil.BUNDLE;
 
 /**
@@ -29,7 +30,7 @@ public class TelaEstatisticasController {
 
     public Button voltarBotao, botaoExportar;
 
-    private Estatistica estatisticas = new Estatistica();
+    private final Estatistica estatisticas = new Estatistica();
 
     public void initialize() {
         estatisticas.carregarEstatisticas();
@@ -50,7 +51,7 @@ public class TelaEstatisticasController {
     }
 
     public void telaInicialTrigger() throws IOException {
-        FXMLLoader telaInicialLoader = FXMLLoaderUtil.loadFXML("/hmd/teatroABC/tela_inicial.fxml");
+        FXMLLoader telaInicialLoader = FXMLLoaderUtil.loadFXML(TELA_INICIAL);
         Scene telaInicialScene = new Scene(telaInicialLoader.getRoot(), 1189, 770);
         Stage telaInicialStage = (Stage) voltarBotao.getScene().getWindow();
         telaInicialStage.setScene(telaInicialScene);
@@ -61,40 +62,56 @@ public class TelaEstatisticasController {
     private void exportarCsv() {
         File estatisticaExportada = new File("src/main/resources/out/estatisticas.csv");
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(estatisticaExportada))) {
-            bw.write(BUNDLE.getString("estatisticas_maiscula"));
+//            bw.write(BUNDLE.getString("estatisticas_maiscula"));
+            bw.write("Estatística,Valor");
             bw.newLine();
-            bw.write(BUNDLE.getString("total_vendas") + " " + estatisticas.calcularTotalVendas());
+//            bw.write(BUNDLE.getString("total_vendas") + " " + estatisticas.calcularTotalVendas());
             bw.newLine();
-            bw.write(BUNDLE.getString("peca_mais_vendida") + " " + estatisticas.calcularPecaMaisVendida());
+//            bw.write(BUNDLE.getString("peca_mais_vendida") + " " + estatisticas.calcularPecaMaisVendida());
+            bw.write("Peça Mais Vendida," + estatisticas.calcularPecaMaisVendida());
             bw.newLine();
-            bw.write(BUNDLE.getString("peca_menos_vendida") + " " + estatisticas.calcularPecaMenosVendida());
+//            bw.write(BUNDLE.getString("peca_menos_vendida") + " " + estatisticas.calcularPecaMenosVendida());
+            bw.write("Peça Menos Vendida," + estatisticas.calcularPecaMenosVendida());
             bw.newLine();
-            bw.write(BUNDLE.getString("sessao_mais_ocupada") + " " + estatisticas.calcularSessaoMaisOcupada());
+//            bw.write(BUNDLE.getString("sessao_mais_ocupada") + " " + estatisticas.calcularSessaoMaisOcupada());
+            bw.write("Sessão Mais Ocupada," + estatisticas.calcularSessaoMaisOcupada());
             bw.newLine();
-            bw.write(BUNDLE.getString("sessao_menos_ocupada") + " " + estatisticas.calcularSessaoMenosOcupada());
+//            bw.write(BUNDLE.getString("sessao_menos_ocupada") + " " + estatisticas.calcularSessaoMenosOcupada());
+            bw.write("Sessão Menos Ocupada," + estatisticas.calcularSessaoMenosOcupada());
             bw.newLine();
-            bw.write(BUNDLE.getString("lucro_medio_peca1") + estatisticas.getLucroMedioWicked());
+//            bw.write(BUNDLE.getString("lucro_medio_peca1") + estatisticas.getLucroMedioWicked());
+            bw.write("Lucro Médio (Wicked)," + estatisticas.getLucroMedioWicked());
             bw.newLine();
-            bw.write(BUNDLE.getString("lucro_medio_peca2") + estatisticas.getLucroMedioReiLeao());
+//            bw.write(BUNDLE.getString("lucro_medio_peca2") + estatisticas.getLucroMedioReiLeao());
+            bw.write("Lucro Médio (Rei Leão)," + estatisticas.getLucroMedioReiLeao());
             bw.newLine();
-            bw.write(BUNDLE.getString("lucro_medio_peca3") + estatisticas.getLucroMedioAuto());
+//            bw.write(BUNDLE.getString("lucro_medio_peca3") + estatisticas.getLucroMedioAuto());
+            bw.write("Lucro Médio (Auto da Compadecida)," + estatisticas.getLucroMedioAuto());
             bw.newLine();
-            bw.write(BUNDLE.getString("sessao_mais_vendida_peca1") + " " + estatisticas.getSessaoMaisLucrativaWicked());
+//            bw.write(BUNDLE.getString("sessao_mais_vendida_peca1") + " " + estatisticas.getSessaoMaisLucrativaWicked());
+            bw.write("Sessão Mais Vendida (Wicked)," + estatisticas.getSessaoMaisLucrativaWicked());
             bw.newLine();
-            bw.write(BUNDLE.getString("sessao_menos_vendida_peca1") + " " + estatisticas.getSessaoMenosLucrativaWicked());
+//            bw.write(BUNDLE.getString("sessao_menos_vendida_peca1") + " " + estatisticas.getSessaoMenosLucrativaWicked());
+            bw.write("Sessão Menos Vendida (Wicked)," + estatisticas.getSessaoMenosLucrativaWicked());
             bw.newLine();
-            bw.write(BUNDLE.getString("sessao_mais_vendida_peca2") + " "  + estatisticas.getSessaoMaisLucrativaReiLeao());
+//            bw.write(BUNDLE.getString("sessao_mais_vendida_peca2") + " " + estatisticas.getSessaoMaisLucrativaReiLeao());
+            bw.write("Sessão Mais Vendida (Rei Leão)," + estatisticas.getSessaoMaisLucrativaReiLeao());
             bw.newLine();
-            bw.write(BUNDLE.getString("sessao_menos_vendida_peca2") + " " + estatisticas.getSessaoMenosLucrativaReiLeao());
+//            bw.write(BUNDLE.getString("sessao_menos_vendida_peca2") + " " + estatisticas.getSessaoMenosLucrativaReiLeao());
+            bw.write("Sessão Menos Vendida (Rei Leão)," + estatisticas.getSessaoMenosLucrativaReiLeao());
             bw.newLine();
-            bw.write(BUNDLE.getString("sessao_mais_vendida_peca3") + " "  + estatisticas.getSessaoMaisLucrativaAuto());
+//            bw.write(BUNDLE.getString("sessao_mais_vendida_peca3") + " "  + estatisticas.getSessaoMaisLucrativaAuto());
+            bw.write("Sessão Mais Vendida (Auto da Compadecida)," + estatisticas.getSessaoMaisLucrativaAuto());
             bw.newLine();
-            bw.write(BUNDLE.getString("sessao_menos_vendida_peca3") + " "  + estatisticas.getSessaoMenosLucrativaAuto());
+//            bw.write(BUNDLE.getString("sessao_menos_vendida_peca3") + " "  + estatisticas.getSessaoMenosLucrativaAuto());
+            bw.write("Sessão Menos Vendida (Auto da Compadecida)," + estatisticas.getSessaoMenosLucrativaAuto());
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle(BUNDLE.getString("sucesso_alerta"));
+//            alert.setTitle(BUNDLE.getString("sucesso_alerta"));
+            alert.setTitle("Sucesso");
             alert.setHeaderText(null);
-            alert.setContentText(BUNDLE.getString("sucesso_estatisticas"));
+//            alert.setContentText(BUNDLE.getString("sucesso_estatisticas"));
+            alert.setContentText("Estatisticas exportadas com sucesso!");
 
             Scene cenaAlerta = alert.getDialogPane().getScene();
             cenaAlerta.getRoot().setStyle("-fx-background-color: #262424;");

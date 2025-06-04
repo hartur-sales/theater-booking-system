@@ -19,6 +19,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import static hmd.teatroABC.model.entities.Teatro.TELA_INICIAL;
 import static hmd.teatroABC.util.FXMLLoaderUtil.BUNDLE;
 
 /**
@@ -40,7 +41,8 @@ public class ImprimirIngressoController {
     public void criarIngresso() {
         List<Pessoa> pessoas = Teatro.buscarPessoaPorCpf(cpfBuscado);
         if (pessoas.isEmpty()) {
-            exibindoLabel.setText(BUNDLE.getString("nenhum_ingresso") + " " + cpfBuscado);
+            exibindoLabel.setText("Nenhum ingresso encontrado para o CPF " + cpfBuscado);
+//            exibindoLabel.setText(BUNDLE.getString("nenhum_ingresso") + " " + cpfBuscado);
             exibindoLabel.setStyle("-fx-text-fill: red");
         } else {
             for (Pessoa pessoa : pessoas) {
@@ -48,12 +50,18 @@ public class ImprimirIngressoController {
                     VBox ingressoContainer = new VBox(5);
                     ingressoContainer.getStyleClass().clear();
                     ingressoContainer.getStyleClass().add("vbox-ingresso");
-                    Label cpfLabel = new Label(BUNDLE.getString("titular_cpf") + " " + cpfBuscado);
-                    Label pecaLabel = new Label(BUNDLE.getString("peca") + " " + Peca.traduzirNome(ingresso.getPeca().getNome()));
-                    Label sessaoLabel = new Label(BUNDLE.getString("sessao") + " " + ingresso.getPeca().getSessao().getNomeTraduzido());
-                    Label assentoLabel = new Label(BUNDLE.getString("assento") + " " + ingresso.getAssento());
-                    Label precoLabel = new Label(BUNDLE.getString("preco") + " " + ingresso.getPreco());
-                    Button exportarBotao = new Button(BUNDLE.getString("exportar_ingresso"));
+//                    Label cpfLabel = new Label(BUNDLE.getString("titular_cpf") + " " + cpfBuscado);
+//                    Label pecaLabel = new Label(BUNDLE.getString("peca") + " " + Peca.traduzirNome(ingresso.getPeca().getNome()));
+//                    Label sessaoLabel = new Label(BUNDLE.getString("sessao") + " " + ingresso.getPeca().getSessao().getNomeTraduzido());
+//                    Label assentoLabel = new Label(BUNDLE.getString("assento") + " " + ingresso.getAssento());
+//                    Label precoLabel = new Label(BUNDLE.getString("preco") + " " + ingresso.getPreco());
+//                    Button exportarBotao = new Button(BUNDLE.getString("exportar_ingresso"));
+                    Label cpfLabel = new Label("CPF do titular: " + cpfBuscado);
+                    Label pecaLabel = new Label("Peca: " + ingresso.getPeca().getNome());
+                    Label sessaoLabel = new Label("Sessão: " + ingresso.getPeca().getSessao());
+                    Label assentoLabel = new Label("Assento: " + ingresso.getAssento());
+                    Label precoLabel = new Label("Preço: R$" + ingresso.getPreco());
+                    Button exportarBotao = new Button("Exportar ingresso");
                     exportarBotao.setOnAction(_ -> exportarCsv(ingresso));
 
                     ingressoContainer.getChildren().addAll(cpfLabel, pecaLabel, sessaoLabel, assentoLabel, precoLabel, exportarBotao);
@@ -64,7 +72,7 @@ public class ImprimirIngressoController {
     }
 
     public void voltarTrigger() throws IOException {
-        FXMLLoader telaInicialLoader = FXMLLoaderUtil.loadFXML("/hmd/teatroABC/tela_inicial.fxml");
+        FXMLLoader telaInicialLoader = FXMLLoaderUtil.loadFXML(TELA_INICIAL);
         Scene telaInicialScene = new Scene(telaInicialLoader.getRoot(), 1189, 770);
         Stage telaInicialStage = (Stage) voltarBotao.getScene().getWindow();
         telaInicialStage.setScene(telaInicialScene);
@@ -74,25 +82,33 @@ public class ImprimirIngressoController {
     private void exportarCsv(Ingresso ingresso) {
         File ingressoExportado = new File("src/main/resources/out/ingresso.csv");
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(ingressoExportado))) {
-            bw.write(BUNDLE.getString("ingresso"));
+//            bw.write(BUNDLE.getString("ingresso"));
+            bw.write("INGRESSO");
             bw.newLine();
-            bw.write(BUNDLE.getString("titular_cpf") + " " + cpfBuscado);
+//            bw.write(BUNDLE.getString("titular_cpf") + " " + cpfBuscado);
+            bw.write("CPF do titular: " + cpfBuscado);
             bw.newLine();
-            bw.write(BUNDLE.getString("peca") + " " + Peca.traduzirNome(ingresso.getPeca().getNome()));
+//            bw.write(BUNDLE.getString("peca") + " " + Peca.traduzirNome(ingresso.getPeca().getNome()));
+            bw.write("Peca: " + ingresso.getPeca().getNome());
             bw.newLine();
-            bw.write(BUNDLE.getString("sessao") + " " + ingresso.getPeca().getSessao().getNomeTraduzido());
+//            bw.write(BUNDLE.getString("sessao") + " " + ingresso.getPeca().getSessao().getNomeTraduzido());
+            bw.write("Sessão: " + ingresso.getPeca().getSessao());
             bw.newLine();
-            bw.write(BUNDLE.getString("assento") + " " + ingresso.getAssento());
+//            bw.write(BUNDLE.getString("assento") + " " + ingresso.getAssento());
+            bw.write("Assento: " + ingresso.getAssento());
             bw.newLine();
-            bw.write(BUNDLE.getString("preco") + " " + ingresso.getPreco());
+            bw.write("Preço: R$" + ingresso.getPreco());
+//            bw.write(BUNDLE.getString("preco") + " " + ingresso.getPreco());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(BUNDLE.getString("sucesso_alerta"));
+        alert.setTitle("Sucesso");
+//        alert.setTitle(BUNDLE.getString("sucesso_alerta"));
         alert.setHeaderText(null);
-        alert.setContentText(BUNDLE.getString("sucesso_ingresso"));
+//        alert.setContentText(BUNDLE.getString("sucesso_ingresso"));
+        alert.setContentText("Ingresso exportado com sucesso!");
 
         Scene cenaAlerta = alert.getDialogPane().getScene();
         cenaAlerta.getRoot().setStyle("-fx-background-color: #262424;");

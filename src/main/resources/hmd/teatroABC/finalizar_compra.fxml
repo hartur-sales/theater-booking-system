@@ -15,108 +15,151 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" spacing="10.0" stylesheets="@../../styles/finalizar_compra.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hmd.teatroABC.controller.FinalizarCompraController">
+<VBox alignment="TOP_CENTER" spacing="10.0" stylesheets="@../../styles/finalizar_compra.css"
+      xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="hmd.teatroABC.controller.FinalizarCompraController">
     <padding>
-        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
     </padding>
-   <HBox alignment="TOP_CENTER" spacing="20.0">
-      <children>
-          <Button fx:id="voltarBotao" mnemonicParsing="false" onAction="#voltarTrigger" prefHeight="27.0" prefWidth="31.0" styleClass="botao-voltar">
-              <graphic>
-                  <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
-                      <Image url="@../../images/voltar.png" />
-                  </ImageView>
-              </graphic>
-          </Button>
-          <Label text="%finalizar_compra" textFill="WHITE">
-              <font>
-                  <Font name="System Bold" size="18.0" />
-              </font>
-          </Label>
-      </children>
-   </HBox>
-    <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" VBox.vgrow="ALWAYS">
+    <HBox alignment="TOP_CENTER" spacing="20.0">
+        <Button fx:id="voltarBotao" mnemonicParsing="false" onAction="#voltarTrigger" prefHeight="27.0" prefWidth="31.0"
+                styleClass="botao-voltar">
+            <graphic>
+                <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../../images/voltar.png"/>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Label text="FINALIZAR COMPRA" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </Label>
+        <!--        <Label text="%finalizar_compra" textFill="WHITE">-->
+        <!--            <font>-->
+        <!--                <Font name="System Bold" size="18.0"/>-->
+        <!--            </font>-->
+        <!--        </Label>-->
+    </HBox>
+    <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+          spacing="10.0" VBox.vgrow="ALWAYS">
         <VBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-            <Label text="%box1" textFill="WHITE">
+            <Label text="1 DIGITE SEUS DADOS" textFill="WHITE">
                 <font>
-                    <Font name="System Bold" size="14.0" />
+                    <Font name="System Bold" size="14.0"/>
                 </font>
             </Label>
+            <!--            <Label text="%box1" textFill="WHITE">-->
+            <!--                <font>-->
+            <!--                    <Font name="System Bold" size="14.0" />-->
+            <!--                </font>-->
+            <!--            </Label>-->
             <VBox spacing="5.0">
                 <padding>
-                    <Insets top="10.0" />
+                    <Insets top="10.0"/>
                 </padding>
-                <Label text="%digite_cpf" textFill="WHITE" />
-                <TextField fx:id="cpfField" promptText="CPF" />
-            <Label fx:id="erroLabel" layoutX="10.0" layoutY="20.0" text="erro" textFill="RED" visible="false">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-                <Label text="%pergunta_fidelidade" textFill="WHITE" />
+                <Label text="Digite seu CPF:" textFill="WHITE"/>
+                <!--                <Label text="%digite_cpf" textFill="WHITE" />-->
+                <TextField fx:id="cpfField" promptText="CPF"/>
+                <Label fx:id="erroLabel" layoutX="10.0" layoutY="20.0" text="erro" textFill="RED" visible="false">
+                    <font>
+                        <Font size="10.0"/>
+                    </font>
+                </Label>
+                <Label text="Deseja se tornar cliente fidelidade?" textFill="WHITE"/>
+                <!--                <Label text="%pergunta_fidelidade" textFill="WHITE" />-->
                 <HBox spacing="15.0">
-                    <RadioButton fx:id="fidelidadeSim" mnemonicParsing="false" onAction="#mostrarFidelidade" text="%sim">
+                    <RadioButton fx:id="fidelidadeSim" mnemonicParsing="false" onAction="#mostrarFidelidade" text="Sim">
+                        <!--                    <RadioButton fx:id="fidelidadeSim" mnemonicParsing="false" onAction="#mostrarFidelidade" text="%sim">-->
                         <toggleGroup>
-                            <ToggleGroup fx:id="querFidelidade" />
+                            <ToggleGroup fx:id="querFidelidade"/>
                         </toggleGroup>
                     </RadioButton>
-                    <RadioButton fx:id="fidelidadeNao" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#ocultarFidelidade" text="%nao" toggleGroup="$querFidelidade" />
+                    <RadioButton fx:id="fidelidadeNao" layoutX="10.0" layoutY="10.0" mnemonicParsing="false"
+                                 onAction="#ocultarFidelidade" text="Não" toggleGroup="$querFidelidade"/>
+                    <!--                    <RadioButton fx:id="fidelidadeNao" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#ocultarFidelidade" text="%nao" toggleGroup="$querFidelidade" />-->
                 </HBox>
                 <VBox fx:id="vboxFidelidade">
-                    <Label text="%nome_completo" textFill="WHITE" />
-                    <TextField fx:id="nomeField" promptText="%nome_completo" />
-                    <Label layoutX="10.0" layoutY="10.0" text="%telefone" textFill="WHITE" />
-                    <TextField fx:id="telefoneField" layoutX="10.0" layoutY="28.0" promptText="%telefone" />
-                    <Label layoutX="10.0" layoutY="55.0" text="%data_nascimento" textFill="WHITE" />
-                    <DatePicker fx:id="selecionarData" promptText="%data_nascimento" />
-                    <Label layoutX="10.0" layoutY="55.0" text="%endereco" textFill="WHITE" />
+                    <Label text="Nome Completo:" textFill="WHITE"/>
+                    <TextField fx:id="nomeField" promptText="Nome Completo"/>
+                    <Label layoutX="10.0" layoutY="10.0" text="Telefone (com DDD):" textFill="WHITE"/>
+                    <TextField fx:id="telefoneField" layoutX="10.0" layoutY="28.0" promptText="Telefone"/>
+                    <Label layoutX="10.0" layoutY="55.0" text="Data de nascimento:" textFill="WHITE"/>
+                    <DatePicker fx:id="selecionarData" promptText="Data de Nascimento"/>
+                    <Label layoutX="10.0" layoutY="55.0" text="Endereço:" textFill="WHITE"/>
+                    <!--                    <Label text="%nome_completo" textFill="WHITE" />-->
+                    <!--                    <TextField fx:id="nomeField" promptText="%nome_completo" />-->
+                    <!--                    <Label layoutX="10.0" layoutY="10.0" text="%telefone" textFill="WHITE" />-->
+                    <!--                    <TextField fx:id="telefoneField" layoutX="10.0" layoutY="28.0" promptText="%telefone" />-->
+                    <!--                    <Label layoutX="10.0" layoutY="55.0" text="%data_nascimento" textFill="WHITE" />-->
+                    <!--                    <DatePicker fx:id="selecionarData" promptText="%data_nascimento" />-->
+                    <!--                    <Label layoutX="10.0" layoutY="55.0" text="%endereco" textFill="WHITE" />-->
                     <HBox spacing="5.0">
                         <VBox>
-                            <Label text="%rua" textFill="WHITE" />
-                            <TextField fx:id="ruaField" promptText="%rua" />
+                            <Label text="Rua:" textFill="WHITE"/>
+                            <TextField fx:id="ruaField" promptText="Rua"/>
+                            <!--                            <Label text="%rua" textFill="WHITE" />-->
+                            <!--                            <TextField fx:id="ruaField" promptText="%rua" />-->
                         </VBox>
                         <VBox>
-                            <Label text="%numero" textFill="WHITE" />
-                            <TextField fx:id="numeroField" prefWidth="60.0" promptText="%numero" />
+                            <Label text="Número:" textFill="WHITE"/>
+                            <TextField fx:id="numeroField" prefWidth="60.0" promptText="Número"/>
+                            <!--                            <Label text="%numero" textFill="WHITE" />-->
+                            <!--                            <TextField fx:id="numeroField" prefWidth="60.0" promptText="%numero" />-->
                         </VBox>
                     </HBox>
-                    <Label layoutX="10.0" layoutY="55.0" text="%complemento" textFill="WHITE" />
-                    <TextField fx:id="complementoField" layoutX="10.0" layoutY="73.0" promptText="%complemento_extra" />
+                    <Label layoutX="10.0" layoutY="55.0" text="Complemento:" textFill="WHITE"/>
+                    <TextField fx:id="complementoField" layoutX="10.0" layoutY="73.0" promptText="Complemento"/>
+                    <!--                    <Label layoutX="10.0" layoutY="55.0" text="%complemento" textFill="WHITE" />-->
+                    <!--                    <TextField fx:id="complementoField" layoutX="10.0" layoutY="73.0" promptText="%complemento_extra" />-->
                     <HBox layoutX="10.0" layoutY="164.0" spacing="5.0">
                         <VBox>
-                            <Label text="%cep" textFill="WHITE" />
-                            <TextField fx:id="cepField" prefWidth="80.0" promptText="%cep" />
+                            <Label text="CEP:" textFill="WHITE"/>
+                            <TextField fx:id="cepField" prefWidth="80.0" promptText="CEP"/>
+                            <!--                            <Label text="%cep" textFill="WHITE" />-->
+                            <!--                            <TextField fx:id="cepField" prefWidth="80.0" promptText="%cep" />-->
                         </VBox>
                         <VBox>
-                            <Label text="%bairro" textFill="WHITE" />
-                            <TextField fx:id="bairroField" prefWidth="124.0" promptText="%bairro" />
+                            <Label text="Bairro:" textFill="WHITE"/>
+                            <TextField fx:id="bairroField" prefWidth="124.0" promptText="Bairro"/>
+                            <!--                            <Label text="%bairro" textFill="WHITE" />-->
+                            <!--                            <TextField fx:id="bairroField" prefWidth="124.0" promptText="%bairro" />-->
                         </VBox>
                     </HBox>
                     <HBox layoutX="10.0" layoutY="254.0" spacing="5.0">
                         <VBox>
-                            <Label text="%cidade" textFill="WHITE" />
-                            <TextField fx:id="cidadeField" promptText="%cidade" />
+                            <Label text="Cidade:" textFill="WHITE"/>
+                            <TextField fx:id="cidadeField" promptText="Cidade"/>
+                            <!--                            <Label text="%cidade" textFill="WHITE" />-->
+                            <!--                            <TextField fx:id="cidadeField" promptText="%cidade" />-->
                         </VBox>
                         <VBox>
-                            <Label text="%estado" textFill="WHITE" />
-                            <ChoiceBox fx:id="estadoBox" />
+                            <Label text="Estado:" textFill="WHITE"/>
+                            <!--                            <Label text="%estado" textFill="WHITE" />-->
+                            <ChoiceBox fx:id="estadoBox"/>
                         </VBox>
                     </HBox>
                 </VBox>
             </VBox>
         </VBox>
         <VBox layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS">
-            <Label text="%box2" textFill="WHITE">
+            <Label text="2 RESUMO DO PEDIDO" textFill="WHITE">
                 <font>
-                    <Font name="System Bold" size="14.0" />
+                    <Font name="System Bold" size="14.0"/>
                 </font>
             </Label>
+            <!--            <Label text="%box2" textFill="WHITE">-->
+            <!--                <font>-->
+            <!--                    <Font name="System Bold" size="14.0" />-->
+            <!--                </font>-->
+            <!--            </Label>-->
             <HBox spacing="35.0">
                 <padding>
                     <Insets top="10.0"/>
                 </padding>
                 <VBox spacing="10.0">
-                    <Label text="%assentos" textFill="WHITE"/>
+                    <Label text="ASSENTO(S)" textFill="WHITE"/>
+                    <!--                    <Label text="%assentos" textFill="WHITE"/>-->
                     <VBox>
                         <Label fx:id="plateiaAAssentosLabel" text="XX, YY, ZZ" textFill="WHITE"/>
                         <Label fx:id="plateiaBAssentosLabel" text="XX, YY, ZZ" textFill="WHITE"/>
@@ -136,22 +179,33 @@
                                 <Font name="System Bold" size="12.0"/>
                             </font>
                         </Label>
+                        <!--                        <Label fx:id="totalLabel" layoutX="10.0" layoutY="139.0" text="TOTAL" textFill="WHITE">-->
+                        <!--                            <font>-->
+                        <!--                                <Font name="System Bold" size="12.0"/>-->
+                        <!--                            </font>-->
+                        <!--                        </Label>-->
                     </VBox>
                 </VBox>
                 <VBox spacing="10.0">
                     <Label text="ÁREA" textFill="WHITE"/>
                     <VBox>
-                        <Label fx:id="plateiaALabel" text="%plateia_a" textFill="WHITE"/>
-                        <Label fx:id="plateiaBLabel" text="%plateia_b" textFill="WHITE"/>
-                        <Label fx:id="camaroteLabel" layoutX="10.0" layoutY="28.0" text="%camarote"
-                               textFill="WHITE"/>
-                        <Label fx:id="frisaLabel" layoutX="10.0" layoutY="47.0" text="%frisa" textFill="WHITE"/>
-                        <Label fx:id="balcaoLabel" layoutX="10.0" layoutY="65.0" text="%balcao_nobre"
-                               textFill="WHITE"/>
+                        <Label fx:id="plateiaALabel" text="Plateia A" textFill="WHITE"/>
+                        <Label fx:id="plateiaBLabel" text="Plateia B" textFill="WHITE"/>
+                        <Label fx:id="camaroteLabel" layoutX="10.0" layoutY="28.0" text="Camarote" textFill="WHITE"/>
+                        <Label fx:id="frisaLabel" layoutX="10.0" layoutY="47.0" text="Frisa" textFill="WHITE"/>
+                        <Label fx:id="balcaoLabel" layoutX="10.0" layoutY="65.0" text="Balcao Nobre" textFill="WHITE"/>
+                        <!--                        <Label fx:id="plateiaALabel" text="%plateia_a" textFill="WHITE"/>-->
+                        <!--                        <Label fx:id="plateiaBLabel" text="%plateia_b" textFill="WHITE"/>-->
+                        <!--                        <Label fx:id="camaroteLabel" layoutX="10.0" layoutY="28.0" text="%camarote"-->
+                        <!--                               textFill="WHITE"/>-->
+                        <!--                        <Label fx:id="frisaLabel" layoutX="10.0" layoutY="47.0" text="%frisa" textFill="WHITE"/>-->
+                        <!--                        <Label fx:id="balcaoLabel" layoutX="10.0" layoutY="65.0" text="%balcao_nobre"-->
+                        <!--                               textFill="WHITE"/>-->
                     </VBox>
                 </VBox>
                 <VBox spacing="10.0">
-                    <Label text="%valor" textFill="WHITE"/>
+                    <Label text="VALOR" textFill="WHITE"/>
+                    <!--                    <Label text="%valor" textFill="WHITE"/>-->
                     <VBox>
                         <Label fx:id="plateiaAValorLabel" text="R$ XX,XX" textFill="WHITE">
                             <font>
@@ -195,41 +249,65 @@
             </HBox>
         </VBox>
         <VBox layoutX="225.0" layoutY="10.0" HBox.hgrow="ALWAYS">
-            <Label text="%box3" textFill="WHITE" VBox.vgrow="ALWAYS">
+            <Label text="3 FORMA DE PAGAMENTO" textFill="WHITE" VBox.vgrow="ALWAYS">
                 <font>
-                    <Font name="System Bold" size="14.0" />
+                    <Font name="System Bold" size="14.0"/>
                 </font>
             </Label>
+            <!--            <Label text="%box3" textFill="WHITE" VBox.vgrow="ALWAYS">-->
+            <!--                <font>-->
+            <!--                    <Font name="System Bold" size="14.0" />-->
+            <!--                </font>-->
+            <!--            </Label>-->
             <VBox spacing="5.0" VBox.vgrow="SOMETIMES">
                 <padding>
-                    <Insets top="10.0" />
+                    <Insets top="10.0"/>
                 </padding>
-                <Label text="%como_pagar" textFill="WHITE">
+                <Label text="Como você deseja pagar?" textFill="WHITE">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </Label>
+                <!--                <Label text="%como_pagar" textFill="WHITE">-->
+                <!--                    <font>-->
+                <!--                        <Font size="13.0" />-->
+                <!--                    </font>-->
+                <!--                </Label>-->
                 <RadioButton mnemonicParsing="false" text="Pix">
                     <graphic>
-                        <SVGPath content="M10.062 20.1955L6.64307 16.7753H7.177C7.52371 16.777 7.86718 16.7096 8.18774 16.5775C8.50831 16.4453 8.79979 16.2515 9.04468 16.006L11.7583 13.2936C11.8537 13.2036 11.9787 13.1529 12.1099 13.1529C12.241 13.1529 12.3682 13.2036 12.4636 13.2936L15.1641 15.995C15.409 16.2415 15.7001 16.4356 16.021 16.5687C16.3419 16.7018 16.6865 16.7695 17.0339 16.7687H17.3591L13.927 20.1955C13.6734 20.4504 13.3713 20.6532 13.0393 20.7912C12.7073 20.9292 12.3507 21 11.9912 21C11.6317 21 11.2751 20.9292 10.9431 20.7912C10.6111 20.6532 10.3112 20.4504 10.0576 20.1955H10.062ZM3.7998 13.9288C3.28807 13.4153 3 12.7196 3 11.9945C3 11.2694 3.28807 10.5737 3.7998 10.0602L5.88281 7.98303C5.92732 7.99877 5.97405 8.008 6.02124 8.0094H7.177C7.41971 8.009 7.6602 8.05738 7.88452 8.15008C8.10884 8.24278 8.31271 8.3785 8.48438 8.55013L11.1958 11.2582C11.3152 11.3794 11.4584 11.4742 11.6155 11.5395C11.7726 11.6048 11.9397 11.6393 12.1099 11.6384C12.2807 11.6388 12.4507 11.6048 12.6086 11.5395C12.7666 11.4742 12.9097 11.3791 13.0305 11.2582L15.731 8.56112C15.9027 8.38866 16.1061 8.25234 16.3308 8.15887C16.5555 8.0654 16.7972 8.0184 17.0405 8.0182H17.981C18.0308 8.01909 18.0801 8.00907 18.126 7.98962L20.1958 10.0602C20.4507 10.3137 20.6532 10.614 20.7913 10.946C20.9293 11.278 21 11.6349 21 11.9945C21 12.3541 20.9293 12.711 20.7913 13.043C20.6532 13.375 20.4507 13.6753 20.1958 13.9288L18.126 16.006C18.0806 15.9844 18.0312 15.9722 17.981 15.9708H17.0405C16.7975 15.9717 16.5555 15.9248 16.3308 15.8323C16.1061 15.7398 15.903 15.604 15.731 15.4323L13.0305 12.7309C12.7834 12.4948 12.4538 12.3638 12.1121 12.3638C11.7704 12.3638 11.443 12.4948 11.1958 12.7309L8.48438 15.4389C8.31271 15.6105 8.10884 15.7462 7.88452 15.8389C7.6602 15.9316 7.41971 15.98 7.177 15.9796H6.02124C5.97325 15.98 5.92592 15.9915 5.88281 16.0126L3.7998 13.9288ZM11.7583 10.6954L9.04468 7.99402C8.80003 7.74777 8.50828 7.55341 8.18774 7.42032C7.86721 7.28723 7.52405 7.21973 7.177 7.2203H6.64307L10.062 3.8001C10.5758 3.28831 11.2705 3 11.9956 3C12.7207 3 13.4176 3.28831 13.9314 3.8001L17.3635 7.23568H17.0383C16.6914 7.23335 16.3464 7.29955 16.0254 7.43131C15.7044 7.56307 15.4138 7.75736 15.1685 8.00281L12.468 10.7042C12.4226 10.7522 12.3683 10.7903 12.3076 10.8163C12.247 10.8424 12.1825 10.8559 12.1165 10.8559C12.0505 10.8559 11.9837 10.8424 11.9231 10.8163C11.8625 10.7903 11.8081 10.7522 11.7627 10.7042L11.7583 10.6954Z" fill="WHITE" />
+                        <SVGPath
+                                content="M10.062 20.1955L6.64307 16.7753H7.177C7.52371 16.777 7.86718 16.7096 8.18774 16.5775C8.50831 16.4453 8.79979 16.2515 9.04468 16.006L11.7583 13.2936C11.8537 13.2036 11.9787 13.1529 12.1099 13.1529C12.241 13.1529 12.3682 13.2036 12.4636 13.2936L15.1641 15.995C15.409 16.2415 15.7001 16.4356 16.021 16.5687C16.3419 16.7018 16.6865 16.7695 17.0339 16.7687H17.3591L13.927 20.1955C13.6734 20.4504 13.3713 20.6532 13.0393 20.7912C12.7073 20.9292 12.3507 21 11.9912 21C11.6317 21 11.2751 20.9292 10.9431 20.7912C10.6111 20.6532 10.3112 20.4504 10.0576 20.1955H10.062ZM3.7998 13.9288C3.28807 13.4153 3 12.7196 3 11.9945C3 11.2694 3.28807 10.5737 3.7998 10.0602L5.88281 7.98303C5.92732 7.99877 5.97405 8.008 6.02124 8.0094H7.177C7.41971 8.009 7.6602 8.05738 7.88452 8.15008C8.10884 8.24278 8.31271 8.3785 8.48438 8.55013L11.1958 11.2582C11.3152 11.3794 11.4584 11.4742 11.6155 11.5395C11.7726 11.6048 11.9397 11.6393 12.1099 11.6384C12.2807 11.6388 12.4507 11.6048 12.6086 11.5395C12.7666 11.4742 12.9097 11.3791 13.0305 11.2582L15.731 8.56112C15.9027 8.38866 16.1061 8.25234 16.3308 8.15887C16.5555 8.0654 16.7972 8.0184 17.0405 8.0182H17.981C18.0308 8.01909 18.0801 8.00907 18.126 7.98962L20.1958 10.0602C20.4507 10.3137 20.6532 10.614 20.7913 10.946C20.9293 11.278 21 11.6349 21 11.9945C21 12.3541 20.9293 12.711 20.7913 13.043C20.6532 13.375 20.4507 13.6753 20.1958 13.9288L18.126 16.006C18.0806 15.9844 18.0312 15.9722 17.981 15.9708H17.0405C16.7975 15.9717 16.5555 15.9248 16.3308 15.8323C16.1061 15.7398 15.903 15.604 15.731 15.4323L13.0305 12.7309C12.7834 12.4948 12.4538 12.3638 12.1121 12.3638C11.7704 12.3638 11.443 12.4948 11.1958 12.7309L8.48438 15.4389C8.31271 15.6105 8.10884 15.7462 7.88452 15.8389C7.6602 15.9316 7.41971 15.98 7.177 15.9796H6.02124C5.97325 15.98 5.92592 15.9915 5.88281 16.0126L3.7998 13.9288ZM11.7583 10.6954L9.04468 7.99402C8.80003 7.74777 8.50828 7.55341 8.18774 7.42032C7.86721 7.28723 7.52405 7.21973 7.177 7.2203H6.64307L10.062 3.8001C10.5758 3.28831 11.2705 3 11.9956 3C12.7207 3 13.4176 3.28831 13.9314 3.8001L17.3635 7.23568H17.0383C16.6914 7.23335 16.3464 7.29955 16.0254 7.43131C15.7044 7.56307 15.4138 7.75736 15.1685 8.00281L12.468 10.7042C12.4226 10.7522 12.3683 10.7903 12.3076 10.8163C12.247 10.8424 12.1825 10.8559 12.1165 10.8559C12.0505 10.8559 11.9837 10.8424 11.9231 10.8163C11.8625 10.7903 11.8081 10.7522 11.7627 10.7042L11.7583 10.6954Z"
+                                fill="WHITE"/>
                     </graphic>
                     <toggleGroup>
-                        <ToggleGroup fx:id="pagamento" />
+                        <ToggleGroup fx:id="pagamento"/>
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton layoutX="10.0" layoutY="39.0" mnemonicParsing="false" text="%cartao_credito" toggleGroup="$pagamento">
+                <RadioButton layoutX="10.0" layoutY="39.0" mnemonicParsing="false" text="Cartão de crédito"
+                             toggleGroup="$pagamento">
+                    <!--                <RadioButton layoutX="10.0" layoutY="39.0" mnemonicParsing="false" text="%cartao_credito" toggleGroup="$pagamento">-->
                     <graphic>
-                        <SVGPath content="M20.3333 4.22C20.6343 4.22 20.912 4.30102 21.1667 4.46306C21.4213 4.60195 21.6181 4.7987 21.7569 5.05333C21.919 5.30796 22 5.58574 22 5.88667V18.1089C22 18.5719 21.838 18.9654 21.5139 19.2894C21.1898 19.6135 20.7963 19.7756 20.3333 19.7756H3.66667C3.2037 19.7756 2.81019 19.6135 2.48611 19.2894C2.16204 18.9654 2 18.5719 2 18.1089V5.88667C2 5.4237 2.16204 5.03019 2.48611 4.70611C2.81019 4.38204 3.2037 4.22 3.66667 4.22H20.3333ZM3.875 5.88667C3.73611 5.88667 3.66667 5.95611 3.66667 6.095V7.55333H20.3333V6.095C20.3333 5.95611 20.2639 5.88667 20.125 5.88667H3.875ZM20.125 18.1089C20.2639 18.1089 20.3333 18.0394 20.3333 17.9006V11.9978H3.66667V17.9006C3.66667 18.0394 3.73611 18.1089 3.875 18.1089H20.125ZM8.66667 14.6367V16.0256C8.66667 16.3033 8.52778 16.4422 8.25 16.4422H5.75C5.47222 16.4422 5.33333 16.3033 5.33333 16.0256V14.6367C5.33333 14.3589 5.47222 14.22 5.75 14.22H8.25C8.52778 14.22 8.66667 14.3589 8.66667 14.6367ZM15.3333 14.6367V16.0256C15.3333 16.3033 15.1944 16.4422 14.9167 16.4422H10.1944C9.91667 16.4422 9.77778 16.3033 9.77778 16.0256V14.6367C9.77778 14.3589 9.91667 14.22 10.1944 14.22H14.9167C15.1944 14.22 15.3333 14.3589 15.3333 14.6367Z" fill="WHITE" />
+                        <SVGPath
+                                content="M20.3333 4.22C20.6343 4.22 20.912 4.30102 21.1667 4.46306C21.4213 4.60195 21.6181 4.7987 21.7569 5.05333C21.919 5.30796 22 5.58574 22 5.88667V18.1089C22 18.5719 21.838 18.9654 21.5139 19.2894C21.1898 19.6135 20.7963 19.7756 20.3333 19.7756H3.66667C3.2037 19.7756 2.81019 19.6135 2.48611 19.2894C2.16204 18.9654 2 18.5719 2 18.1089V5.88667C2 5.4237 2.16204 5.03019 2.48611 4.70611C2.81019 4.38204 3.2037 4.22 3.66667 4.22H20.3333ZM3.875 5.88667C3.73611 5.88667 3.66667 5.95611 3.66667 6.095V7.55333H20.3333V6.095C20.3333 5.95611 20.2639 5.88667 20.125 5.88667H3.875ZM20.125 18.1089C20.2639 18.1089 20.3333 18.0394 20.3333 17.9006V11.9978H3.66667V17.9006C3.66667 18.0394 3.73611 18.1089 3.875 18.1089H20.125ZM8.66667 14.6367V16.0256C8.66667 16.3033 8.52778 16.4422 8.25 16.4422H5.75C5.47222 16.4422 5.33333 16.3033 5.33333 16.0256V14.6367C5.33333 14.3589 5.47222 14.22 5.75 14.22H8.25C8.52778 14.22 8.66667 14.3589 8.66667 14.6367ZM15.3333 14.6367V16.0256C15.3333 16.3033 15.1944 16.4422 14.9167 16.4422H10.1944C9.91667 16.4422 9.77778 16.3033 9.77778 16.0256V14.6367C9.77778 14.3589 9.91667 14.22 10.1944 14.22H14.9167C15.1944 14.22 15.3333 14.3589 15.3333 14.6367Z"
+                                fill="WHITE"/>
                     </graphic>
                 </RadioButton>
-                <RadioButton layoutX="10.0" layoutY="91.0" mnemonicParsing="false" text="%cartao_debito" toggleGroup="$pagamento">
+                <RadioButton layoutX="10.0" layoutY="91.0" mnemonicParsing="false" text="Cartão de débito"
+                             toggleGroup="$pagamento">
+                    <!--                <RadioButton layoutX="10.0" layoutY="91.0" mnemonicParsing="false" text="%cartao_debito" toggleGroup="$pagamento">-->
                     <graphic>
-                        <SVGPath content="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" fill="WHITE" />
+                        <SVGPath
+                                content="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"
+                                fill="WHITE"/>
                     </graphic>
                 </RadioButton>
-                <RadioButton layoutX="10.0" layoutY="68.0" mnemonicParsing="false" text="%boleto" toggleGroup="$pagamento">
+                <RadioButton layoutX="10.0" layoutY="68.0" mnemonicParsing="false" text="Boleto"
+                             toggleGroup="$pagamento">
+                    <!--                <RadioButton layoutX="10.0" layoutY="68.0" mnemonicParsing="false" text="%boleto" toggleGroup="$pagamento">-->
                     <graphic>
-                        <SVGPath content="M0,3.745 H1.93 V12.82 H0 Z           M2.894,3.745 H3.86 V12.82 H2.894 Z           M4.824,3.745 V12.82 H5.784 V12.82 H6.76 V3.745 H5.784 Z           M7.727,3.745 V12.82 H8.688 V12.82 H9.654 V3.745 H8.688 Z           M10.61,3.745 H11.58 V12.82 H10.61 Z           M13.49,3.745 H12.56 V12.82 H13.49 V12.82 H14.48 V12.82 H15.46 V3.745 H14.48 Z           M16.92,3.745 V12.82 H17.89 V12.82 H18.86 V3.745 H17.89 Z           M19.26,3.745 H20.333 V12.82 H19.26 Z" fill="WHITE" />
+                        <SVGPath
+                                content="M0,3.745 H1.93 V12.82 H0 Z           M2.894,3.745 H3.86 V12.82 H2.894 Z           M4.824,3.745 V12.82 H5.784 V12.82 H6.76 V3.745 H5.784 Z           M7.727,3.745 V12.82 H8.688 V12.82 H9.654 V3.745 H8.688 Z           M10.61,3.745 H11.58 V12.82 H10.61 Z           M13.49,3.745 H12.56 V12.82 H13.49 V12.82 H14.48 V12.82 H15.46 V3.745 H14.48 Z           M16.92,3.745 V12.82 H17.89 V12.82 H18.86 V3.745 H17.89 Z           M19.26,3.745 H20.333 V12.82 H19.26 Z"
+                                fill="WHITE"/>
                     </graphic>
                 </RadioButton>
             </VBox>
@@ -237,8 +315,10 @@
     </HBox>
     <HBox alignment="BOTTOM_RIGHT">
         <padding>
-            <Insets bottom="15.0" left="15.0" top="15.0" />
+            <Insets bottom="15.0" left="15.0" top="15.0"/>
         </padding>
-        <Button fx:id="finalizarBotao" mnemonicParsing="false" onAction="#finalizarCompraTrigger" styleClass="botao-finalizar" text="%finalizar" />
+        <Button fx:id="finalizarBotao" mnemonicParsing="false" onAction="#finalizarCompraTrigger"
+                styleClass="botao-finalizar" text="FINALIZAR COMPRA"/>
+        <!--        <Button fx:id="finalizarBotao" mnemonicParsing="false" onAction="#finalizarCompraTrigger" styleClass="botao-finalizar" text="%finalizar" />-->
     </HBox>
 </VBox>

@@ -40,7 +40,8 @@ public class DigitarCpfController {
     public void botaoOkClicado() {
         if (!verificarCpf(cpfField.getText())) {
             erroLabel.setVisible(true);
-            erroLabel.setText(BUNDLE.getString("cpf_invalido"));
+            erroLabel.setText("CPF inválido");
+//            erroLabel.setText(BUNDLE.getString("cpf_invalido"));
             return;
         }
         okClicado = true;

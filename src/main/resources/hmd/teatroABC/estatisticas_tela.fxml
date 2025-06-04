@@ -27,28 +27,49 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Label text="%estatisticas_titulo">
+        <Label text="Estatísticas de Venda:">
             <font>
                 <Font name="System Bold" size="18.0"/>
             </font>
         </Label>
+        <!--        <Label text="%estatisticas_titulo">-->
+        <!--            <font>-->
+        <!--                <Font name="System Bold" size="18.0"/>-->
+        <!--            </font>-->
+        <!--        </Label>-->
     </HBox>
     <VBox spacing="10.0">
-        <Label fx:id="totalVendasLabel" text="%total_vendas"/>
-        <Label fx:id="pecaMaisVendidaLabel" text="%peca_mais_vendida"/>
-        <Label fx:id="pecaMenosVendidaLabel" text="%peca_menos_vendida"/>
-        <Label fx:id="sessaoMaisOcupadaLabel" text="%sessao_mais_ocupada"/>
-        <Label fx:id="sessaoMenosOcupadaLabel" text="%sessao_menos_ocupada"/>
-        <Label fx:id="lucroMedioLabel1" text="%lucro_medio_peca1"/>
-        <Label fx:id="lucroMedioLabel2" text="%lucro_medio_peca2"/>
-        <Label fx:id="lucroMedioLabel3" text="%lucro_medio_peca3"/>
-        <Label fx:id="sessaoMais1Label" text="%sessao_mais_vendida_peca1"/>
-        <Label fx:id="sessaoMenos1Label" text="%sessao_menos_vendida_peca1"/>
-        <Label fx:id="sessaoMais2Label" text="%sessao_mais_vendida_peca2"/>
-        <Label fx:id="sessaoMenos2Label" text="%sessao_menos_vendida_peca2"/>
-        <Label fx:id="sessaoMais3Label" text="%sessao_mais_vendida_peca3"/>
-        <Label fx:id="sessaoMenos3Label" text="%sessao_menos_vendida_peca3"/>
+        <Label fx:id="totalVendasLabel" text="Total de Vendas:"/>
+        <Label fx:id="pecaMaisVendidaLabel" text="Peça com mais ingressos vendidos: "/>
+        <Label fx:id="pecaMenosVendidaLabel" text="Peça com menos ingressos vendidos: "/>
+        <Label fx:id="sessaoMaisOcupadaLabel" text="Sessão com maior ocupação: "/>
+        <Label fx:id="sessaoMenosOcupadaLabel" text="Sessão com menor ocupação: "/>
+        <Label fx:id="lucroMedioLabel1" text="Lucro médio da peça 1 (Wicked): R$ "/>
+        <Label fx:id="lucroMedioLabel2" text="Lucro médio da peça 2 (Rei Leão): R$ "/>
+        <Label fx:id="lucroMedioLabel3" text="Lucro médio da peça 3 (Auto da Compadecida): R$ "/>
+        <Label fx:id="sessaoMais1Label" text="Sessão mais lucrativa da peça 1 (Wicked):  "/>
+        <Label fx:id="sessaoMenos1Label" text="Sessão menos lucrativa da peça 1 (Wicked): "/>
+        <Label fx:id="sessaoMais2Label" text="Sessão mais lucrativa da peça 2 (Rei Leão): "/>
+        <Label fx:id="sessaoMenos2Label" text="Sessão menos lucrativa da peça 2 (Rei Leão): "/>
+        <Label fx:id="sessaoMais3Label" text="Sessão mais lucrativa da peça 3 (Auto da Compadecida): "/>
+        <Label fx:id="sessaoMenos3Label" text="Sessão menos lucrativa da peça 3 (Auto da Compadecida): "/>
         <Button fx:id="botaoExportar" mnemonicParsing="false" onAction="#exportarCsv" styleClass="botao-imprimir"
-                text="%exportar_estatistica"/>
+                text="Exportar para CSV"/>
+        <!--        <Label fx:id="totalVendasLabel" text="%total_vendas"/>-->
+        <!--        <Label fx:id="pecaMaisVendidaLabel" text="%peca_mais_vendida"/>-->
+        <!--        <Label fx:id="pecaMenosVendidaLabel" text="%peca_menos_vendida"/>-->
+        <!--        <Label fx:id="sessaoMaisOcupadaLabel" text="%sessao_mais_ocupada"/>-->
+        <!--        <Label fx:id="sessaoMenosOcupadaLabel" text="%sessao_menos_ocupada"/>-->
+        <!--        <Label fx:id="lucroMedioLabel1" text="%lucro_medio_peca1"/>-->
+        <!--        <Label fx:id="lucroMedioLabel2" text="%lucro_medio_peca2"/>-->
+        <!--        <Label fx:id="lucroMedioLabel3" text="%lucro_medio_peca3"/>-->
+        <!--        <Label fx:id="sessaoMais1Label" text="%sessao_mais_vendida_peca1"/>-->
+        <!--        <Label fx:id="sessaoMenos1Label" text="%sessao_menos_vendida_peca1"/>-->
+        <!--        <Label fx:id="sessaoMais2Label" text="%sessao_mais_vendida_peca2"/>-->
+        <!--        <Label fx:id="sessaoMenos2Label" text="%sessao_menos_vendida_peca2"/>-->
+        <!--        <Label fx:id="sessaoMais3Label" text="%sessao_mais_vendida_peca3"/>-->
+        <!--        <Label fx:id="sessaoMenos3Label" text="%sessao_menos_vendida_peca3"/>-->
+        <!--        <Button fx:id="botaoExportar" mnemonicParsing="false" onAction="#exportarCsv" styleClass="botao-imprimir"-->
+        <!--                text="%exportar_estatistica"/>-->
     </VBox>
 </VBox>

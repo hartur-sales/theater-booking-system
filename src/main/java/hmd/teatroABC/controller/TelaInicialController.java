@@ -12,10 +12,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import static hmd.teatroABC.model.entities.Teatro.*;
 
 /**
  * @author Davy Lopes, Murilo Nunes, Hartur Sales
@@ -26,7 +29,9 @@ import java.io.IOException;
 public class TelaInicialController {
     public Button botaoManha, botaoTarde, botaoNoite, imprimirBotao, estatisticasBotao;
 
-    public HBox botoesBox, postersBox, rootBox;
+    public HBox botoesBox, postersBox;
+
+    public VBox rootBox;
 
     public ImageView imagem1, imagem2, imagem3;
 
@@ -81,7 +86,7 @@ public class TelaInicialController {
             sessaoSelecionada = Sessao.NOITE;
         }
 
-        FXMLLoader compraSceneLoader = FXMLLoaderUtil.loadFXML("/hmd/teatroABC/tela_selecionar_assentos.fxml");
+        FXMLLoader compraSceneLoader = FXMLLoaderUtil.loadFXML(TELA_SELECIONAR_ASSENTOS);
         Scene compraScene = new Scene(compraSceneLoader.getRoot());
         TelaIngressoController controller = compraSceneLoader.getController();
         Stage compraStage = (Stage) peca1Botao.getScene().getWindow();
@@ -92,7 +97,7 @@ public class TelaInicialController {
     }
 
     public void imprimirIngressoTrigger() throws IOException {
-        FXMLLoader digitarCpf = FXMLLoaderUtil.loadFXML("/hmd/teatroABC/digitar_cpf_tela.fxml");
+        FXMLLoader digitarCpf = FXMLLoaderUtil.loadFXML(TELA_DIGITAR_CPF);
         Scene digitarCpfScene = new Scene(digitarCpf.getRoot());
         DigitarCpfController controllerCpf = digitarCpf.getController();
         Stage digitarCpfStage = new Stage();
@@ -108,7 +113,7 @@ public class TelaInicialController {
     }
 
     public void verEstatisticasTrigger() throws IOException {
-        FXMLLoader estatisticaLoader = FXMLLoaderUtil.loadFXML("/hmd/teatroABC/estatisticas_tela.fxml");
+        FXMLLoader estatisticaLoader = FXMLLoaderUtil.loadFXML(TELA_ESTATISTICAS);
         Scene estatisticasScene = new Scene(estatisticaLoader.getRoot(), 1189, 770);
         Stage estatisticasTelaStage = (Stage) estatisticasBotao.getScene().getWindow();
         estatisticasTelaStage.setScene(estatisticasScene);
@@ -116,7 +121,7 @@ public class TelaInicialController {
     }
 
     private void abrirImprimir(String cpfDigitado) throws IOException {
-        FXMLLoader imprimirLoader = FXMLLoaderUtil.loadFXML("/hmd/teatroABC/imprimir_ingresso.fxml");
+        FXMLLoader imprimirLoader = FXMLLoaderUtil.loadFXML(TELA_IMPRIMIR_INGRESSO);
         Scene imprimirScene = new Scene(imprimirLoader.getRoot(), 1189, 770);
         ImprimirIngressoController controllerImprimir = imprimirLoader.getController();
         Stage imprimirStage = (Stage) imprimirBotao.getScene().getWindow();
