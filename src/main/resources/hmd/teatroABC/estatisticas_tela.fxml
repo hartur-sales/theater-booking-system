@@ -1,75 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" spacing="20.0" stylesheets="@../../styles/estatisticas_tela.css"
-      xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="hmd.teatroABC.controller.TelaEstatisticasController">
-    <padding>
-        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
-    </padding>
-    <HBox alignment="CENTER" spacing="70.0">
-        <VBox.margin>
-            <Insets right="100.0"/>
-        </VBox.margin>
-        <Button fx:id="voltarBotao" mnemonicParsing="false" onAction="#telaInicialTrigger" prefHeight="11.0"
-                prefWidth="16.0" styleClass="botao-voltar">
-            <graphic>
-                <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../../images/voltar.png"/>
-                </ImageView>
-            </graphic>
-        </Button>
-        <Label text="Estatísticas de Venda:">
-            <font>
-                <Font name="System Bold" size="18.0"/>
-            </font>
-        </Label>
-        <!--        <Label text="%estatisticas_titulo">-->
-        <!--            <font>-->
-        <!--                <Font name="System Bold" size="18.0"/>-->
-        <!--            </font>-->
-        <!--        </Label>-->
-    </HBox>
-    <VBox spacing="10.0">
-        <Label fx:id="totalVendasLabel" text="Total de Vendas:"/>
-        <Label fx:id="pecaMaisVendidaLabel" text="Peça com mais ingressos vendidos: "/>
-        <Label fx:id="pecaMenosVendidaLabel" text="Peça com menos ingressos vendidos: "/>
-        <Label fx:id="sessaoMaisOcupadaLabel" text="Sessão com maior ocupação: "/>
-        <Label fx:id="sessaoMenosOcupadaLabel" text="Sessão com menor ocupação: "/>
-        <Label fx:id="lucroMedioLabel1" text="Lucro médio da peça 1 (Wicked): R$ "/>
-        <Label fx:id="lucroMedioLabel2" text="Lucro médio da peça 2 (Rei Leão): R$ "/>
-        <Label fx:id="lucroMedioLabel3" text="Lucro médio da peça 3 (Auto da Compadecida): R$ "/>
-        <Label fx:id="sessaoMais1Label" text="Sessão mais lucrativa da peça 1 (Wicked):  "/>
-        <Label fx:id="sessaoMenos1Label" text="Sessão menos lucrativa da peça 1 (Wicked): "/>
-        <Label fx:id="sessaoMais2Label" text="Sessão mais lucrativa da peça 2 (Rei Leão): "/>
-        <Label fx:id="sessaoMenos2Label" text="Sessão menos lucrativa da peça 2 (Rei Leão): "/>
-        <Label fx:id="sessaoMais3Label" text="Sessão mais lucrativa da peça 3 (Auto da Compadecida): "/>
-        <Label fx:id="sessaoMenos3Label" text="Sessão menos lucrativa da peça 3 (Auto da Compadecida): "/>
-        <Button fx:id="botaoExportar" mnemonicParsing="false" onAction="#exportarCsv" styleClass="botao-imprimir"
-                text="Exportar para CSV"/>
-        <!--        <Label fx:id="totalVendasLabel" text="%total_vendas"/>-->
-        <!--        <Label fx:id="pecaMaisVendidaLabel" text="%peca_mais_vendida"/>-->
-        <!--        <Label fx:id="pecaMenosVendidaLabel" text="%peca_menos_vendida"/>-->
-        <!--        <Label fx:id="sessaoMaisOcupadaLabel" text="%sessao_mais_ocupada"/>-->
-        <!--        <Label fx:id="sessaoMenosOcupadaLabel" text="%sessao_menos_ocupada"/>-->
-        <!--        <Label fx:id="lucroMedioLabel1" text="%lucro_medio_peca1"/>-->
-        <!--        <Label fx:id="lucroMedioLabel2" text="%lucro_medio_peca2"/>-->
-        <!--        <Label fx:id="lucroMedioLabel3" text="%lucro_medio_peca3"/>-->
-        <!--        <Label fx:id="sessaoMais1Label" text="%sessao_mais_vendida_peca1"/>-->
-        <!--        <Label fx:id="sessaoMenos1Label" text="%sessao_menos_vendida_peca1"/>-->
-        <!--        <Label fx:id="sessaoMais2Label" text="%sessao_mais_vendida_peca2"/>-->
-        <!--        <Label fx:id="sessaoMenos2Label" text="%sessao_menos_vendida_peca2"/>-->
-        <!--        <Label fx:id="sessaoMais3Label" text="%sessao_mais_vendida_peca3"/>-->
-        <!--        <Label fx:id="sessaoMenos3Label" text="%sessao_menos_vendida_peca3"/>-->
-        <!--        <Button fx:id="botaoExportar" mnemonicParsing="false" onAction="#exportarCsv" styleClass="botao-imprimir"-->
-        <!--                text="%exportar_estatistica"/>-->
-    </VBox>
-</VBox>
+
+<BorderPane stylesheets="@../../styles/estatisticas_tela.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hmd.teatroABC.controller.TelaEstatisticasController">
+   <top>
+       <HBox alignment="CENTER" spacing="16.0" styleClass="top-bar" BorderPane.alignment="CENTER">
+           <ImageView fitHeight="58.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                   <Image url="@../../images/teatro_abc_branco.png" />
+               </image>
+           </ImageView>
+           <Button fx:id="voltarBotao" mnemonicParsing="false" onAction="#telaInicialTrigger" styleClass="botao-voltar">
+               <graphic>
+                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                       <Image url="@../../images/voltar.png" />
+                   </ImageView>
+               </graphic>
+           </Button>
+           <Label style="-fx-font-size: 19px; -fx-font-weight: bold;" styleClass="label" text="Estatísticas de Venda:" />
+       </HBox>
+   </top>
+   <center>
+       <VBox spacing="10.0" BorderPane.alignment="CENTER">
+           <Label fx:id="totalVendasLabel" text="Total de Vendas:" />
+           <Label fx:id="pecaMaisVendidaLabel" text="Peça com mais ingressos vendidos: " />
+           <Label fx:id="pecaMenosVendidaLabel" text="Peça com menos ingressos vendidos: " />
+           <Label fx:id="sessaoMaisOcupadaLabel" text="Sessão com maior ocupação: " />
+           <Label fx:id="sessaoMenosOcupadaLabel" text="Sessão com menor ocupação: " />
+           <Label fx:id="lucroMedioLabel1" text="Lucro médio da peça 1 (Wicked): R$ " />
+           <Label fx:id="lucroMedioLabel2" text="Lucro médio da peça 2 (Rei Leão): R$ " />
+           <Label fx:id="lucroMedioLabel3" text="Lucro médio da peça 3 (Auto da Compadecida): R$ " />
+           <Label fx:id="sessaoMais1Label" text="Sessão mais lucrativa da peça 1 (Wicked):  " />
+           <Label fx:id="sessaoMenos1Label" text="Sessão menos lucrativa da peça 1 (Wicked): " />
+           <Label fx:id="sessaoMais2Label" text="Sessão mais lucrativa da peça 2 (Rei Leão): " />
+           <Label fx:id="sessaoMenos2Label" text="Sessão menos lucrativa da peça 2 (Rei Leão): " />
+           <Label fx:id="sessaoMais3Label" text="Sessão mais lucrativa da peça 3 (Auto da Compadecida): " />
+           <Label fx:id="sessaoMenos3Label" text="Sessão menos lucrativa da peça 3 (Auto da Compadecida): " />
+           <Button fx:id="botaoExportar" mnemonicParsing="false" onAction="#exportarCsv" styleClass="botao-imprimir" text="Exportar para CSV" />
+           <!--        <Label fx:id="totalVendasLabel" text="%total_vendas"/>-->
+           <!--        <Label fx:id="pecaMaisVendidaLabel" text="%peca_mais_vendida"/>-->
+           <!--        <Label fx:id="pecaMenosVendidaLabel" text="%peca_menos_vendida"/>-->
+           <!--        <Label fx:id="sessaoMaisOcupadaLabel" text="%sessao_mais_ocupada"/>-->
+           <!--        <Label fx:id="sessaoMenosOcupadaLabel" text="%sessao_menos_ocupada"/>-->
+           <!--        <Label fx:id="lucroMedioLabel1" text="%lucro_medio_peca1"/>-->
+           <!--        <Label fx:id="lucroMedioLabel2" text="%lucro_medio_peca2"/>-->
+           <!--        <Label fx:id="lucroMedioLabel3" text="%lucro_medio_peca3"/>-->
+           <!--        <Label fx:id="sessaoMais1Label" text="%sessao_mais_vendida_peca1"/>-->
+           <!--        <Label fx:id="sessaoMenos1Label" text="%sessao_menos_vendida_peca1"/>-->
+           <!--        <Label fx:id="sessaoMais2Label" text="%sessao_mais_vendida_peca2"/>-->
+           <!--        <Label fx:id="sessaoMenos2Label" text="%sessao_menos_vendida_peca2"/>-->
+           <!--        <Label fx:id="sessaoMais3Label" text="%sessao_mais_vendida_peca3"/>-->
+           <!--        <Label fx:id="sessaoMenos3Label" text="%sessao_menos_vendida_peca3"/>-->
+           <!--        <Button fx:id="botaoExportar" mnemonicParsing="false" onAction="#exportarCsv" styleClass="botao-imprimir"-->
+           <!--                text="%exportar_estatistica"/>-->
+       </VBox>
+   </center>
+</BorderPane>

@@ -1,69 +1,118 @@
-.root {
-    /*-fx-background-color: radial-gradient(radius 105%, #0b542d, #144021, #152e17, #111c0e, #020700);*/
-    -fx-background-color: #262424;
-    /*-fx-background-color: linear-gradient(to right top, rgba(4, 28, 69, 1) 0%, rgba(24, 27, 36, 1) 35%, rgba(78, 4, 174, 1) 100%);*/
-    /*-fx-background-color: linear-gradient(to right top, #428f83, #339aa3, #3da3c3, #65a8dd, #98aaec);*/
+@import "colors.css";
+
+/* Fundo principal (um azul profundo levemente roxo) */
+.root, .border-pane, .background {
+    -fx-background-color: -default-background-color;
 }
 
-.button {
-    -fx-cursor: hand;
+/* Barra Superior */
+.top-bar {
+    -fx-background-color: -top-bar-gradient;
+    -fx-padding: 16px;
 }
 
-.horario-botao {
-    -fx-background-color: white;
-    -fx-text-fill: black;
-    -fx-background-radius: 10;
-}
-
-.top-button:hover {
-    -fx-background-color: transparent;
-    -fx-text-fill: rgba(255, 255, 255, 0.75);
-}
-
-.top-button:pressed {
-    -fx-background-color: transparent;
-    -fx-text-fill: rgba(255, 255, 255, 0.5);
-}
-
-.top-button {
-    -fx-background-color: transparent;
+/* Títulos com toque rosado-claro para alto contraste */
+.label-titulo {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
     -fx-text-fill: white;
 }
 
-.horario-botao:hover {
-    -fx-background-color: #d2d1d1;
+.label-bem-vindo {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #8e92f2;
 }
 
-.horario-botao:pressed {
-    -fx-background-color: #b0b0b0;
-}
-
-.label {
-    -fx-text-fill: white;
-}
-
-.toggle-button {
+/* NavBar botões */
+.nav-btn {
     -fx-background-color: transparent;
+    -fx-text-fill: #aeb2fd;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 20px;
     -fx-cursor: hand;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(60, 25, 146, 0.08), 8, 0, 0, 2);
 }
 
-.toggle-button:selected {
-    -fx-background-color: rgba(253, 243, 243, 0.74);
-}
-
-.accordion > .titled-pane > .title {
+.nav-btn:hover {
+    -fx-text-fill: #ff4567;
     -fx-background-color: transparent;
+    -fx-underline: true;
 }
 
-.accordion > .titled-pane > .title > .text {
-    -fx-fill: white;
+/* Card dos espetáculos */
+.card {
+    -fx-background-color: #232747;
+    -fx-padding: 14 12 12 12;
+    -fx-background-radius: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(60, 25, 146, 0.12), 16, 0, 0, 4);
+    -fx-alignment: center;
+    -fx-min-width: 230px;
+    -fx-max-width: 240px;
+    -fx-min-height: 310px;
+    -fx-border-color: #3c1992;
+    -fx-border-width: 1.2;
+    -fx-border-radius: 15px;
 }
 
-.accordion > .titled-pane > .title > .arrow-button > .arrow {
-    -fx-border-color: white;
+.card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 69, 103, 0.19), 20, 0, 0, 7);
+    -fx-scale-x: 1.04;
+    -fx-scale-y: 1.04;
+    -fx-border-color: #ff4567;
 }
 
-.accordion > .titled-pane > .content {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
+.titulo-card {
+    -fx-font-size: 19px;
+    -fx-text-fill: #aeb2fd;
+    -fx-font-weight: bold;
+}
+
+/* Botão principal do card */
+.action-btn {
+    -fx-background-color: -default-button-color;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-padding: 7 30 7 30;
+    -fx-background-radius: 18px;
+    -fx-cursor: hand;
+    -fx-effect: -default-button-effect;
+}
+
+.action-btn:hover {
+    -fx-background-color: -default-button-hover-color;
+    -fx-text-fill: #fff;
+    -fx-scale-x: 1.06;
+    -fx-scale-y: 1.06;
+    -fx-effect: -default-button-hover-effect;
+}
+
+.action-btn:pressed {
+    -fx-background-color: -default-button-pressed;
+}
+
+/* Botões de turno */
+.turno-btn {
+    -fx-background-color: -secondary-button-color;
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-effect: -secondary-button-effect;
+}
+
+.turno-btn:hover {
+    -fx-background-color: -secondary-button-hover-color;
+    -fx-text-fill: #fff;
+    -fx-scale-x: 1.06;
+    -fx-scale-y: 1.06;
+    -fx-effect: -secondary-button-hover-effect;
+}
+
+.turno-btn:pressed {
+    -fx-background-color: -secondary-button-pressed;
 }

@@ -15,29 +15,35 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER" spacing="15.0" stylesheets="@../../styles/tela_selecionar_assentos.css"
-      xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="hmd.teatroABC.controller.TelaIngressoController">
+<HBox alignment="CENTER" spacing="15.0" stylesheets="@../../styles/tela_selecionar_assentos.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hmd.teatroABC.controller.TelaIngressoController">
     <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="SOMETIMES">
         <padding>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
         </padding>
         <HBox spacing="70.0">
             <padding>
-                <Insets right="100.0"/>
+                <Insets right="100.0" />
             </padding>
-            <Button fx:id="voltarBotao" mnemonicParsing="false" onAction="#telaInicialTrigger" prefHeight="27.0"
-                    prefWidth="31.0" styleClass="botao-voltar">
-                <graphic>
-                    <ImageView fitHeight="34.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../images/voltar.png"/>
-                    </ImageView>
-                </graphic>
-            </Button>
+         <VBox alignment="CENTER">
+            <children>
+               <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../images/teatro_abc_branco.png" />
+                  </image>
+               </ImageView>
+                  <Button fx:id="voltarBotao" mnemonicParsing="false" onAction="#telaInicialTrigger" prefHeight="27.0" prefWidth="31.0" styleClass="botao-voltar">
+                      <graphic>
+                          <ImageView fitHeight="34.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                              <Image url="@../../images/voltar.png" />
+                          </ImageView>
+                      </graphic>
+                  </Button>
+            </children>
+         </VBox>
             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                 <Label alignment="CENTER" text="Selecione seu assento:" textAlignment="CENTER" textFill="#fff9f9">
                     <font>
-                        <Font name="System Bold" size="18.0"/>
+                        <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
                 <!--                <Label alignment="CENTER" text="%selecionar_assento" textAlignment="CENTER" textFill="#fff9f9">-->
@@ -46,12 +52,10 @@
                 <!--                    </font>-->
                 <!--                </Label>-->
                 <StackPane>
-                    <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#717579" height="76.0" stroke="TRANSPARENT"
-                               strokeLineCap="ROUND" strokeType="INSIDE" width="579.0"/>
-                    <Label alignment="CENTER" text="PALCO" textAlignment="CENTER" textFill="WHITE"
-                           StackPane.alignment="BOTTOM_CENTER">
+                    <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#717579" height="76.0" stroke="TRANSPARENT" strokeLineCap="ROUND" strokeType="INSIDE" width="579.0" />
+                    <Label alignment="CENTER" text="PALCO" textAlignment="CENTER" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
                         <font>
-                            <Font name="System Bold" size="36.0"/>
+                            <Font name="System Bold" size="36.0" />
                         </font>
                     </Label>
                     <!--                    <Label alignment="CENTER" text="%palco" textAlignment="CENTER" textFill="WHITE"-->
@@ -67,12 +71,12 @@
             <VBox alignment="CENTER" prefHeight="372.0" spacing="5.0">
                 <VBox fx:id="frisa1Box" alignment="CENTER" prefHeight="200.0" spacing="15.0" styleClass="vbox-frisa">
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
-                    <ToggleButton fx:id="F1" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
+                    <ToggleButton fx:id="F1" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" />
                     <Label text="FRISA 01" textFill="WHITE">
                         <font>
-                            <Font name="System Bold" size="14.0"/>
+                            <Font name="System Bold" size="14.0" />
                         </font>
                     </Label>
                     <!--                    <Label text="%frisa1" textFill="WHITE">-->
@@ -81,15 +85,14 @@
                     <!--                        </font>-->
                     <!--                    </Label>-->
                 </VBox>
-                <VBox fx:id="frisa2Box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0"
-                      styleClass="vbox-frisa">
+                <VBox fx:id="frisa2Box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" styleClass="vbox-frisa">
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
-                    <ToggleButton fx:id="F2" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
+                    <ToggleButton fx:id="F2" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" />
                     <Label text="FRISA 02" textFill="WHITE">
                         <font>
-                            <Font name="System Bold" size="14.0"/>
+                            <Font name="System Bold" size="14.0" />
                         </font>
                     </Label>
                     <!--                    <Label text="%frisa2" textFill="WHITE">-->
@@ -98,15 +101,14 @@
                     <!--                        </font>-->
                     <!--                    </Label>-->
                 </VBox>
-                <VBox fx:id="frisa3Box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0"
-                      styleClass="vbox-frisa">
+                <VBox fx:id="frisa3Box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" styleClass="vbox-frisa">
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
-                    <ToggleButton fx:id="F3" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
+                    <ToggleButton fx:id="F3" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" />
                     <Label text="FRISA 03" textFill="WHITE">
                         <font>
-                            <Font name="System Bold" size="14.0"/>
+                            <Font name="System Bold" size="14.0" />
                         </font>
                     </Label>
                     <!--                    <Label text="%frisa3" textFill="WHITE">-->
@@ -120,200 +122,151 @@
                 <VBox alignment="CENTER" styleClass="vbox-plateiaA" VBox.vgrow="NEVER">
                     <GridPane fx:id="plateiaAGrid" hgap="10.0" vgap="5.0">
                         <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0"/>
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
                         </columnConstraints>
                         <rowConstraints>
-                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
-                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
-                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
-                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
-                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
+                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
                         </rowConstraints>
                         <padding>
-                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                         </padding>
-                        <ToggleButton fx:id="A1" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A1" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A6" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.halignment="CENTER" GridPane.rowIndex="1"
-                                      GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A6" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A11" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.halignment="CENTER" GridPane.rowIndex="2"
-                                      GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A11" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A16" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.halignment="CENTER" GridPane.rowIndex="3"
-                                      GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A16" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A21" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.halignment="CENTER" GridPane.rowIndex="4"
-                                      GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A21" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A2" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="CENTER"
-                                      GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A2" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A7" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A7" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A12" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A12" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A17" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A17" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A22" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A22" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A3" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="CENTER"
-                                      GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A3" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A8" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A8" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A13" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A13" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A18" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A18" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A23" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A23" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A9" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="3" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A9" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A4" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="3" GridPane.halignment="CENTER"
-                                      GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A4" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A14" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="3" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A14" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A19" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="3" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A19" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A24" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="3" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A24" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A5" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="4" GridPane.halignment="CENTER"
-                                      GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A5" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A10" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="4" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A10" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A15" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="4" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A15" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A20" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="4" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A20" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="A25" maxHeight="Infinity" minHeight="26.4" minWidth="35.0"
-                                      mnemonicParsing="false" GridPane.columnIndex="4" GridPane.halignment="CENTER"
-                                      GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                        <ToggleButton fx:id="A25" maxHeight="Infinity" minHeight="26.4" minWidth="35.0" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
                     </GridPane>
                     <Label text="PLATEIA A" textFill="#f3f3f3">
                         <font>
-                            <Font name="System Bold" size="14.0"/>
+                            <Font name="System Bold" size="14.0" />
                         </font>
                     </Label>
                     <!--                    <Label text="%plateia_a" textFill="#f3f3f3">-->
@@ -325,717 +278,541 @@
                 <VBox alignment="CENTER" maxHeight="Infinity" maxWidth="Infinity" styleClass="vbox-plateiaB">
                     <GridPane fx:id="plateiaBGrid" hgap="5.0" vgap="5.0" VBox.vgrow="ALWAYS">
                         <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0"/>
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
                         </columnConstraints>
                         <rowConstraints>
-                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
-                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
-                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
-                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
-                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
+                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
                         </rowConstraints>
                         <padding>
-                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                         </padding>
-                        <ToggleButton fx:id="B1" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false">
+                        <ToggleButton fx:id="B1" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B2" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="1">
+                        <ToggleButton fx:id="B2" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B3" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="2">
+                        <ToggleButton fx:id="B3" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B4" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="3">
+                        <ToggleButton fx:id="B4" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B5" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="4">
+                        <ToggleButton fx:id="B5" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B21" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B21" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B41" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B41" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B61" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B61" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B81" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B81" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B6" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="5">
+                        <ToggleButton fx:id="B6" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="5">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B7" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="6">
+                        <ToggleButton fx:id="B7" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="6">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B8" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="7">
+                        <ToggleButton fx:id="B8" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="7">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B9" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="8">
+                        <ToggleButton fx:id="B9" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="8">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B10" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="9">
+                        <ToggleButton fx:id="B10" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="9">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B11" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="10">
+                        <ToggleButton fx:id="B11" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="10">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B12" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="11">
+                        <ToggleButton fx:id="B12" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="11">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B13" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="12">
+                        <ToggleButton fx:id="B13" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="12">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B14" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="13">
+                        <ToggleButton fx:id="B14" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="13">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B15" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="14">
+                        <ToggleButton fx:id="B15" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="14">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B16" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="15">
+                        <ToggleButton fx:id="B16" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="15">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B17" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="16">
+                        <ToggleButton fx:id="B17" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="16">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B18" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="17">
+                        <ToggleButton fx:id="B18" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="17">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B19" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="18">
+                        <ToggleButton fx:id="B19" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="18">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B20" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="19">
+                        <ToggleButton fx:id="B20" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="19">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B22" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="1"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B22" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B42" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="1"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B42" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B62" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="1"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B62" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B82" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="1"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B82" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B23" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="2"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B23" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B43" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="2"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B43" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B63" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="2"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B63" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B83" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="2"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B83" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B24" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="3"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B24" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B44" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="3"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B44" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B64" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="3"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B64" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B84" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="3"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B84" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B25" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="4"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B25" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B45" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="4"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B45" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B65" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="4"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B65" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B85" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="4"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B85" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B26" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="5"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B26" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B46" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="5"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B46" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B66" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="5"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B66" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B86" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="5"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B86" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B27" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="6"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B27" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="6" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B47" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="6"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B47" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="6" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B67" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="6"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B67" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="6" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B87" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="6"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B87" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="6" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B28" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="7"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B28" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="7" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B48" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="7"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B48" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="7" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B68" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="7"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B68" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="7" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B88" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="7"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B88" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="7" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B29" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="8"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B29" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="8" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B49" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="8"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B49" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="8" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B69" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="8"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B69" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="8" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B89" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="8"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B89" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="8" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B30" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="9"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B30" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="9" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B50" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="9"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B50" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="9" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B70" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="9"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B70" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="9" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B90" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="9"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B90" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="9" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B31" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="10"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B31" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="10" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B51" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="10"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B51" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="10" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B71" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="10"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B71" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="10" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B91" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="10"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B91" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="10" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B32" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="11"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B32" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="11" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B52" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="11"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B52" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="11" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B72" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="11"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B72" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="11" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B92" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="11"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B92" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="11" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B33" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="12"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B33" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="12" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B53" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="12"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B53" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="12" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B73" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="12"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B73" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="12" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B93" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="12"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B93" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="12" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B34" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="13"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B34" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="13" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B54" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="13"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B54" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="13" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B74" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="13"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B74" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="13" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B94" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="13"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B94" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="13" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B35" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="14"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B35" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="14" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B55" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="14"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B55" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="14" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B75" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="14"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B75" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="14" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B95" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="14"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B95" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="14" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B36" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="15"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B36" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="15" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B56" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="15"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B56" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="15" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B76" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="15"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B76" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="15" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B96" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="15"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B96" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="15" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B37" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="16"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B37" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="16" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B57" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="16"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B57" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="16" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B77" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="16"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B77" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="16" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B97" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="16"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B97" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="16" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B38" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="17"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B38" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="17" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B58" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="17"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B58" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="17" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B78" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="17"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B78" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="17" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B98" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="17"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B98" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="17" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B39" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="18"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B39" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="18" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B59" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="18"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B59" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="18" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B79" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="18"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B79" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="18" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B99" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="18"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B99" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="18" GridPane.rowIndex="4">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B40" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="19"
-                                      GridPane.rowIndex="1">
+                        <ToggleButton fx:id="B40" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="19" GridPane.rowIndex="1">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B60" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="19"
-                                      GridPane.rowIndex="2">
+                        <ToggleButton fx:id="B60" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="19" GridPane.rowIndex="2">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B80" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="19"
-                                      GridPane.rowIndex="3">
+                        <ToggleButton fx:id="B80" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="19" GridPane.rowIndex="3">
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="10.0" />
                             </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="B100" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0"
-                                      minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="19"
-                                      GridPane.rowIndex="4">
+                        <ToggleButton fx:id="B100" maxHeight="Infinity" maxWidth="Infinity" minHeight="24.0" minWidth="26.4" mnemonicParsing="false" GridPane.columnIndex="19" GridPane.rowIndex="4">
                             <font>
-                                <Font size="8.0"/>
+                                <Font size="8.0" />
                             </font>
                         </ToggleButton>
                     </GridPane>
                     <Label text="PLATEIA B" textFill="#f3f3f3">
                         <font>
-                            <Font name="System Bold" size="14.0"/>
+                            <Font name="System Bold" size="14.0" />
                         </font>
                     </Label>
                     <!--                    <Label text="%plateia_b" textFill="#f3f3f3">-->
@@ -1046,15 +823,14 @@
                 </VBox>
             </VBox>
             <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="372.0" spacing="5.0">
-                <VBox fx:id="frisa4Box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0"
-                      styleClass="vbox-frisa">
+                <VBox fx:id="frisa4Box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" styleClass="vbox-frisa">
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
-                    <ToggleButton fx:id="F4" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
+                    <ToggleButton fx:id="F4" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" />
                     <Label text="FRISA 04" textFill="WHITE">
                         <font>
-                            <Font name="System Bold" size="14.0"/>
+                            <Font name="System Bold" size="14.0" />
                         </font>
                     </Label>
                     <!--                    <Label text="%frisa4" textFill="WHITE">-->
@@ -1063,15 +839,14 @@
                     <!--                        </font>-->
                     <!--                    </Label>-->
                 </VBox>
-                <VBox fx:id="frisa5Box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0"
-                      styleClass="vbox-frisa">
+                <VBox fx:id="frisa5Box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" styleClass="vbox-frisa">
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
-                    <ToggleButton fx:id="F5" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
+                    <ToggleButton fx:id="F5" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" />
                     <Label text="FRISA 05" textFill="WHITE">
                         <font>
-                            <Font name="System Bold" size="14.0"/>
+                            <Font name="System Bold" size="14.0" />
                         </font>
                     </Label>
                     <!--                    <Label text="%frisa5" textFill="WHITE">-->
@@ -1080,15 +855,14 @@
                     <!--                        </font>-->
                     <!--                    </Label>-->
                 </VBox>
-                <VBox fx:id="frisa6Box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0"
-                      styleClass="vbox-frisa">
+                <VBox fx:id="frisa6Box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" styleClass="vbox-frisa">
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
-                    <ToggleButton fx:id="F6" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
+                    <ToggleButton fx:id="F6" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" />
                     <Label text="FRISA 06" textFill="WHITE">
                         <font>
-                            <Font name="System Bold" size="14.0"/>
+                            <Font name="System Bold" size="14.0" />
                         </font>
                     </Label>
                     <!--                    <Label text="%frisa6" textFill="WHITE">-->
@@ -1103,19 +877,19 @@
             <VBox alignment="CENTER" styleClass="vbox-camarote" HBox.hgrow="ALWAYS">
                 <GridPane fx:id="camarote1Grid">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints percentHeight="100.0" vgrow="SOMETIMES"/>
+                        <RowConstraints percentHeight="100.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
-                    <ToggleButton fx:id="C1" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
+                    <ToggleButton fx:id="C1" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" />
                 </GridPane>
                 <Label text="CAMAROTE 01" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="14.0"/>
+                        <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
                 <!--                <Label text="%camarote1" textFill="WHITE">-->
@@ -1127,19 +901,19 @@
             <VBox alignment="CENTER" styleClass="vbox-camarote" HBox.hgrow="ALWAYS">
                 <GridPane fx:id="camarote2Grid">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints percentHeight="100.0" vgrow="SOMETIMES"/>
+                        <RowConstraints percentHeight="100.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
-                    <ToggleButton fx:id="C2" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
+                    <ToggleButton fx:id="C2" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" />
                 </GridPane>
                 <Label text="CAMAROTE 02" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="14.0"/>
+                        <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
                 <!--                <Label text="%camarote2" textFill="WHITE">-->
@@ -1151,19 +925,19 @@
             <VBox alignment="CENTER" layoutX="193.0" layoutY="10.0" styleClass="vbox-camarote" HBox.hgrow="ALWAYS">
                 <GridPane fx:id="camarote3Grid">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints percentHeight="100.0" vgrow="SOMETIMES"/>
+                        <RowConstraints percentHeight="100.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
-                    <ToggleButton fx:id="C3" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
+                    <ToggleButton fx:id="C3" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" />
                 </GridPane>
                 <Label text="CAMAROTE 03" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="14.0"/>
+                        <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
                 <!--                <Label text="%camarote3" textFill="WHITE">-->
@@ -1175,19 +949,19 @@
             <VBox alignment="CENTER" layoutX="372.0" layoutY="10.0" styleClass="vbox-camarote" HBox.hgrow="ALWAYS">
                 <GridPane fx:id="camarote4Grid">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints percentHeight="100.0" vgrow="SOMETIMES"/>
+                        <RowConstraints percentHeight="100.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
-                    <ToggleButton fx:id="C4" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
+                    <ToggleButton fx:id="C4" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" />
                 </GridPane>
                 <Label text="CAMAROTE 04" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="14.0"/>
+                        <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
                 <!--                <Label text="%camarote4" textFill="WHITE">-->
@@ -1199,19 +973,19 @@
             <VBox alignment="CENTER" layoutX="552.0" layoutY="10.0" styleClass="vbox-camarote" HBox.hgrow="ALWAYS">
                 <GridPane fx:id="camarote5Grid">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints percentHeight="100.0" vgrow="SOMETIMES"/>
+                        <RowConstraints percentHeight="100.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
-                    <ToggleButton fx:id="C5" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
+                    <ToggleButton fx:id="C5" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" />
                 </GridPane>
                 <Label text="CAMAROTE 05" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="14.0"/>
+                        <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
                 <!--                <Label text="%camarote5" textFill="WHITE">-->
@@ -1224,131 +998,82 @@
         <VBox alignment="CENTER" styleClass="vbox-balcao">
             <GridPane fx:id="balcaoGrid" alignment="CENTER" hgap="10.0" prefHeight="158.0" prefWidth="901.0" vgap="5.0">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="10.0" />
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
-                    <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
-                    <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
-                    <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
-                    <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
+                    <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+                    <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+                    <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+                    <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+                    <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
                 </rowConstraints>
                 <padding>
-                    <Insets bottom="5.0" left="15.0" right="15.0" top="15.0"/>
+                    <Insets bottom="5.0" left="15.0" right="15.0" top="15.0" />
                 </padding>
-                <ToggleButton fx:id="N11" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.rowIndex="1"/>
-                <ToggleButton fx:id="N21" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.rowIndex="2"/>
-                <ToggleButton fx:id="N31" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.rowIndex="3"/>
-                <ToggleButton fx:id="N41" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.rowIndex="4"/>
-                <ToggleButton fx:id="N2" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="1"/>
-                <ToggleButton fx:id="N12" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <ToggleButton fx:id="N22" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                <ToggleButton fx:id="N32" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-                <ToggleButton fx:id="N42" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-                <ToggleButton fx:id="N1" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"/>
-                <ToggleButton fx:id="N3" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="2"/>
-                <ToggleButton fx:id="N13" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-                <ToggleButton fx:id="N23" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-                <ToggleButton fx:id="N33" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="2" GridPane.rowIndex="3"/>
-                <ToggleButton fx:id="N43" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="2" GridPane.rowIndex="4"/>
-                <ToggleButton fx:id="N4" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="3"/>
-                <ToggleButton fx:id="N14" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="3" GridPane.rowIndex="1"/>
-                <ToggleButton fx:id="N24" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="3" GridPane.rowIndex="2"/>
-                <ToggleButton fx:id="N34" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="3" GridPane.rowIndex="3"/>
-                <ToggleButton fx:id="N44" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="3" GridPane.rowIndex="4"/>
-                <ToggleButton fx:id="N5" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="4"/>
-                <ToggleButton fx:id="N15" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="4" GridPane.rowIndex="1"/>
-                <ToggleButton fx:id="N25" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="4" GridPane.rowIndex="2"/>
-                <ToggleButton fx:id="N35" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="4" GridPane.rowIndex="3"/>
-                <ToggleButton fx:id="N45" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="4" GridPane.rowIndex="4"/>
-                <ToggleButton fx:id="N6" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="5"/>
-                <ToggleButton fx:id="N16" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="5" GridPane.rowIndex="1"/>
-                <ToggleButton fx:id="N26" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="5" GridPane.rowIndex="2"/>
-                <ToggleButton fx:id="N36" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="5" GridPane.rowIndex="3"/>
-                <ToggleButton fx:id="N46" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="5" GridPane.rowIndex="4"/>
-                <ToggleButton fx:id="N7" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="6"/>
-                <ToggleButton fx:id="N17" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="6" GridPane.rowIndex="1"/>
-                <ToggleButton fx:id="N27" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="6" GridPane.rowIndex="2"/>
-                <ToggleButton fx:id="N37" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="6" GridPane.rowIndex="3"/>
-                <ToggleButton fx:id="N47" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="6" GridPane.rowIndex="4"/>
-                <ToggleButton fx:id="N8" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="7"/>
-                <ToggleButton fx:id="N18" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="7" GridPane.rowIndex="1"/>
-                <ToggleButton fx:id="N28" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="7" GridPane.rowIndex="2"/>
-                <ToggleButton fx:id="N38" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="7" GridPane.rowIndex="3"/>
-                <ToggleButton fx:id="N48" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="7" GridPane.rowIndex="4"/>
-                <ToggleButton fx:id="N9" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="8"/>
-                <ToggleButton fx:id="N19" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="8" GridPane.rowIndex="1"/>
-                <ToggleButton fx:id="N29" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="8" GridPane.rowIndex="2"/>
-                <ToggleButton fx:id="N39" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="8" GridPane.rowIndex="3"/>
-                <ToggleButton fx:id="N49" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="8" GridPane.rowIndex="4"/>
-                <ToggleButton fx:id="N10" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="9"/>
-                <ToggleButton fx:id="N20" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="9" GridPane.rowIndex="1"/>
-                <ToggleButton fx:id="N30" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="9" GridPane.rowIndex="2"/>
-                <ToggleButton fx:id="N40" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="9" GridPane.rowIndex="3"/>
-                <ToggleButton fx:id="N50" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false"
-                              GridPane.columnIndex="9" GridPane.rowIndex="4"/>
+                <ToggleButton fx:id="N11" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.rowIndex="1" />
+                <ToggleButton fx:id="N21" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.rowIndex="2" />
+                <ToggleButton fx:id="N31" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.rowIndex="3" />
+                <ToggleButton fx:id="N41" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.rowIndex="4" />
+                <ToggleButton fx:id="N2" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="1" />
+                <ToggleButton fx:id="N12" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <ToggleButton fx:id="N22" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <ToggleButton fx:id="N32" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <ToggleButton fx:id="N42" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <ToggleButton fx:id="N1" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" />
+                <ToggleButton fx:id="N3" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="2" />
+                <ToggleButton fx:id="N13" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <ToggleButton fx:id="N23" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <ToggleButton fx:id="N33" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                <ToggleButton fx:id="N43" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                <ToggleButton fx:id="N4" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="3" />
+                <ToggleButton fx:id="N14" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                <ToggleButton fx:id="N24" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                <ToggleButton fx:id="N34" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                <ToggleButton fx:id="N44" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                <ToggleButton fx:id="N5" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="4" />
+                <ToggleButton fx:id="N15" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                <ToggleButton fx:id="N25" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                <ToggleButton fx:id="N35" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                <ToggleButton fx:id="N45" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                <ToggleButton fx:id="N6" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="5" />
+                <ToggleButton fx:id="N16" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                <ToggleButton fx:id="N26" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                <ToggleButton fx:id="N36" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                <ToggleButton fx:id="N46" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                <ToggleButton fx:id="N7" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="6" />
+                <ToggleButton fx:id="N17" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                <ToggleButton fx:id="N27" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                <ToggleButton fx:id="N37" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                <ToggleButton fx:id="N47" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                <ToggleButton fx:id="N8" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="7" />
+                <ToggleButton fx:id="N18" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                <ToggleButton fx:id="N28" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+                <ToggleButton fx:id="N38" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+                <ToggleButton fx:id="N48" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+                <ToggleButton fx:id="N9" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="8" />
+                <ToggleButton fx:id="N19" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+                <ToggleButton fx:id="N29" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+                <ToggleButton fx:id="N39" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+                <ToggleButton fx:id="N49" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+                <ToggleButton fx:id="N10" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="9" />
+                <ToggleButton fx:id="N20" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                <ToggleButton fx:id="N30" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+                <ToggleButton fx:id="N40" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="9" GridPane.rowIndex="3" />
+                <ToggleButton fx:id="N50" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" GridPane.columnIndex="9" GridPane.rowIndex="4" />
 
             </GridPane>
             <Label text="BALCÃO NOBRE" textFill="WHITE">
                 <font>
-                    <Font name="System Bold" size="14.0"/>
+                    <Font name="System Bold" size="14.0" />
                 </font>
             </Label>
             <!--            <Label text="%balcao_nobre" textFill="WHITE">-->
@@ -1360,18 +1085,18 @@
     </VBox>
     <VBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" spacing="10.0">
         <padding>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
         </padding>
         <HBox.margin>
-            <Insets bottom="5.0"/>
+            <Insets bottom="5.0" />
         </HBox.margin>
         <VBox layoutX="25.0" layoutY="630.0" spacing="5.0" styleClass="vbox-total">
             <padding>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
             <Label text="LEGENDA:" textFill="WHITE">
                 <font>
-                    <Font size="24.0"/>
+                    <Font size="24.0" />
                 </font>
             </Label>
             <!--            <Label text="%legenda" textFill="WHITE">-->
@@ -1380,11 +1105,10 @@
             <!--                </font>-->
             <!--            </Label>-->
             <HBox alignment="CENTER_LEFT" spacing="10.0">
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" stroke="BLACK"
-                           strokeType="INSIDE" strokeWidth="0.0" width="20.0"/>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
                 <Label text="Disponível" textFill="WHITE">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <!--                <Label text="%disponivel" textFill="WHITE">-->
@@ -1394,11 +1118,10 @@
                 <!--                </Label>-->
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="51.0" spacing="10.0">
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#830808" height="20.0" stroke="BLACK"
-                           strokeType="INSIDE" strokeWidth="0.0" width="20.0"/>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#830808" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
                 <Label text="Selecionado" textFill="WHITE">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <!--                <Label text="%selecionado" textFill="WHITE">-->
@@ -1408,11 +1131,10 @@
                 <!--                </Label>-->
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="88.0" spacing="10.0">
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7d7c7c" height="20.0" stroke="BLACK"
-                           strokeType="INSIDE" strokeWidth="0.0" width="20.0"/>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7d7c7c" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
                 <Label text="Ocupado" textFill="WHITE">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <!--                <Label text="%ocupado" textFill="WHITE">-->
@@ -1425,7 +1147,7 @@
         <VBox>
             <Label text="VALORES:" textFill="WHITE">
                 <font>
-                    <Font size="24.0"/>
+                    <Font size="24.0" />
                 </font>
             </Label>
             <!--            <Label text="%valores" textFill="WHITE">-->
@@ -1436,7 +1158,7 @@
             <VBox styleClass="vbox-valores-cima">
                 <Label text="PLATEIA A" textFill="WHITE">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <!--                <Label text="%plateia_a" textFill="WHITE">-->
@@ -1446,17 +1168,17 @@
                 <!--                </Label>-->
                 <Label text="R$ 40,00" textFill="WHITE">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <padding>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                 </padding>
             </VBox>
             <VBox styleClass="vbox-valores-meio">
                 <Label text="PLATEIA B" textFill="WHITE">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <!--                <Label text="%plateia_b" textFill="WHITE">-->
@@ -1466,17 +1188,17 @@
                 <!--                </Label>-->
                 <Label text="R$ 60,00" textFill="WHITE">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <padding>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                 </padding>
             </VBox>
             <VBox styleClass="vbox-valores-meio">
                 <Label text="CAMAROTE" textFill="WHITE">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <!--                <Label text="%camarote" textFill="WHITE">-->
@@ -1486,7 +1208,7 @@
                 <!--                </Label>-->
                 <Label layoutX="16.0" layoutY="16.0" text="10 assentos por camarote" textFill="WHITE">
                     <font>
-                        <Font size="11.0"/>
+                        <Font size="11.0" />
                     </font>
                 </Label>
                 <!--                <Label layoutX="16.0" layoutY="16.0" text="%assentos_camarote" textFill="WHITE">-->
@@ -1496,17 +1218,17 @@
                 <!--                </Label>-->
                 <Label text="R$ 80,00" textFill="WHITE">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <padding>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                 </padding>
             </VBox>
             <VBox styleClass="vbox-valores-meio">
                 <Label text="FRISA" textFill="WHITE">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <!--                <Label text="%frisa" textFill="WHITE">-->
@@ -1516,7 +1238,7 @@
                 <!--                </Label>-->
                 <Label layoutX="16.0" layoutY="16.0" text="5 assentos por frisa" textFill="WHITE">
                     <font>
-                        <Font size="11.0"/>
+                        <Font size="11.0" />
                     </font>
                 </Label>
                 <!--                <Label layoutX="16.0" layoutY="16.0" text="%assentos_frisa" textFill="WHITE">-->
@@ -1526,17 +1248,17 @@
                 <!--                </Label>-->
                 <Label text="R$ 120,00" textFill="WHITE">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <padding>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                 </padding>
             </VBox>
             <VBox styleClass="vbox-valores-baixo">
                 <Label text="BALCÃO NOBRE" textFill="WHITE">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <!--                <Label text="%balcao_nobre" textFill="WHITE">-->
@@ -1546,18 +1268,18 @@
                 <!--                </Label>-->
                 <Label text="R$ 250,00" textFill="WHITE">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <padding>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                 </padding>
             </VBox>
         </VBox>
         <VBox styleClass="vbox-total">
             <Label text="VALOR TOTAL:" textFill="WHITE">
                 <font>
-                    <Font size="24.0"/>
+                    <Font size="24.0" />
                 </font>
             </Label>
             <!--            <Label text="%valor_total" textFill="WHITE">-->
@@ -1567,18 +1289,16 @@
             <!--            </Label>-->
             <Label fx:id="labelPrecoTotal" text="R$ XX" textFill="WHITE">
                 <font>
-                    <Font size="36.0"/>
+                    <Font size="36.0" />
                 </font>
             </Label>
             <padding>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
         </VBox>
-        <Button fx:id="continuarBotao" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                mnemonicParsing="false" onAction="#finalizarCompraTrigger" styleClass="botao-continuar"
-                text="CONTINUAR">
+        <Button fx:id="continuarBotao" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#finalizarCompraTrigger" styleClass="botao-continuar" text="CONTINUAR">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Button>
         <!--        <Button fx:id="continuarBotao" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"-->

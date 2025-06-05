@@ -1,0 +1,14 @@
+.root {
+    -default-background-color: #181a28;
+    -top-bar-gradient: linear-gradient(to right,rgba(35, 39, 71, 1) 0%, rgb(29, 3, 97) 80%);
+    -default-button-color: #3c1992;
+    -default-button-hover-color: linear-gradient(to right, #ff204e, #3c1992);
+    -default-button-pressed: linear-gradient(to right, rgba(255, 32, 78, 0.6), rgba(60, 25, 146, 0.6));
+    -default-button-effect: dropshadow(gaussian, rgba(60,25,146,0.12), 8, 0, 0, 1);
+    -default-button-hover-effect: dropshadow(gaussian, rgba(255, 32, 78, 0.18), 12, 0, 0, 3);
+    -secondary-button-color: #3440a3;
+    -secondary-button-hover-color: #ff204e;
+    -secondary-button-pressed: rgba(255, 32, 78, 0.6);
+    -secondary-button-effect: dropshadow(gaussian, rgba(60,25,146,0.11), 8, 0, 0, 1);
+    -secondary-button-hover-effect: dropshadow(gaussian, rgba(255,32,78,0.13), 12, 0, 0, 3);
+}

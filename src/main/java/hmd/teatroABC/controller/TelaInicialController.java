@@ -3,18 +3,13 @@ package hmd.teatroABC.controller;
 import hmd.teatroABC.model.entities.Sessao;
 import hmd.teatroABC.model.entities.Teatro;
 import hmd.teatroABC.util.FXMLLoaderUtil;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -30,68 +25,67 @@ import static hmd.teatroABC.model.entities.Teatro.*;
  */
 
 public class TelaInicialController {
-    public Button botaoManha, botaoTarde, botaoNoite, imprimirBotao, estatisticasBotao;
+    public Button botaoManha, botaoTarde, botaoNoite, imprimirBotao, estatisticasBotao, btnManha1;
 
-    @FXML private HBox botoesBox, postersBox;
+    @FXML
+    private HBox botoesBox1, botoesBox2, botoesBox3;
 
-    @FXML private AnchorPane rootBox;
+    @FXML
+    private BorderPane rootBox;
 
-    @FXML private ImageView imagem1, imagem2, imagem3;
-
-    @FXML private ToggleButton peca1Botao, peca2Botao, peca3Botao;
-
-    @FXML private ToggleGroup pecaSelecionada;
+    @FXML
+    private ImageView imagem1, imagem2, imagem3;
 
     public void initialize() {
-        botoesBox.setVisible(false);
+        botoesBox1.setVisible(false);
+        botoesBox2.setVisible(false);
+        botoesBox3.setVisible(false);
         imagem1.setImage(Teatro.getPecas().get(0).getPosterImg());
         imagem2.setImage(Teatro.getPecas().get(3).getPosterImg());
         imagem3.setImage(Teatro.getPecas().get(6).getPosterImg());
-
-        DoubleProperty stageWidth = new SimpleDoubleProperty();
-        DoubleProperty stageHeight = new SimpleDoubleProperty();
-
-        imagem1.fitWidthProperty().bind(Bindings.multiply(stageWidth, 0.62));
-        imagem1.fitHeightProperty().bind(Bindings.multiply(stageHeight, 0.62));
-        imagem1.setPreserveRatio(true);
-
-        imagem2.fitWidthProperty().bind(Bindings.multiply(stageWidth, 0.62));
-        imagem2.fitHeightProperty().bind(Bindings.multiply(stageHeight, 0.62));
-        imagem2.setPreserveRatio(true);
-
-        imagem3.fitWidthProperty().bind(Bindings.multiply(stageWidth, 0.62));
-        imagem3.fitHeightProperty().bind(Bindings.multiply(stageHeight, 0.62));
-        imagem3.setPreserveRatio(true);
-
-        // Vincular a largura e altura do stage (Scene) à propriedade stageWidth e stageHeight
-        stageWidth.bind(rootBox.widthProperty());
-        stageHeight.bind(rootBox.heightProperty());
-
-        pecaSelecionada.selectedToggleProperty().addListener((_, _, newToggle) -> botoesBox.setVisible(newToggle != null));
     }
 
-    public void comprarIngressoTrigger(ActionEvent event) throws IOException {
-        String pecaSelecionada;
-        if (peca1Botao.isSelected()) {
-            pecaSelecionada = "Wicked";
-        } else if (peca2Botao.isSelected()) {
-            pecaSelecionada = "Rei Leao";
-        } else {
-            pecaSelecionada = "Auto da Compadecida";
-        }
-        Sessao sessaoSelecionada;
-        if (event.getSource() == botaoManha) {
-            sessaoSelecionada = Sessao.MANHA;
-        } else if (event.getSource() == botaoTarde) {
-            sessaoSelecionada = Sessao.TARDE;
-        } else {
-            sessaoSelecionada = Sessao.NOITE;
-        }
+    public void showBox1(ActionEvent event) {
+        botoesBox1.setVisible(true);
+        botoesBox2.setVisible(false);
+        botoesBox3.setVisible(false);
+    }
 
+    public void showBox2(ActionEvent event) {
+        botoesBox2.setVisible(true);
+        botoesBox1.setVisible(false);
+        botoesBox3.setVisible(false);
+    }
+
+    public void showBox3(ActionEvent event) {
+        botoesBox3.setVisible(true);
+        botoesBox1.setVisible(false);
+        botoesBox2.setVisible(false);
+    }
+
+    public void comprarPeca1(ActionEvent event) throws IOException {
+        Sessao sessaoSelecionada = selecionarSessao(event);
+
+        comprarIngressoTrigger("Wicked", sessaoSelecionada);
+    }
+
+    public void comprarPeca2(ActionEvent event) throws IOException {
+        Sessao sessaoSelecionada = selecionarSessao(event);
+
+        comprarIngressoTrigger("Rei Leao", sessaoSelecionada);
+    }
+
+    public void comprarPeca3(ActionEvent event) throws IOException {
+        Sessao sessaoSelecionada = selecionarSessao(event);
+
+        comprarIngressoTrigger("Auto da Compadecida", sessaoSelecionada);
+    }
+
+    public void comprarIngressoTrigger(String pecaSelecionada, Sessao sessaoSelecionada) throws IOException {
         FXMLLoader compraSceneLoader = FXMLLoaderUtil.loadFXML(TELA_SELECIONAR_ASSENTOS);
         Scene compraScene = new Scene(compraSceneLoader.getRoot());
         TelaIngressoController controller = compraSceneLoader.getController();
-        Stage compraStage = (Stage) peca1Botao.getScene().getWindow();
+        Stage compraStage = (Stage) btnManha1.getScene().getWindow();
         compraStage.setScene(compraScene);
         controller.chamarOutroMetodo();
         controller.configurarAssentos(pecaSelecionada, sessaoSelecionada);
@@ -132,4 +126,18 @@ public class TelaInicialController {
         controllerImprimir.criarIngresso();
         imprimirStage.show();
     }
+
+    private Sessao selecionarSessao(ActionEvent event) {
+        Sessao sessaoSelecionada;
+        Button botaoClicado = (Button) event.getSource();
+        if (botaoClicado.getText().equals("Manhã")) {
+            sessaoSelecionada = Sessao.MANHA;
+        } else if (botaoClicado.getText().equals("Tarde")) {
+            sessaoSelecionada = Sessao.TARDE;
+        } else {
+            sessaoSelecionada = Sessao.NOITE;
+        }
+        return sessaoSelecionada;
+    }
+
 }

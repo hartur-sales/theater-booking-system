@@ -1,31 +1,48 @@
+@import "colors.css";
+
 .root {
-    -fx-background-color: #262424;
+    -fx-background-color: -default-background-color;
 }
 
+/* Barra Superior */
+.top-bar {
+    -fx-background-color: -top-bar-gradient;
+    -fx-padding: 16px;
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: #fff;
+    -fx-font-size: 15px;
+    -fx-font-weight: 500;
+}
+
+/* Botão Voltar */
 .botao-voltar {
     -fx-background-color: white;
+    -fx-padding: 6 10 6 10;
+    -fx-background-radius: 8px;
 }
-
 .botao-voltar:hover {
-    -fx-background-color: #d2d1d1;
+    -fx-background-color: #3440a3;
 }
-
 .botao-voltar:pressed {
-    -fx-background-color: #b0b0b0;
+    -fx-background-color: #222b49;
 }
 
-.label {
-    -fx-text-fill: white;
-}
-
+/* Botão Exportar */
 .botao-imprimir {
-    -fx-background-color: white;
+    -fx-background-color: -default-button-color;
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-font-size: 13px;
+    -fx-effect: -default-button-effect;
 }
-
 .botao-imprimir:hover {
-    -fx-background-color: #d2d1d1;
+    -fx-background-color: -default-button-hover-color;
+    -fx-effect: -default-button-hover-effect;
 }
-
 .botao-imprimir:pressed {
-    fx-background-color: #b0b0b0;
+    -fx-background-color: -default-button-pressed;
 }
