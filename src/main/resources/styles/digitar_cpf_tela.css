@@ -1,23 +1,31 @@
+@import "colors.css";
+
 .root {
-    -fx-background-color: #262424;
+    -fx-background-color: -default-background-color;
 }
 
 .button {
-    -fx-background-color: white;
-    -fx-text-fill: black;
-    -fx-background-radius: 10;
+    -fx-background-color: -secondary-button-color;
+    -fx-text-fill: #fff;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-effect: -secondary-button-effect;
 }
 
 .button:hover {
-    -fx-background-color: #d2d1d1;
+    -fx-background-color: -secondary-button-hover-color;
+    -fx-text-fill: #fff;
+    -fx-effect: -secondary-button-hover-effect;
 }
 
 .button:pressed {
-    -fx-background-color: #b0b0b0;
+    -fx-background-color: -secondary-button-pressed;
 }
 
 .label {
-    -fx-text-fill: white;
+    -fx-text-fill: #fff;
+    -fx-font-size: 15px;
+    -fx-font-weight: 500;
 }
 
 .label-erro {
@@ -25,5 +33,26 @@
 }
 
 .text-field {
-    -fx-background-radius: 10;
+    -fx-background-color: #25294d;
+    -fx-background-insets: 0;
+    -fx-border-color: #3c1992;
+    -fx-border-radius: 9px;
+    -fx-background-radius: 9px;
+    -fx-border-width: 2px;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15px;
+    -fx-caret-color: #ff204e;
+    -fx-effect: dropshadow(gaussian, rgba(60,25,146,0.08), 10, 0, 0, 1);
+    -fx-transition: all 0.2s ease;
+}
+
+.text-field:focused {
+    -fx-border-color: #ff204e;
+    -fx-effect: dropshadow(gaussian, #ff204e55, 12, 0.35, 0, 2);
+}
+
+.text-field:disabled {
+    -fx-background-color: -card-color;
+    -fx-border-color: #36314c;
+    -fx-text-fill: #888daa;
 }

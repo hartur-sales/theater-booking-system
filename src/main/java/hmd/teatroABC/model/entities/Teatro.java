@@ -27,10 +27,10 @@ public class Teatro {
     public static final String TELA_IMPRIMIR_INGRESSO = "/hmd/teatroABC/imprimir_ingresso.fxml";
     public static final String TELA_INICIAL = "/hmd/teatroABC/tela_inicial.fxml";
     public static final String TELA_COMPRA_FINALIZADA = "/hmd/teatroABC/compra_finalizada_tela.fxml";
-    public static final String TELA_FINALIZAR_COMPRA = "/hmd/teatroABC/finalizar_compra.fxml";
+    public static final String TELA_FINALIZAR_COMPRA = "/hmd/teatroABC/teste.fxml";
 
     public static final int STAGE_WIDTH = 1200;
-    public static final int STAGE_HEIGHT = 770;
+    public static final int STAGE_HEIGHT = 800;
 
     public void carregarPecas() {
         try (BufferedReader br = new BufferedReader(new FileReader(pecasFile))) {

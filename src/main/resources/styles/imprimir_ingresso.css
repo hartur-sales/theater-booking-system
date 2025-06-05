@@ -1,30 +1,84 @@
+@import "colors.css";
+
 .root {
-    -fx-background-color: #262424;
+    -fx-background-color: -default-background-color;
+}
+
+.top-bar {
+    -fx-background-color: -top-bar-gradient;
+    -fx-padding: 16px;
 }
 
 .botao-voltar {
-    -fx-background-color: white;
-    -fx-text-fill: black;
-    -fx-background-radius: 10;
+    -fx-background-color: -voltar-button-color;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-effect: -secondary-button-effect;
 }
 
 .botao-voltar:hover {
-    -fx-background-color: #d2d1d1;
+    -fx-background-color: -voltar-button-hover-color;
+    -fx-effect: -secondary-button-hover-effect;
+    -fx-border-color: #ff4567;
+    -fx-border-radius: 8px;
 }
 
 .botao-voltar:pressed {
-    -fx-background-color: #b0b0b0;
+    -fx-background-color: -voltar-button-pressed-color;
+    -fx-effect: -voltar-button-pressed-effect;
+    -fx-translate-y: 1px;
 }
 
 .label {
+    -fx-text-fill: #fff;
+    -fx-font-size: 15px;
+    -fx-font-weight: 500;
+}
+
+.label-titulo {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
     -fx-text-fill: white;
 }
 
 .vbox-ingresso {
-    -fx-border-color: white;
-    -fx-border-width: 1;
-    -fx-border-radius: 10;
+    -fx-background-color: -card-color;
     -fx-padding: 10;
+    -fx-background-radius: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(60, 25, 146, 0.12), 16, 0, 0, 4);
+    -fx-border-color: #3c1992;
+    -fx-border-width: 1.2;
+    -fx-border-radius: 15px;
+    /*-fx-border-color: white;*/
+    /*-fx-border-width: 1;*/
+    /*-fx-border-radius: 10;*/
+    /*-fx-padding: 10;*/
+}
+
+.vbox-ingresso:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 69, 103, 0.19), 20, 0, 0, 7);
+    -fx-border-color: #ff4567;
+}
+
+.ingresso-card {
+    -fx-background-color: -card-color;
+    -fx-background-radius: 16px;
+    -fx-padding: 16 18 14 18;
+    -fx-min-width: 250px;
+    -fx-max-width: 260px;
+    -fx-effect: dropshadow(gaussian, rgba(60,25,146,0.13), 12, 0, 0, 4);
+    -fx-border-color: #3c1992;
+    -fx-border-width: 1.2;
+    -fx-border-radius: 15px;
+    -fx-alignment: center;
+    -fx-spacing: 6;
+}
+
+.ingresso-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255,69,103,0.19), 20, 0, 0, 7);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-border-color: #ff4567;
 }
 
 .scroll-pane {
@@ -33,4 +87,27 @@
 
 .scroll-pane > .viewport {
     -fx-background-color: transparent;
+}
+
+.botao-exportar {
+    -fx-background-color: -default-button-color;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 7 30 7 30;
+    -fx-background-radius: 18px;
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+    -fx-effect: -default-button-effect;
+}
+
+.botao-exportar:hover {
+    -fx-background-color: -default-button-hover-color;
+    -fx-text-fill: #fff;
+    -fx-scale-x: 1.06;
+    -fx-scale-y: 1.06;
+    -fx-effect: -default-button-hover-effect;
+}
+
+.botao-exportar:pressed {
+    -fx-background-color: -default-button-pressed;
 }

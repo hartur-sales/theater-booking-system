@@ -4,11 +4,14 @@ import hmd.teatroABC.model.entities.Ingresso;
 import hmd.teatroABC.model.entities.Pessoa;
 import hmd.teatroABC.model.entities.Teatro;
 import hmd.teatroABC.util.FXMLLoaderUtil;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -27,10 +30,12 @@ import static hmd.teatroABC.model.entities.Teatro.*;
  */
 
 public class ImprimirIngressoController {
-    public Button voltarBotao;
-    public Label exibindoLabel;
+    @FXML private Button voltarBotao;
+    @FXML private Label exibindoLabel;
     private String cpfBuscado;
-    public VBox vboxContainer;
+//    public VBox vboxContainer;
+    @FXML
+    private FlowPane flowPaneContainer;
 
     public void initialize() {
 
@@ -45,9 +50,10 @@ public class ImprimirIngressoController {
         } else {
             for (Pessoa pessoa : pessoas) {
                 for (Ingresso ingresso : pessoa.getIngressos()) {
-                    VBox ingressoContainer = new VBox(5);
+                    VBox ingressoContainer = new VBox(8);
                     ingressoContainer.getStyleClass().clear();
-                    ingressoContainer.getStyleClass().add("vbox-ingresso");
+//                    ingressoContainer.getStyleClass().add("vbox-ingresso");
+                    ingressoContainer.getStyleClass().add("ingresso-card");
 //                    Label cpfLabel = new Label(BUNDLE.getString("titular_cpf") + " " + cpfBuscado);
 //                    Label pecaLabel = new Label(BUNDLE.getString("peca") + " " + Peca.traduzirNome(ingresso.getPeca().getNome()));
 //                    Label sessaoLabel = new Label(BUNDLE.getString("sessao") + " " + ingresso.getPeca().getSessao().getNomeTraduzido());
@@ -60,10 +66,11 @@ public class ImprimirIngressoController {
                     Label assentoLabel = new Label("Assento: " + ingresso.getAssento());
                     Label precoLabel = new Label("Preço: R$" + ingresso.getPreco());
                     Button exportarBotao = new Button("Exportar ingresso");
+                    exportarBotao.getStyleClass().add("botao-exportar");
                     exportarBotao.setOnAction(_ -> exportarCsv(ingresso));
 
                     ingressoContainer.getChildren().addAll(cpfLabel, pecaLabel, sessaoLabel, assentoLabel, precoLabel, exportarBotao);
-                    vboxContainer.getChildren().add(ingressoContainer);
+                    flowPaneContainer.getChildren().add(ingressoContainer);
                 }
             }
         }
@@ -109,10 +116,10 @@ public class ImprimirIngressoController {
         alert.setContentText("Ingresso exportado com sucesso!");
 
         Scene cenaAlerta = alert.getDialogPane().getScene();
-        cenaAlerta.getRoot().setStyle("-fx-background-color: #262424;");
+        cenaAlerta.getRoot().setStyle("-fx-background-color: #181a28;");
         Label contentLabel = (Label) alert.getDialogPane().lookup(".content");
         if (contentLabel != null) {
-            contentLabel.setStyle("-fx-text-fill: white;");
+            contentLabel.setStyle("-fx-text-fill: #fff; -fx-font-size: 15px; -fx-font-weight: 500;");
         }
 
         alert.showAndWait();

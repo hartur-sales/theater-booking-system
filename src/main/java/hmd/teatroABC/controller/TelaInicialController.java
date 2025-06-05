@@ -1,5 +1,6 @@
 package hmd.teatroABC.controller;
 
+import hmd.teatroABC.model.entities.Peca;
 import hmd.teatroABC.model.entities.Sessao;
 import hmd.teatroABC.model.entities.Teatro;
 import hmd.teatroABC.util.FXMLLoaderUtil;
@@ -8,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -25,7 +27,7 @@ import static hmd.teatroABC.model.entities.Teatro.*;
  */
 
 public class TelaInicialController {
-    public Button botaoManha, botaoTarde, botaoNoite, imprimirBotao, estatisticasBotao, btnManha1;
+    @FXML private Button imprimirBotao, estatisticasBotao, btnManha1;
 
     @FXML
     private HBox botoesBox1, botoesBox2, botoesBox3;
@@ -36,28 +38,38 @@ public class TelaInicialController {
     @FXML
     private ImageView imagem1, imagem2, imagem3;
 
+    @FXML private Label peca1NomeLabel, peca2NomeLabel, peca3NomeLabel;
+
+    private Peca peca1, peca2, peca3;
+
     public void initialize() {
         botoesBox1.setVisible(false);
         botoesBox2.setVisible(false);
         botoesBox3.setVisible(false);
-        imagem1.setImage(Teatro.getPecas().get(0).getPosterImg());
-        imagem2.setImage(Teatro.getPecas().get(3).getPosterImg());
-        imagem3.setImage(Teatro.getPecas().get(6).getPosterImg());
+        peca1 = Teatro.getPecas().get(0);
+        peca2 = Teatro.getPecas().get(3);
+        peca3 = Teatro.getPecas().get(6);
+        imagem1.setImage(peca1.getPosterImg());
+        imagem2.setImage(peca2.getPosterImg());
+        imagem3.setImage(peca3.getPosterImg());
+        peca1NomeLabel.setText(peca1.getNome());
+        peca2NomeLabel.setText(peca2.getNome());
+        peca3NomeLabel.setText(peca3.getNome());
     }
 
-    public void showBox1(ActionEvent event) {
+    public void showBox1(ActionEvent e) {
         botoesBox1.setVisible(true);
         botoesBox2.setVisible(false);
         botoesBox3.setVisible(false);
     }
 
-    public void showBox2(ActionEvent event) {
+    public void showBox2(ActionEvent e) {
         botoesBox2.setVisible(true);
         botoesBox1.setVisible(false);
         botoesBox3.setVisible(false);
     }
 
-    public void showBox3(ActionEvent event) {
+    public void showBox3(ActionEvent e) {
         botoesBox3.setVisible(true);
         botoesBox1.setVisible(false);
         botoesBox2.setVisible(false);
@@ -89,6 +101,7 @@ public class TelaInicialController {
         compraStage.setScene(compraScene);
         controller.chamarOutroMetodo();
         controller.configurarAssentos(pecaSelecionada, sessaoSelecionada);
+        compraStage.setWidth(STAGE_WIDTH + 10); //gambiarras :P
         compraStage.show();
     }
 

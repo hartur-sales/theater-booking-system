@@ -17,32 +17,52 @@
     -fx-font-weight: 500;
 }
 
-/* Botão Voltar */
+.label-titulo {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
 .botao-voltar {
-    -fx-background-color: white;
-    -fx-padding: 6 10 6 10;
+    -fx-background-color: -voltar-button-color;
     -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-effect: -secondary-button-effect;
 }
+
 .botao-voltar:hover {
-    -fx-background-color: #3440a3;
+    -fx-background-color: -voltar-button-hover-color;
+    -fx-effect: -secondary-button-hover-effect;
+    -fx-border-color: #ff4567;
+    -fx-border-radius: 8px;
 }
+
 .botao-voltar:pressed {
-    -fx-background-color: #222b49;
+    -fx-background-color: -voltar-button-pressed-color;
+    -fx-effect: -voltar-button-pressed-effect;
+    -fx-translate-y: 1px;
 }
 
 /* Botão Exportar */
-.botao-imprimir {
+.botao-exportar {
     -fx-background-color: -default-button-color;
-    -fx-text-fill: #fff;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-background-radius: 10px;
-    -fx-font-size: 13px;
+    -fx-padding: 7 30 7 30;
+    -fx-background-radius: 18px;
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
     -fx-effect: -default-button-effect;
 }
-.botao-imprimir:hover {
+
+.botao-exportar:hover {
     -fx-background-color: -default-button-hover-color;
+    -fx-text-fill: #fff;
+    -fx-scale-x: 1.06;
+    -fx-scale-y: 1.06;
     -fx-effect: -default-button-hover-effect;
 }
-.botao-imprimir:pressed {
+
+.botao-exportar:pressed {
     -fx-background-color: -default-button-pressed;
 }
