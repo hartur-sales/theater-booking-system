@@ -1,6 +1,9 @@
 package hmd.teatroABC.controller;
 
-import hmd.teatroABC.model.entities.*;
+import hmd.teatroABC.model.entities.Area;
+import hmd.teatroABC.model.entities.Ingresso;
+import hmd.teatroABC.model.entities.Pessoa;
+import hmd.teatroABC.model.entities.Teatro;
 import hmd.teatroABC.util.FXMLLoaderUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -85,13 +88,12 @@ public class FinalizarCompraController {
     }
 
     public void ocultarFidelidade() {
-        if (vboxFidelidade.isVisible()) {
-            vboxFidelidade.setVisible(false);
-        }
+        if (vboxFidelidade.isVisible()) vboxFidelidade.setVisible(false);
     }
 
     public void resumoDaCompra(ArrayList<String> assentosSelecionados) {
         this.assentosSelecionados = assentosSelecionados;
+        System.out.println(assentosSelecionados);
 
         double totalPlateiaA = 0.0;
         double totalPlateiaB = 0.0;
@@ -228,33 +230,30 @@ public class FinalizarCompraController {
                 cepField, bairroField, cidadeField);
 
         // Adicionando o listener a todos os campos de texto
-        camposTexto.forEach(campo -> campo.textProperty().addListener((observable, oldValue, newValue) -> {
-            desabilitarFinalizarCompra();
-        }));
+        camposTexto.forEach(campo -> campo.textProperty().addListener((_, _, _) -> desabilitarFinalizarCompra()));
 
         // Adicionando o listener para os controles de seleção
         List<ToggleGroup> toggleGroups = Arrays.asList(querFidelidade, pagamento); // Adicione outros ToggleGroups se necessário
 
         // Adicionando o listener aos ToggleGroups
-        toggleGroups.forEach(toggleGroup -> toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            desabilitarFinalizarCompra();
-        }));
+        toggleGroups.forEach(toggleGroup -> toggleGroup.selectedToggleProperty().addListener((_, _, _) -> desabilitarFinalizarCompra()));
 
-        selecionarData.valueProperty().addListener((observable, oldValue, newValue) -> {
-            desabilitarFinalizarCompra();
-        });
+        selecionarData.valueProperty().addListener((_, _, _) -> desabilitarFinalizarCompra());
 
         //https://stackoverflow.com/questions/7555564/what-is-the-recommended-way-to-make-a-numeric-textfield-in-javafx
         //impede que caracteres não numéricos sejam inseridos no campo
-        numeroField.textProperty().addListener((observable, oldValue, newValue) -> {
+        numeroField.textProperty().addListener((_, _, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 numeroField.setText(newValue.replaceAll("\\D", ""));
             }
+            if (numeroField.getText().length() > 3) {
+                numeroField.setText(cpfField.getText().substring(0, 3));
+            }
         });
 
-        cpfField.textProperty().addListener((observable, oldValue, newValue) -> {
+        cpfField.textProperty().addListener((_, _, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                cpfField.setText(newValue.replaceAll("[^\\d]", ""));
+                cpfField.setText(newValue.replaceAll("\\D", ""));
             }
 
             if (cpfField.getText().length() > 11) {
@@ -274,15 +273,15 @@ public class FinalizarCompraController {
             desabilitarFinalizarCompra();
         });
 
-        cepField.textProperty().addListener((observable, oldValue, newValue) -> {
+        cepField.textProperty().addListener((_, _, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                cepField.setText(newValue.replaceAll("[^\\d]", ""));
+                cepField.setText(newValue.replaceAll("\\D", ""));
             }
         });
 
-        telefoneField.textProperty().addListener((observable, oldValue, newValue) -> {
+        telefoneField.textProperty().addListener((_, _, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                telefoneField.setText(newValue.replaceAll("[^\\d]", ""));
+                telefoneField.setText(newValue.replaceAll("\\D", ""));
             }
         });
     }
@@ -364,8 +363,8 @@ public class FinalizarCompraController {
     }
 
     private String getMetodoPagamento() {
-        RadioButton selectedRadioButton = (RadioButton) pagamento.getSelectedToggle();
-        return selectedRadioButton.getText();
+        ToggleButton selectedToggle = (ToggleButton) pagamento.getSelectedToggle();
+        return selectedToggle.getText();
     }
 
 }

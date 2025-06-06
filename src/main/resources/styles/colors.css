@@ -11,6 +11,7 @@
     -secondary-button-pressed: rgba(255, 32, 78, 0.6);
     -secondary-button-effect: dropshadow(gaussian, rgba(60,25,146,0.11), 8, 0, 0, 1);
     -secondary-button-hover-effect: dropshadow(gaussian, rgba(255,32,78,0.13), 12, 0, 0, 3);
+    -on-secondary-button-color: #e6ecff;
     -voltar-button-color: rgba(255, 255, 255, 0.1);
     -voltar-button-hover-color: rgba(255, 255, 255, 0.2);
     -voltar-button-pressed-color: rgba(255, 255, 255, 0.25);

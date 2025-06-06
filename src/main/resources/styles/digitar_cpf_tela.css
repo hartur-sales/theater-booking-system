@@ -6,7 +6,7 @@
 
 .button {
     -fx-background-color: -secondary-button-color;
-    -fx-text-fill: #fff;
+    -fx-text-fill: -on-secondary-button-color;
     -fx-background-radius: 10px;
     -fx-cursor: hand;
     -fx-effect: -secondary-button-effect;
@@ -14,7 +14,6 @@
 
 .button:hover {
     -fx-background-color: -secondary-button-hover-color;
-    -fx-text-fill: #fff;
     -fx-effect: -secondary-button-hover-effect;
 }
 

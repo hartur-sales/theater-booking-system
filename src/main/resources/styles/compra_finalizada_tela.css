@@ -1,21 +1,28 @@
+@import "colors.css";
+
 .root {
-    -fx-background-color: #262424;
+    -fx-background-color: -default-background-color;
 }
 
 .button {
-    -fx-background-color: white;
-    -fx-text-fill: black;
-    -fx-background-radius: 10;
+    -fx-background-color: -secondary-button-color;
+    -fx-text-fill: -on-secondary-button-color;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-effect: -secondary-button-effect;
 }
 
 .button:hover {
-    -fx-background-color: #d2d1d1;
+    -fx-background-color: -secondary-button-hover-color;
+    -fx-effect: -secondary-button-hover-effect;
 }
 
 .button:pressed {
-    -fx-background-color: #b0b0b0;
+    -fx-background-color: -secondary-button-pressed;
 }
 
 .label {
-    -fx-text-fill: white;
+    -fx-text-fill: #fff;
+    -fx-font-size: 15px;
+    -fx-font-weight: 500;
 }

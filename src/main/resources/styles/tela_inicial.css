@@ -96,7 +96,7 @@
 /* Botões de turno */
 .turno-botao {
     -fx-background-color: -secondary-button-color;
-    -fx-text-fill: #fff;
+    -fx-text-fill: -on-secondary-button-color;
     -fx-font-weight: bold;
     -fx-background-radius: 10px;
     -fx-font-size: 14px;

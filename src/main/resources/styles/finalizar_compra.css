@@ -1,34 +1,158 @@
+@import "colors.css";
+
 .root {
-    -fx-background-color: #262424;
+    -fx-background-color: -default-background-color;
 }
 
-.radio-button > .text {
-    -fx-fill: white;
+.top-bar {
+    -fx-background-color: -top-bar-gradient;
+    -fx-padding: 16px;
 }
 
-.choice-box {
-    -fx-background-color: white;
-    -fx-background-radius: 10;
+.label-titulo {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
 }
 
-.choice-box > .label {
-    -fx-text-fill: black;
+.botao-voltar {
+    -fx-background-color: -voltar-button-color;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-effect: -secondary-button-effect;
 }
 
-.text-field {
-    -fx-background-radius: 10;
+.botao-voltar:hover {
+    -fx-background-color: -voltar-button-hover-color;
+    -fx-effect: -secondary-button-hover-effect;
+    -fx-border-color: #ff4567;
+    -fx-border-radius: 8px;
 }
 
-.botao-finalizar {
-    -fx-background-color: white;
-    -fx-text-fill: black;
-    -fx-background-radius: 10;
+.botao-voltar:pressed {
+    -fx-background-color: -voltar-button-pressed-color;
+    -fx-effect: -voltar-button-pressed-effect;
+    -fx-translate-y: 1px;
 }
 
-.botao-finalizar:hover {
-    -fx-background-color: #d2d1d1;
+.card-formulario, .card-resumo {
+    -fx-background-color: -card-color;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+    -fx-border-color: #3c1992;
+    -fx-border-width: 1.2;
+    -fx-effect: dropshadow(gaussian, rgba(60, 25, 146, 0.10), 12, 0, 0, 3);
 }
 
-.botao-finalizar:pressed {
-    -fx-background-color: #b0b0b0;
+.campo-label {
+    -fx-font-size: 15px;
+    -fx-text-fill: #cdbdff;
+}
+
+.text-field, .date-picker {
+    -fx-background-color: #25294d;
+    -fx-border-color: #3c1992;
+    -fx-border-radius: 9px;
+    -fx-background-radius: 9px;
+    -fx-border-width: 2px;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15px;
+    -fx-caret-color: #ff204e;
+    -fx-prompt-text-fill: #b6b4df;
+}
+
+.text-field:focused, .date-picker:focused {
+    -fx-border-color: #ff204e;
+    -fx-effect: dropshadow(gaussian, #ff204e99, 11, 0.23, 0, 1);
+}
+
+.text-field:disabled, date-picker:disabled {
+    -fx-background-color: -card-color;
+    -fx-border-color: #36314c;
+    -fx-text-fill: #888daa;
+}
+
+.estado-choicebox {
+    -fx-background-color: #25294d;
+    -fx-border-color: #3c1992;
+    -fx-border-radius: 9px;
+    -fx-background-radius: 9px;
+    -fx-border-width: 2px;
+    -fx-font-size: 15px;
+    -fx-text-fill: #ffffff;
+}
+
+.estado-choicebox > .label {
+    -fx-text-fill: white;
+}
+
+.estado-choicebox > .open-button > .arrow {
+    -fx-border-color: white;
+}
+
+.estado-choicebox:focused {
+    -fx-border-color: #ff204e;
+    -fx-effect: dropshadow(gaussian, #ff204e55, 10, 0.35, 0, 2);
+}
+
+.radio-btn {
+    -fx-text-fill: #b6b2cf;
+    -fx-font-size: 14px;
+}
+
+.radio-btn:selected {
+    -fx-mark-color: #ff204e;
+}
+
+.botao-pagamento {
+    -fx-background-color: -secondary-button-color;
+    -fx-text-fill: -on-secondary-button-color;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 8 18 8 18;
+    -fx-font-size: 15px;
+    -fx-border-color: #4662e6;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(60, 25, 146, 0.03), 6, 0, 0, 1);
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.botao-pagamento:selected, .botao-pagamento:focused {
+    -fx-background-color: -secondary-button-hover-color;
+    -fx-text-fill: #fff;
+    -fx-border-color: #ff204e;
+    -fx-effect: dropshadow(gaussian, #ff204e77, 7, 0.27, 0, 1);
+}
+
+.botao-confirmar {
+    -fx-background-color: -default-button-color;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 7 30 7 30;
+    -fx-background-radius: 18px;
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+    -fx-effect: -default-button-effect;
+}
+
+.botao-confirmar:hover {
+    -fx-background-color: -default-button-hover-color;
+    -fx-text-fill: #fff;
+    -fx-scale-x: 1.06;
+    -fx-scale-y: 1.06;
+    -fx-effect: -default-button-hover-effect;
+}
+
+.botao-confirmar:pressed {
+    -fx-background-color: -default-button-pressed;
+}
+
+.resumo-item {
+    -fx-font-size: 14px;
+    -fx-text-fill: #f2f2f2;
+}
+
+.simbolo-vetor {
+    -fx-fill: -on-secondary-button-color;
 }
