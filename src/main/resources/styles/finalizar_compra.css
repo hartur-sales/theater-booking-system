@@ -47,6 +47,7 @@
 .campo-label {
     -fx-font-size: 15px;
     -fx-text-fill: #cdbdff;
+    -fx-font-weight: bold;
 }
 
 .text-field, .date-picker {

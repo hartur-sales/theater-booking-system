@@ -66,3 +66,60 @@
 .botao-exportar:pressed {
     -fx-background-color: -default-button-pressed;
 }
+
+.card {
+    -fx-background-color: -card-color;
+    -fx-background-radius: 16px;
+    -fx-padding: 16 18 14 18;
+    -fx-effect: dropshadow(gaussian, rgba(60, 25, 146, 0.13), 12, 0, 0, 4);
+    -fx-border-color: #3c1992;
+    -fx-border-width: 1.2;
+    -fx-border-radius: 15px;
+    -fx-spacing: 6;
+}
+
+.campo-label {
+    -fx-font-size: 15px;
+    -fx-text-fill: #cdbdff;
+    -fx-font-weight: bold;
+}
+
+.combo-filtro {
+    -fx-background-color: #25294d;
+    -fx-border-color: #3c1992;
+    -fx-border-radius: 9px;
+    -fx-background-radius: 9px;
+    -fx-border-width: 2px;
+    -fx-font-size: 15px;
+    -fx-text-fill: #ffffff;
+}
+
+.combo-filtro > .list-cell:selected:filled > .text {
+    -fx-fill: white;
+}
+
+.combo-filtro > .open-button > .arrow {
+    -fx-border-color: white;
+}
+
+.botao-filtro {
+    -fx-background-color: -secondary-button-color;
+    -fx-text-fill: -on-secondary-button-color;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-effect: -secondary-button-effect;
+}
+
+.botao-filtro:hover {
+    -fx-background-color: -secondary-button-hover-color;
+    -fx-text-fill: #fff;
+    -fx-scale-x: 1.06;
+    -fx-scale-y: 1.06;
+    -fx-effect: -secondary-button-hover-effect;
+}
+
+.botao-filtro:pressed {
+    -fx-background-color: -secondary-button-pressed;
+}
