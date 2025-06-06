@@ -4,6 +4,9 @@ import hmd.teatroABC.model.entities.Peca;
 import hmd.teatroABC.model.entities.Sessao;
 import hmd.teatroABC.model.entities.Teatro;
 import hmd.teatroABC.util.FXMLLoaderUtil;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,6 +45,8 @@ public class TelaInicialController {
 
     private Peca peca1, peca2, peca3;
 
+    private static final double IMAGE_WIDTH_MULTIPLIER = 0.55;
+
     public void initialize() {
         botoesBox1.setVisible(false);
         botoesBox2.setVisible(false);
@@ -52,24 +57,41 @@ public class TelaInicialController {
         imagem1.setImage(peca1.getPosterImg());
         imagem2.setImage(peca2.getPosterImg());
         imagem3.setImage(peca3.getPosterImg());
+
+        DoubleProperty stageWidth = new SimpleDoubleProperty();
+        DoubleProperty stageHeight = new SimpleDoubleProperty();
+        stageWidth.bind(rootBox.widthProperty());
+        stageHeight.bind(rootBox.heightProperty());
+        imagem1.fitWidthProperty().bind(Bindings.multiply(stageWidth, IMAGE_WIDTH_MULTIPLIER));
+        imagem1.fitHeightProperty().bind(Bindings.multiply(stageHeight, IMAGE_WIDTH_MULTIPLIER));
+        imagem1.setPreserveRatio(true);
+
+        imagem2.fitWidthProperty().bind(Bindings.multiply(stageWidth, IMAGE_WIDTH_MULTIPLIER));
+        imagem2.fitHeightProperty().bind(Bindings.multiply(stageHeight, IMAGE_WIDTH_MULTIPLIER));
+        imagem2.setPreserveRatio(true);
+
+        imagem3.fitWidthProperty().bind(Bindings.multiply(stageWidth, IMAGE_WIDTH_MULTIPLIER));
+        imagem3.fitHeightProperty().bind(Bindings.multiply(stageHeight, IMAGE_WIDTH_MULTIPLIER));
+        imagem3.setPreserveRatio(true);
+
         peca1NomeLabel.setText(peca1.getNome());
         peca2NomeLabel.setText(peca2.getNome());
         peca3NomeLabel.setText(peca3.getNome());
     }
 
-    public void showBox1(ActionEvent e) {
+    public void showBox1() {
         botoesBox1.setVisible(true);
         botoesBox2.setVisible(false);
         botoesBox3.setVisible(false);
     }
 
-    public void showBox2(ActionEvent e) {
+    public void showBox2() {
         botoesBox2.setVisible(true);
         botoesBox1.setVisible(false);
         botoesBox3.setVisible(false);
     }
 
-    public void showBox3(ActionEvent e) {
+    public void showBox3() {
         botoesBox3.setVisible(true);
         botoesBox1.setVisible(false);
         botoesBox2.setVisible(false);

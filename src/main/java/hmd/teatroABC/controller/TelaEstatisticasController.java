@@ -1,5 +1,9 @@
 package hmd.teatroABC.controller;
 
+import hmd.teatroABC.model.entities.Area;
+import hmd.teatroABC.model.entities.Peca;
+import hmd.teatroABC.model.entities.Sessao;
+import hmd.teatroABC.model.entities.Teatro;
 import hmd.teatroABC.model.objects.Estatistica;
 import hmd.teatroABC.util.FXMLLoaderUtil;
 import javafx.fxml.FXML;
@@ -7,14 +11,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static hmd.teatroABC.model.entities.Teatro.*;
 
@@ -25,18 +33,34 @@ import static hmd.teatroABC.model.entities.Teatro.*;
  */
 
 public class TelaEstatisticasController {
-    public Label totalVendasLabel, pecaMaisVendidaLabel, pecaMenosVendidaLabel, sessaoMaisOcupadaLabel, sessaoMenosOcupadaLabel,
+    @FXML
+    private Label totalVendasLabel, pecaMaisVendidaLabel, pecaMenosVendidaLabel, sessaoMaisOcupadaLabel, sessaoMenosOcupadaLabel,
             lucroMedioLabel1, lucroMedioLabel2, lucroMedioLabel3, sessaoMais1Label, sessaoMenos1Label, sessaoMais2Label, sessaoMenos2Label, sessaoMais3Label, sessaoMenos3Label,
             receitaTotalLabel1, receitaTotalLabel2, receitaTotalLabel3, receitaMediaPlateiaA, receitaMediaPlateiaB, receitaMediaFrisa, receitaMediaCamarote, receitaMediaBalcao,
             ingressosPeca1, ingressosPeca2, ingressosPeca3;
 
-    public Button voltarBotao, botaoExportar;
+    @FXML
+    private Button voltarBotao, botaoExportar;
 
-    @FXML private VBox visaoGeralCard, peca1Card, peca2Card, peca3Card, areasCard;
+    @FXML
+    private VBox visaoGeralCard, peca1Card, peca2Card, peca3Card, areasCard;
+
+    @FXML
+    private ComboBox<String> filtroPecaCombo;
+
+    @FXML
+    private ComboBox<Sessao> filtroSessaoCombo;
+
+    @FXML private ComboBox<Area> filtroAreaCombo;
 
     private final Estatistica estatisticas = new Estatistica();
 
+    private final Sessao[] sessoes = Sessao.values();
+    private final List<Area> areas = List.of(Area.PLATEIA_A, Area.PLATEIA_B, Area.BALCAO_NOBRE, Area.FRISA1, Area.CAMAROTE1);
+    private final List<Peca> pecas = Teatro.getPecas();
+
     public void initialize() {
+        configurarComboBox();
         estatisticas.carregarEstatisticas();
         totalVendasLabel.setText(totalVendasLabel.getText() + " " + estatisticas.calcularTotalVendas());
         pecaMaisVendidaLabel.setText(pecaMaisVendidaLabel.getText() + " " + estatisticas.calcularPecaMaisVendida());
@@ -60,6 +84,20 @@ public class TelaEstatisticasController {
         Stage telaInicialStage = (Stage) voltarBotao.getScene().getWindow();
         telaInicialStage.setScene(telaInicialScene);
         telaInicialStage.show();
+    }
+
+    @FXML
+    private void aplicarFiltro() {
+    }
+
+    @FXML
+    private void limparFiltro() {
+        filtroPecaCombo.getSelectionModel().clearSelection();
+        filtroSessaoCombo.getSelectionModel().clearSelection();
+        filtroAreaCombo.getSelectionModel().clearSelection();
+        filtroPecaCombo.setPromptText("Peça");
+        filtroSessaoCombo.setPromptText("Sessão");
+        filtroAreaCombo.setPromptText("Área");
     }
 
     @FXML
@@ -128,5 +166,47 @@ public class TelaEstatisticasController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void configurarComboBox() {
+        filtroSessaoCombo.getItems().addAll(sessoes);
+        filtroAreaCombo.getItems().addAll(areas);
+        filtroPecaCombo.getItems().add(pecas.get(0).getNome());
+        filtroPecaCombo.getItems().add(pecas.get(3).getNome());
+        filtroPecaCombo.getItems().add(pecas.get(6).getNome());
+
+        //https://stackoverflow.com/questions/19242747/javafx-editable-combobox-showing-tostring-on-item-selection
+        filtroSessaoCombo.setConverter(new StringConverter<>() {
+            @Override
+            public String toString(Sessao sessao) {
+                return sessao != null ? sessao.getNome() : "";
+            }
+
+            @Override
+            public Sessao fromString(String n) {
+                for (Sessao s : Sessao.values()) {
+                    if (s.getNome().equals(n)) {
+                        return s;
+                    }
+                }
+                return null;
+            }
+        });
+        filtroAreaCombo.setConverter(new StringConverter<>() {
+            @Override
+            public String toString(Area area) {
+                return area != null ? area.getNomeLocal() : "";
+            }
+
+            @Override
+            public Area fromString(String n) {
+                for (Area a : Area.values()) {
+                    if (a.getNomeLocal().equals(n)) {
+                        return a;
+                    }
+                }
+                return null;
+            }
+        });
     }
 }

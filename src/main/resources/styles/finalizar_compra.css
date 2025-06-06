@@ -119,7 +119,7 @@
     -fx-font-weight: bold;
 }
 
-.botao-pagamento:selected, .botao-pagamento:focused {
+.botao-pagamento:selected {
     -fx-background-color: -secondary-button-hover-color;
     -fx-text-fill: #fff;
     -fx-border-color: #ff204e;

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="1187.0" prefWidth="735.0" stylesheets="@../../styles/estatisticas_tela.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hmd.teatroABC.controller.TelaEstatisticasController">
+<BorderPane stylesheets="@../../styles/estatisticas_tela.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hmd.teatroABC.controller.TelaEstatisticasController">
     <top>
         <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="top-bar" BorderPane.alignment="CENTER">
             <children>
@@ -41,17 +41,11 @@
                 <HBox alignment="CENTER_LEFT" spacing="12" styleClass="filtros-bar">
                     <children>
                         <Label styleClass="label-filtro" text="Filtrar por:" />
-
-                        <!-- Filtro Peça -->
                         <ComboBox fx:id="filtroPecaCombo" promptText="Peça" styleClass="combo-filtro" />
-
-                        <!-- Filtro Sessão -->
                         <ComboBox fx:id="filtroSessaoCombo" promptText="Sessão" styleClass="combo-filtro" />
-
-                        <!-- Filtro Área -->
                         <ComboBox fx:id="filtroAreaCombo" promptText="Área" styleClass="combo-filtro" />
-                        <Button fx:id="aplicarFiltrosBotao" styleClass="botao-filtro" text="Aplicar" />
-                        <Button fx:id="limparFiltrosBotao" styleClass="botao-filtro" text="Limpar" />
+                        <Button fx:id="aplicarFiltrosBotao" onAction="#aplicarFiltro" styleClass="botao-filtro" text="Aplicar" />
+                        <Button fx:id="limparFiltrosBotao" onAction="#limparFiltro" styleClass="botao-filtro" text="Limpar" />
                     </children>
                 </HBox>
                 <FlowPane columnHalignment="CENTER" hgap="10.0" vgap="10.0">

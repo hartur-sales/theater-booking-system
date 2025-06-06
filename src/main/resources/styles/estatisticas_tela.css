@@ -78,6 +78,13 @@
     -fx-spacing: 6;
 }
 
+.card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 69, 103, 0.19), 20, 0, 0, 7);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-border-color: #ff4567;
+}
+
 .campo-label {
     -fx-font-size: 15px;
     -fx-text-fill: #cdbdff;
@@ -100,6 +107,11 @@
 
 .combo-filtro > .open-button > .arrow {
     -fx-border-color: white;
+}
+
+.combo-filtro:focused {
+    -fx-border-color: #ff204e;
+    -fx-effect: dropshadow(gaussian, #ff204e55, 10, 0.35, 0, 2);
 }
 
 .botao-filtro {

@@ -28,7 +28,6 @@
     -fx-text-fill: #aeb2fd;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
-    -fx-padding: 0 20px;
     -fx-cursor: hand;
     -fx-background-radius: 8px;
     -fx-effect: dropshadow(gaussian, rgba(60, 25, 146, 0.08), 8, 0, 0, 2);
@@ -43,13 +42,9 @@
 /* Card dos espetáculos */
 .card {
     -fx-background-color: -card-color;
-    /*-fx-padding: 14 12 12 12;*/
     -fx-background-radius: 16px;
     -fx-effect: dropshadow(gaussian, rgba(60, 25, 146, 0.12), 16, 0, 0, 4);
     -fx-alignment: center;
-    /*-fx-min-width: 230px;*/
-    /*-fx-max-width: 240px;*/
-    /*-fx-min-height: 310px;*/
     -fx-border-color: #3c1992;
     -fx-border-width: 1.2;
     -fx-border-radius: 15px;
