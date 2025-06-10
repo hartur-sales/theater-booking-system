@@ -1,7 +1,5 @@
 package hmd.teatroABC.model.entities;
 
-import hmd.teatroABC.controller.FinalizarCompraController;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +31,7 @@ public class Teatro {
     public static final String TELA_GRAFICOS = "/hmd/teatroABC/graficos.fxml";
 
     public static final int STAGE_WIDTH = 1450;
-    public static final int STAGE_HEIGHT = 920;
+    public static final int STAGE_HEIGHT = 880;
 
     public void carregarPecas() {
         try (BufferedReader br = new BufferedReader(new FileReader(pecasFile))) {

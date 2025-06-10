@@ -156,6 +156,16 @@
     -fx-background-color: transparent;
 }
 
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #cdbdff;
+    -fx-background-radius: 5em;
+}
+
 /*.default-color0.chart-pie { -fx-pie-color: #ffd700; }*/
 /*.default-color1.chart-pie { -fx-pie-color: #ffa500; }*/
 /*.default-color2.chart-pie { -fx-pie-color: #860061; }*/
