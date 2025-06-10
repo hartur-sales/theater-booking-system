@@ -6,8 +6,6 @@ import hmd.teatroABC.model.entities.Teatro;
 
 import java.util.List;
 
-import static hmd.teatroABC.util.FXMLLoaderUtil.BUNDLE;
-
 /**
  * @author Davy Lopes, Murilo Nunes, Hartur Sales
  * @date 22/11/2024
