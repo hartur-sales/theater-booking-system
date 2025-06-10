@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static hmd.teatroABC.model.entities.AreaUtil.getAreaPorIdentificador;
+
 /**
  * @author Davy Lopes, Murilo Nunes, Hartur Sales
  * @date 22/11/2024
@@ -143,7 +145,7 @@ public class Teatro {
 
                     Peca peca = buscarPeca(nomePeca, sessao);
                     if (peca != null) {
-                        Ingresso ingresso = new Ingresso(FinalizarCompraController.getAreaPorIdentificador(identificador, segundoNumero), peca, assento, preco);
+                        Ingresso ingresso = new Ingresso(getAreaPorIdentificador(identificador, segundoNumero), peca, assento, preco);
                         pessoa.adicionarIngresso(ingresso);
                     } else {
                         System.err.println("Peça não encontrada para ingresso: " + ingressoStr);

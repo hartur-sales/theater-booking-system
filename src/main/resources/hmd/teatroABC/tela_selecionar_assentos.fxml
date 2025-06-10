@@ -1129,6 +1129,14 @@
                   </children>
                </VBox>
                     <Separator />
+               <VBox layoutX="33.0" layoutY="361.0" spacing="5.0">
+                  <children>
+                     <Label styleClass="campo-label" text="Resumo do pedido" />
+                     <Label fx:id="labelNomeResumo" styleClass="resumo-item" text="Nome da peça" />
+                     <Label fx:id="labelSessaoResumo" layoutX="10.0" layoutY="36.0" styleClass="resumo-item" text="Sessão" />
+                  </children>
+               </VBox>
+               <Separator layoutX="33.0" layoutY="319.0" />
                     <VBox spacing="5.0">
                         <children>
                             <Label styleClass="campo-label" text="Valor total" />

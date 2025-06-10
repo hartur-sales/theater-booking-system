@@ -59,7 +59,7 @@ public class TelaIngressoController {
     private final List<ToggleButton> botoesExistentes = new ArrayList<>();
     private ArrayList<String> botoesClicados = new ArrayList<>();
 
-    public Label labelPrecoTotal;
+    public Label labelPrecoTotal, labelNomeResumo, labelSessaoResumo;
 
     private String pecaSelecionada;
     private Sessao sessaoSelecionada;
@@ -112,6 +112,8 @@ public class TelaIngressoController {
         this.pecaSelecionada = pecaSelecionada;
         this.sessaoSelecionada = sessaoSelecionada;
 
+        configurarLabelResumo(pecaSelecionada, sessaoSelecionada);
+
         Optional<Peca> pecaEscolhida = Teatro.getPecas().stream().filter(peca -> peca.getNome().equals(pecaSelecionada) && peca.getSessao().equals(sessaoSelecionada)).findFirst();
         List<String> lugaresIndisponiveis;
 
@@ -157,6 +159,11 @@ public class TelaIngressoController {
         }
     }
 
+    private void configurarLabelResumo(String pecaSelecionada, Sessao sessaoSelecionada) {
+        labelNomeResumo.setText(pecaSelecionada);
+        labelSessaoResumo.setText(sessaoSelecionada.getNome());
+    }
+
     public void configurarAposVoltar(ArrayList<String> assentosSelecionados) {
         if (assentosSelecionados != null) {
             for (String lugar : assentosSelecionados) {
@@ -200,13 +207,17 @@ public class TelaIngressoController {
                         if (node instanceof ToggleButton toggleButton) {
                             if (toggleButton.getId().equals(lugar)) {
                                 toggleButton.setSelected(true);
+                                if (!botoesClicados.contains(lugar)) {
+                                    botoesClicados.add(lugar);
+                                }
                                 atualizarTotalLabel(lugar, true);
+                                break;
                             }
                         }
                     }
                 }
             }
-            continuarBotao.setDisable(false);
+            continuarBotao.setDisable(botoesClicados.isEmpty());
         }
     }
 

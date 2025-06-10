@@ -103,19 +103,19 @@ public class TelaInicialController {
     public void comprarPeca1(ActionEvent event) throws IOException {
         Sessao sessaoSelecionada = selecionarSessao(event);
 
-        comprarIngressoTrigger("Wicked", sessaoSelecionada);
+        comprarIngressoTrigger(peca1.getNome(), sessaoSelecionada);
     }
 
     public void comprarPeca2(ActionEvent event) throws IOException {
         Sessao sessaoSelecionada = selecionarSessao(event);
 
-        comprarIngressoTrigger("Rei Leao", sessaoSelecionada);
+        comprarIngressoTrigger(peca2.getNome(), sessaoSelecionada);
     }
 
     public void comprarPeca3(ActionEvent event) throws IOException {
         Sessao sessaoSelecionada = selecionarSessao(event);
 
-        comprarIngressoTrigger("Auto da Compadecida", sessaoSelecionada);
+        comprarIngressoTrigger(peca3.getNome(), sessaoSelecionada);
     }
 
     public void comprarIngressoTrigger(String pecaSelecionada, Sessao sessaoSelecionada) throws IOException {

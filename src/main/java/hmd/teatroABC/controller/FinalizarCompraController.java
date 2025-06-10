@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static hmd.teatroABC.model.entities.AreaUtil.getAreaPorIdentificador;
 import static hmd.teatroABC.model.entities.Teatro.TELA_COMPRA_FINALIZADA;
 import static hmd.teatroABC.model.entities.Teatro.TELA_SELECIONAR_ASSENTOS;
 
@@ -93,7 +94,6 @@ public class FinalizarCompraController {
 
     public void resumoDaCompra(ArrayList<String> assentosSelecionados) {
         this.assentosSelecionados = assentosSelecionados;
-        System.out.println(assentosSelecionados);
 
         double totalPlateiaA = 0.0;
         double totalPlateiaB = 0.0;
@@ -307,42 +307,6 @@ public class FinalizarCompraController {
         } else {
             finalizarBotao.setDisable(true);
         }
-    }
-
-    public static Area getAreaPorIdentificador(char identificador, int segundoNumero) {
-        Area area = null;
-        switch (identificador) {
-            case 'A' -> area = Area.PLATEIA_A;
-            case 'B' -> area = Area.PLATEIA_B;
-            case 'F' -> {
-                if (segundoNumero >= 1 && segundoNumero <= 6) {
-                    area = switch (segundoNumero) {
-                        case 1 -> Area.FRISA1;
-                        case 2 -> Area.FRISA2;
-                        case 3 -> Area.FRISA3;
-                        case 4 -> Area.FRISA4;
-                        case 5 -> Area.FRISA5;
-                        case 6 -> Area.FRISA6;
-                        default -> null;
-                    };
-                }
-            }
-            case 'C' -> {
-                if (segundoNumero >= 1 && segundoNumero <= 5) {
-                    area = switch (segundoNumero) {
-                        case 1 -> Area.CAMAROTE1;
-                        case 2 -> Area.CAMAROTE2;
-                        case 3 -> Area.CAMAROTE3;
-                        case 4 -> Area.CAMAROTE4;
-                        case 5 -> Area.CAMAROTE5;
-                        default -> null;
-                    };
-                }
-            }
-            case 'N' -> area = Area.BALCAO_NOBRE;
-            default -> throw new IllegalStateException("Unexpected value: " + identificador);
-        }
-        return area;
     }
 
     private void criarLog(Ingresso ing, Pessoa pessoa) {
