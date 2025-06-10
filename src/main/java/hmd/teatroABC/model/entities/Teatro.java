@@ -22,12 +22,13 @@ public class Teatro {
     static File logFile = new File("src/main/resources/out/log.csv");
 
     public static final String TELA_SELECIONAR_ASSENTOS = "/hmd/teatroABC/tela_selecionar_assentos.fxml";
-    public static final String TELA_DIGITAR_CPF = "/hmd/teatroABC/digitar_cpf_tela.fxml";
-    public static final String TELA_ESTATISTICAS = "/hmd/teatroABC/estatisticas_tela.fxml";
+    public static final String TELA_DIGITAR_CPF = "/hmd/teatroABC/digitar_cpf.fxml";
+    public static final String TELA_ESTATISTICAS = "/hmd/teatroABC/estatisticas.fxml";
     public static final String TELA_IMPRIMIR_INGRESSO = "/hmd/teatroABC/imprimir_ingresso.fxml";
     public static final String TELA_INICIAL = "/hmd/teatroABC/tela_inicial.fxml";
-    public static final String TELA_COMPRA_FINALIZADA = "/hmd/teatroABC/compra_finalizada_tela.fxml";
+    public static final String TELA_COMPRA_FINALIZADA = "/hmd/teatroABC/compra_finalizada.fxml";
     public static final String TELA_FINALIZAR_COMPRA = "/hmd/teatroABC/finalizar_compra.fxml";
+    public static final String TELA_GRAFICOS = "/hmd/teatroABC/graficos.fxml";
 
     public static final int STAGE_WIDTH = 1450;
     public static final int STAGE_HEIGHT = 820;

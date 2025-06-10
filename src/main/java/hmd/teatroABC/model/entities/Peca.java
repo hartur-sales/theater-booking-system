@@ -21,14 +21,14 @@ public class Peca {
     private ArrayList<String> assentos = new ArrayList<>();
     private int ingressosVendidos;
 
-    private File poster;
+    private final File poster;
     private Image posterImg;
 
     public Peca(File poster, Sessao sessao, String nome) {
         this.poster = poster;
         this.sessao = sessao;
         this.nome = nome;
-        configurarPoster();
+        this.posterImg = new Image(poster.toURI().toString());
     }
 
     public File getPoster() {
@@ -37,10 +37,6 @@ public class Peca {
 
     public Image getPosterImg() {
         return posterImg;
-    }
-
-    public void configurarPoster() {
-        this.posterImg = new Image(poster.toURI().toString());
     }
 
     public Sessao getSessao() {

@@ -135,3 +135,41 @@
 .botao-filtro:pressed {
     -fx-background-color: -secondary-button-pressed;
 }
+
+/* Campos da tela de gráficos */
+.bar-chart:vertical > .chart-legend {
+    -fx-background-color: transparent;
+    -fx-border-color: #cdbdff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+}
+
+.axis {
+    -fx-tick-label-fill: white;
+}
+
+.scroll-pane:fitToWidth:fitToHeight {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane:fitToWidth:fitToHeight > .viewport {
+    -fx-background-color: transparent;
+}
+
+/*.default-color0.chart-pie { -fx-pie-color: #ffd700; }*/
+/*.default-color1.chart-pie { -fx-pie-color: #ffa500; }*/
+/*.default-color2.chart-pie { -fx-pie-color: #860061; }*/
+/*.default-color3.chart-pie { -fx-pie-color: #adff2f; }*/
+/*.default-color4.chart-pie { -fx-pie-color: #ff5700; }*/
+
+.chart-pie-label {
+    -fx-fill: white;
+    -fx-font-size: 1em;
+}
+
+.chart > .chart-legend {
+    -fx-background-color: transparent;
+    -fx-border-color: #cdbdff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+}

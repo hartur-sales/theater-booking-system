@@ -98,30 +98,32 @@ public class Estatistica {
     private void calcularLucro() {
         double[] lucros = {0, 0, 0};
         for (Peca peca : pecasEstatisticas) {
-            adicionarLucro(peca.getNome(), peca.getAssentos(), lucros);
+            adicionarLucro(peca.getNome(), peca.getAssentos(), 0, lucros);
         }
         lucroWicked = lucros[0];
         lucroReiLeao = lucros[1];
         lucroAuto = lucros[2];
     }
 
-    private void adicionarLucro(String nome, List<String> assentosVendidos, double[] lucros) {
-        for (String assento : assentosVendidos) {
-            char identificador = assento.charAt(0);
-            double preco = TelaIngressoController.getPrecoPorIdentificador(identificador);
-
-            switch (nome) {
-                case "Wicked":
-                    lucros[0] += preco;
-                    break;
-                case "Rei Leao":
-                    lucros[1] += preco;
-                    break;
-                case "Auto da Compadecida":
-                    lucros[2] += preco;
-                    break;
-            }
+    private void adicionarLucro(String nome, List<String> assentosVendidos, int indice, double[] lucros) {
+        if (indice >= assentosVendidos.size()) {
+            return;
         }
+        String assento = assentosVendidos.get(indice);
+        char identificador = assento.charAt(0);
+        double preco = TelaIngressoController.getPrecoPorIdentificador(identificador);
+        switch (nome) {
+            case "Wicked":
+                lucros[0] += preco;
+                break;
+            case "Rei Leao":
+                lucros[1] += preco;
+                break;
+            case "Auto da Compadecida":
+                lucros[2] += preco;
+                break;
+        }
+        adicionarLucro(nome, assentosVendidos, indice + 1, lucros);
     }
 
     public int calcularTotalVendas() {
