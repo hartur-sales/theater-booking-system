@@ -18,17 +18,23 @@ import static hmd.teatroABC.util.FXMLLoaderUtil.BUNDLE;
 public class Peca {
     private Sessao sessao;
     private String nome;
+    private String descricao;
     private ArrayList<String> assentos = new ArrayList<>();
     private int ingressosVendidos;
 
     private final File poster;
     private Image posterImg;
 
-    public Peca(File poster, Sessao sessao, String nome) {
+    public Peca(File poster, Sessao sessao, String nome, String descricao) {
         this.poster = poster;
         this.sessao = sessao;
         this.nome = nome;
         this.posterImg = new Image(poster.toURI().toString());
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        return descricao;
     }
 
     public File getPoster() {

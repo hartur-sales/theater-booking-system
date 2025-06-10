@@ -31,23 +31,13 @@ public class Teatro {
     public static final String TELA_GRAFICOS = "/hmd/teatroABC/graficos.fxml";
 
     public static final int STAGE_WIDTH = 1450;
-    public static final int STAGE_HEIGHT = 820;
+    public static final int STAGE_HEIGHT = 920;
 
     public void carregarPecas() {
         try (BufferedReader br = new BufferedReader(new FileReader(pecasFile))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] partes = line.split(",", -1);
-                String nome = partes[0];
-                Sessao turno = Sessao.valueOf(partes[1]);
-                int ingressosVendidos = Integer.parseInt(partes[2]);
-                List<String> assentosOcupados = partes[3].isEmpty()
-                        ? new ArrayList<>()
-                        : List.of(partes[3].split(";"));
-                File poster = new File(partes[4]);
-                Peca peca = new Peca(poster, turno, nome);
-                peca.adicionarAssentos(assentosOcupados);
-                peca.setIngressosVendidos(ingressosVendidos);
+                Peca peca = criarPeca(line);
                 pecas.add(peca);
             }
         } catch (IOException e) {
@@ -62,7 +52,8 @@ public class Teatro {
                         peca.getSessao() + "," +
                         peca.getIngressosVendidos() + "," +
                         String.join(";", peca.getAssentos()) + "," +
-                        peca.getPoster().getPath();
+                        peca.getPoster().getPath() + "," +
+                        peca.getDescricao();
                 bw.write(linha);
                 bw.newLine();
             }
@@ -75,46 +66,18 @@ public class Teatro {
         try (BufferedReader br = new BufferedReader(new FileReader(pessoasFile))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] partes = line.split(",", -1);
-                String cpf = partes[0];
-                boolean ehFidelidade = Boolean.parseBoolean(partes[1]);
-                Pessoa pessoa = new Pessoa(cpf, ehFidelidade);
-
-                if (partes.length > 2 && partes[2].startsWith("Ingressos:")) {
-                    String ingressosData = partes[2].substring(10);
-                    if (!ingressosData.isEmpty()) {
-                        String[] ingressosArray = ingressosData.split(";");
-                        for (String ingressoStr : ingressosArray) {
-                            String[] ingressoPartes = ingressoStr.split("-");
-
-                            String nomePeca = ingressoPartes[0];
-                            Sessao sessao = Sessao.valueOf(ingressoPartes[1]);
-                            String assento = ingressoPartes[2];
-                            double preco = Double.parseDouble(ingressoPartes[3]);
-
-                            char identificador = assento.charAt(0);
-                            int segundoNumero = assento.charAt(1) - '0';
-
-
-                            Peca peca = pecas.stream()
-                                    .filter(p -> p.getNome().equals(nomePeca) && p.getSessao() == sessao)
-                                    .findFirst()
-                                    .orElse(null);
-                            if (peca != null) {
-                                Ingresso ingresso = new Ingresso(FinalizarCompraController.getAreaPorIdentificador(identificador, segundoNumero), peca, assento, preco);
-                                pessoa.adicionarIngresso(ingresso);
-                            } else {
-                                System.err.println("Peça não encontrada para ingresso: " + ingressoStr);
-                            }
-                        }
-                    }
-                }
-                pessoas.add(pessoa);
+                pessoas.add(criarPessoa(line));
             }
-
         } catch (IOException e) {
             throw new RuntimeException("Erro ao carregar pessoas: " + e.getMessage(), e);
         }
+    }
+
+    private Peca buscarPeca(String nomePeca, Sessao sessao) {
+        return pecas.stream()
+                .filter(p -> p.getNome().equals(nomePeca) && p.getSessao() == sessao)
+                .findFirst()
+                .orElse(null);
     }
 
     public static void adicionarPessoa(Pessoa pessoa) {
@@ -155,6 +118,56 @@ public class Teatro {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private Pessoa criarPessoa(String linha) {
+        String[] partes = linha.split(",", -1);
+        String cpf = partes[0];
+        boolean ehFidelidade = Boolean.parseBoolean(partes[1]);
+        Pessoa pessoa = new Pessoa(cpf, ehFidelidade);
+
+        if (partes.length > 2 && partes[2].startsWith("Ingressos:")) {
+            String ingressosData = partes[2].substring(10);
+            if (!ingressosData.isEmpty()) {
+                String[] ingressosArray = ingressosData.split(";");
+                for (String ingressoStr : ingressosArray) {
+                    String[] ingressoPartes = ingressoStr.split("-");
+
+                    String nomePeca = ingressoPartes[0];
+                    Sessao sessao = Sessao.valueOf(ingressoPartes[1]);
+                    String assento = ingressoPartes[2];
+                    double preco = Double.parseDouble(ingressoPartes[3]);
+
+                    char identificador = assento.charAt(0);
+                    int segundoNumero = assento.charAt(1) - '0';
+
+                    Peca peca = buscarPeca(nomePeca, sessao);
+                    if (peca != null) {
+                        Ingresso ingresso = new Ingresso(FinalizarCompraController.getAreaPorIdentificador(identificador, segundoNumero), peca, assento, preco);
+                        pessoa.adicionarIngresso(ingresso);
+                    } else {
+                        System.err.println("Peça não encontrada para ingresso: " + ingressoStr);
+                    }
+                }
+            }
+        }
+        return pessoa;
+    }
+
+    private Peca criarPeca(String linha) {
+        String[] partes = linha.split(",", -1);
+        String nome = partes[0];
+        Sessao turno = Sessao.valueOf(partes[1]);
+        int ingressosVendidos = Integer.parseInt(partes[2]);
+        List<String> assentosOcupados = partes[3].isEmpty()
+                ? new ArrayList<>()
+                : List.of(partes[3].split(";"));
+        File poster = new File(partes[4]);
+        String descricao = partes[5];
+        Peca peca = new Peca(poster, turno, nome, descricao);
+        peca.adicionarAssentos(assentosOcupados);
+        peca.setIngressosVendidos(ingressosVendidos);
+        return peca;
     }
 
     public static List<Peca> getPecas() {

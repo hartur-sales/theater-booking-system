@@ -22,6 +22,17 @@
     -fx-text-fill: #8e92f2;
 }
 
+.label-escolha-peca {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #8e92f2;
+}
+
+.label-descricao-peca {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}
+
 /* NavBar botões */
 .nav-btn {
     -fx-background-color: transparent;

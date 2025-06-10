@@ -9,17 +9,15 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane fx:id="rootBox" stylesheets="@../../styles/tela_inicial.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hmd.teatroABC.controller.TelaInicialController">
-   <!-- Barra Superior -->
    <top>
       <HBox alignment="CENTER" spacing="10.0" styleClass="top-bar">
          <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../../images/teatro_abc_branco_cortado.png" />
-            </image>
+            <Image url="@../../images/teatro_abc_branco_cortado.png" />
          </ImageView>
          <Label styleClass="label-titulo" text="Teatro ABC" />
          <HBox HBox.hgrow="ALWAYS" />
@@ -31,65 +29,68 @@
    <center>
       <VBox alignment="TOP_CENTER">
          <Label styleClass="label-bem-vindo" text="Bem-vindo ao Teatro ABC" />
+         <Label layoutX="394.0" layoutY="15.0" styleClass="label-escolha-peca" text="Escolha uma peça para assistir" />
 
-         <!-- Cards -->
-         <GridPane alignment="CENTER" hgap="24" style="-fx-padding: 22px;" vgap="24" VBox.vgrow="ALWAYS">
-            <VBox spacing="10" styleClass="card">
-               <children>
-                  <Label fx:id="peca1NomeLabel" styleClass="titulo-card" text="Wicked" />
-                  <ImageView fx:id="imagem1" fitHeight="460.0" fitWidth="531.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
-                     <image>
-                        <Image url="@../../images/wicked_poster.jpg" />
-                     </image>
-                  </ImageView>
-                  <Button onAction="#showBox1" styleClass="comprar-botao" text="Comprar Ingresso" />
-                  <HBox fx:id="botoesBox1" alignment="CENTER" spacing="10">
-                     <Button fx:id="btnManha1" onAction="#comprarPeca1" styleClass="turno-botao" text="Manhã" />
-                     <Button fx:id="btnTarde1" onAction="#comprarPeca1" styleClass="turno-botao" text="Tarde" />
-                     <Button fx:id="btnNoite1" onAction="#comprarPeca1" styleClass="turno-botao" text="Noite" />
-                  </HBox>
-               </children>
+         <GridPane alignment="CENTER" hgap="24" vgap="24" VBox.vgrow="ALWAYS">
+            <VBox alignment="CENTER" spacing="10" styleClass="card">
                <padding>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="14.0" />
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </padding>
+               <Label fx:id="peca1NomeLabel" styleClass="titulo-card" text="Wicked" />
+               <ImageView fx:id="imagem1" fitHeight="460.0" fitWidth="531.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                  <Image url="@../../images/wicked_poster.jpg" />
+               </ImageView>
+               <Label fx:id="descricao1Label" maxWidth="310.0" text="Um clássico de Shakespeare. Reviva a tragédia de Hamlet, Príncipe da Dinamarca." styleClass="label-descricao-peca" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
+                  <minHeight>
+                     <Region fx:constant="USE_PREF_SIZE" />
+                  </minHeight>
+               </Label>
+               <Button onAction="#showBox1" styleClass="comprar-botao" text="Comprar Ingresso" />
+               <HBox fx:id="botoesBox1" alignment="CENTER" spacing="10">
+                  <Button fx:id="btnManha1" onAction="#comprarPeca1" styleClass="turno-botao" text="Manhã" />
+                  <Button fx:id="btnTarde1" onAction="#comprarPeca1" styleClass="turno-botao" text="Tarde" />
+                  <Button fx:id="btnNoite1" onAction="#comprarPeca1" styleClass="turno-botao" text="Noite" />
+               </HBox>
             </VBox>
             <VBox layoutX="32.0" layoutY="32.0" spacing="10" styleClass="card" GridPane.columnIndex="1">
-               <children>
-                  <Label fx:id="peca2NomeLabel" styleClass="titulo-card" text="Rei Leão" />
-                  <ImageView fx:id="imagem2" fitHeight="460.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
-                     <image>
-                        <Image url="@../../images/reileao_poster.jpg" />
-                     </image>
-                  </ImageView>
-                  <Button onAction="#showBox2" styleClass="comprar-botao" text="Comprar Ingresso" />
-                  <HBox fx:id="botoesBox2" alignment="CENTER" spacing="10">
-                     <Button fx:id="btnManha2" onAction="#comprarPeca2" styleClass="turno-botao" text="Manhã" />
-                     <Button fx:id="btnTarde2" onAction="#comprarPeca2" styleClass="turno-botao" text="Tarde" />
-                     <Button fx:id="btnNoite2" onAction="#comprarPeca2" styleClass="turno-botao" text="Noite" />
-                  </HBox>
-               </children>
                <padding>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="14.0" />
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </padding>
+               <Label fx:id="peca2NomeLabel" styleClass="titulo-card" text="Rei Leão" />
+               <ImageView fx:id="imagem2" fitHeight="460.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                  <Image url="@../../images/reileao_poster.jpg" />
+               </ImageView>
+               <Label fx:id="descricao2Label" maxWidth="310.0" text="Um clássico de Shakespeare. Reviva a tragédia de Hamlet, Príncipe da Dinamarca." styleClass="label-descricao-peca" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
+                  <minHeight>
+                     <Region fx:constant="USE_PREF_SIZE" />
+                  </minHeight>
+               </Label>
+               <Button onAction="#showBox2" styleClass="comprar-botao" text="Comprar Ingresso" />
+               <HBox fx:id="botoesBox2" alignment="CENTER" spacing="10">
+                  <Button fx:id="btnManha2" onAction="#comprarPeca2" styleClass="turno-botao" text="Manhã" />
+                  <Button fx:id="btnTarde2" onAction="#comprarPeca2" styleClass="turno-botao" text="Tarde" />
+                  <Button fx:id="btnNoite2" onAction="#comprarPeca2" styleClass="turno-botao" text="Noite" />
+               </HBox>
             </VBox>
             <VBox layoutX="296.0" layoutY="32.0" spacing="10" styleClass="card" GridPane.columnIndex="2">
-               <children>
-                  <Label fx:id="peca3NomeLabel" styleClass="titulo-card" text="Auto da Compadecida" />
-                  <ImageView fx:id="imagem3" fitHeight="460.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
-                     <image>
-                        <Image url="@../../images/autodacompadecida_poster.jpg" />
-                     </image>
-                  </ImageView>
-                  <Button onAction="#showBox3" styleClass="comprar-botao" text="Comprar Ingresso" />
-                  <HBox fx:id="botoesBox3" alignment="CENTER" spacing="10">
-                     <Button fx:id="btnManha3" onAction="#comprarPeca3" styleClass="turno-botao" text="Manhã" />
-                     <Button fx:id="btnTarde3" onAction="#comprarPeca3" styleClass="turno-botao" text="Tarde" />
-                     <Button fx:id="btnNoite3" onAction="#comprarPeca3" styleClass="turno-botao" text="Noite" />
-                  </HBox>
-               </children>
                <padding>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="14.0" />
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </padding>
+               <Label fx:id="peca3NomeLabel" styleClass="titulo-card" text="Auto da Compadecida" />
+               <ImageView fx:id="imagem3" fitHeight="460.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                  <Image url="@../../images/autodacompadecida_poster.jpg" />
+               </ImageView>
+               <Label fx:id="descricao3Label" maxWidth="310.0" text="Um clássico de Shakespeare. Reviva a tragédia de Hamlet, Príncipe da Dinamarca." styleClass="label-descricao-peca" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
+                  <minHeight>
+                     <Region fx:constant="USE_PREF_SIZE" />
+                  </minHeight>
+               </Label>
+               <Button onAction="#showBox3" styleClass="comprar-botao" text="Comprar Ingresso" />
+               <HBox fx:id="botoesBox3" alignment="CENTER" spacing="10">
+                  <Button fx:id="btnManha3" onAction="#comprarPeca3" styleClass="turno-botao" text="Manhã" />
+                  <Button fx:id="btnTarde3" onAction="#comprarPeca3" styleClass="turno-botao" text="Tarde" />
+                  <Button fx:id="btnNoite3" onAction="#comprarPeca3" styleClass="turno-botao" text="Noite" />
+               </HBox>
             </VBox>
             <columnConstraints>
                <ColumnConstraints />
@@ -99,7 +100,13 @@
             <rowConstraints>
                <RowConstraints />
             </rowConstraints>
+            <padding>
+               <Insets bottom="22.0" left="22.0" right="22.0" top="22.0" />
+            </padding>
          </GridPane>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
       </VBox>
    </center>
 </BorderPane>

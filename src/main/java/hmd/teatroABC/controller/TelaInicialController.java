@@ -41,7 +41,7 @@ public class TelaInicialController {
     @FXML
     private ImageView imagem1, imagem2, imagem3;
 
-    @FXML private Label peca1NomeLabel, peca2NomeLabel, peca3NomeLabel;
+    @FXML private Label peca1NomeLabel, peca2NomeLabel, peca3NomeLabel, descricao1Label, descricao2Label, descricao3Label;
 
     private Peca peca1, peca2, peca3;
 
@@ -77,6 +77,9 @@ public class TelaInicialController {
         peca1NomeLabel.setText(peca1.getNome());
         peca2NomeLabel.setText(peca2.getNome());
         peca3NomeLabel.setText(peca3.getNome());
+        descricao1Label.setText(peca1.getDescricao());
+        descricao2Label.setText(peca2.getDescricao());
+        descricao3Label.setText(peca3.getDescricao());
     }
 
     public void showBox1() {

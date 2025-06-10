@@ -1,9 +1,9 @@
-Wicked,MANHA,0,,src\main\resources\images\wicked_poster.jpg
-Wicked,TARDE,0,,src\main\resources\images\wicked_poster.jpg
-Wicked,NOITE,0,,src\main\resources\images\wicked_poster.jpg
-Rei Leao,MANHA,0,,src\main\resources\images\reileao_poster.jpg
-Rei Leao,TARDE,0,,src\main\resources\images\reileao_poster.jpg
-Rei Leao,NOITE,0,,src\main\resources\images\reileao_poster.jpg
-Auto da Compadecida,MANHA,0,,src\main\resources\images\autodacompadecida_poster.jpg
-Auto da Compadecida,TARDE,0,,src\main\resources\images\autodacompadecida_poster.jpg
-Auto da Compadecida,NOITE,0,,src\main\resources\images\autodacompadecida_poster.jpg
+Wicked,MANHA,0,,src\main\resources\images\wicked_poster.jpg,Um espetáculo inesquecível da Broadway. Encante-se com a história não contada das bruxas de Oz.
+Wicked,TARDE,0,,src\main\resources\images\wicked_poster.jpg,Um espetáculo inesquecível da Broadway. Encante-se com a história não contada das bruxas de Oz.
+Wicked,NOITE,0,,src\main\resources\images\wicked_poster.jpg,Um espetáculo inesquecível da Broadway. Encante-se com a história não contada das bruxas de Oz.
+Rei Leao,MANHA,0,,src\main\resources\images\reileao_poster.jpg,Um clássico da Disney. Viva a jornada de Simba em O Rei Leão e encante-se com a magia da savana africana.
+Rei Leao,TARDE,0,,src\main\resources\images\reileao_poster.jpg,Um clássico da Disney. Viva a jornada de Simba em O Rei Leão e encante-se com a magia da savana africana.
+Rei Leao,NOITE,0,,src\main\resources\images\reileao_poster.jpg,Um clássico da Disney. Viva a jornada de Simba em O Rei Leão e encante-se com a magia da savana africana.
+Auto da Compadecida,MANHA,0,,src\main\resources\images\autodacompadecida_poster.jpg,Uma obra-prima de Ariano Suassuna. Reviva as aventuras de João Grilo e Chicó no Auto da Compadecida.
+Auto da Compadecida,TARDE,0,,src\main\resources\images\autodacompadecida_poster.jpg,Uma obra-prima de Ariano Suassuna. Reviva as aventuras de João Grilo e Chicó no Auto da Compadecida.
+Auto da Compadecida,NOITE,0,,src\main\resources\images\autodacompadecida_poster.jpg,Uma obra-prima de Ariano Suassuna. Reviva as aventuras de João Grilo e Chicó no Auto da Compadecida.
