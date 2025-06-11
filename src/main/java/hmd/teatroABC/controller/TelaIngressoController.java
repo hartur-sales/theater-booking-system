@@ -1,9 +1,9 @@
 package hmd.teatroABC.controller;
 
-import hmd.teatroABC.model.entities.Area;
 import hmd.teatroABC.model.entities.Peca;
 import hmd.teatroABC.model.entities.Sessao;
 import hmd.teatroABC.model.entities.Teatro;
+import hmd.teatroABC.model.objects.AreaUtil;
 import hmd.teatroABC.util.FXMLLoaderUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -170,37 +170,7 @@ public class TelaIngressoController {
                 char localidade = lugar.charAt(0);
                 int numero = Integer.parseInt(lugar.substring(1));
 
-                Parent container = null;
-                switch (localidade) {
-                    case 'A' -> container = plateiaAGrid;
-                    case 'B' -> container = plateiaBGrid;
-                    case 'F' -> {
-                        if (numero >= 1 && numero <= 6) {
-                            container = switch (numero) {
-                                case 1 -> frisa1Box;
-                                case 2 -> frisa2Box;
-                                case 3 -> frisa3Box;
-                                case 4 -> frisa4Box;
-                                case 5 -> frisa5Box;
-                                case 6 -> frisa6Box;
-                                default -> null;
-                            };
-                        }
-                    }
-                    case 'C' -> {
-                        if (numero >= 1 && numero <= 5) {
-                            container = switch (numero) {
-                                case 1 -> camarote1Grid;
-                                case 2 -> camarote2Grid;
-                                case 3 -> camarote3Grid;
-                                case 4 -> camarote4Grid;
-                                case 5 -> camarote5Grid;
-                                default -> null;
-                            };
-                        }
-                    }
-                    case 'N' -> container = balcaoGrid;
-                }
+                Parent container = getParent(localidade, numero);
 
                 if (container != null) {
                     for (Node node : container.getChildrenUnmodifiable()) {
@@ -221,6 +191,41 @@ public class TelaIngressoController {
         }
     }
 
+    private Parent getParent(char localidade, int numero) {
+        Parent container = null;
+        switch (localidade) {
+            case 'A' -> container = plateiaAGrid;
+            case 'B' -> container = plateiaBGrid;
+            case 'F' -> {
+                if (numero >= 1 && numero <= 6) {
+                    container = switch (numero) {
+                        case 1 -> frisa1Box;
+                        case 2 -> frisa2Box;
+                        case 3 -> frisa3Box;
+                        case 4 -> frisa4Box;
+                        case 5 -> frisa5Box;
+                        case 6 -> frisa6Box;
+                        default -> null;
+                    };
+                }
+            }
+            case 'C' -> {
+                if (numero >= 1 && numero <= 5) {
+                    container = switch (numero) {
+                        case 1 -> camarote1Grid;
+                        case 2 -> camarote2Grid;
+                        case 3 -> camarote3Grid;
+                        case 4 -> camarote4Grid;
+                        case 5 -> camarote5Grid;
+                        default -> null;
+                    };
+                }
+            }
+            case 'N' -> container = balcaoGrid;
+        }
+        return container;
+    }
+
     private static void desativarAssentos(Parent container, String lugar) {
         for (Node node : container.getChildrenUnmodifiable()) {
             if (node instanceof ToggleButton button) {
@@ -234,7 +239,7 @@ public class TelaIngressoController {
 
     private void atualizarTotalLabel(String id, boolean clicado) {
         char identificadorPreco = id.charAt(0);
-        double preco = getPrecoPorIdentificador(identificadorPreco);
+        double preco = AreaUtil.getPrecoPorIdentificador(identificadorPreco);
 
         if (preco != -1) {
             total += clicado ? preco : -preco;
@@ -242,17 +247,6 @@ public class TelaIngressoController {
         } else {
             System.out.println("Lugar inexistente, preço não encontrado");
         }
-    }
-
-    public static double getPrecoPorIdentificador(char identificador) {
-        return switch (identificador) {
-            case 'A' -> Area.PLATEIA_A.getPreco();
-            case 'B' -> Area.PLATEIA_B.getPreco();
-            case 'F' -> Area.FRISA1.getPreco();
-            case 'C' -> Area.CAMAROTE1.getPreco();
-            case 'N' -> Area.BALCAO_NOBRE.getPreco();
-            default -> -1;
-        };
     }
 
     private void habilitarBotaoConfirmar() {

@@ -36,10 +36,10 @@ import static hmd.teatroABC.model.entities.Teatro.*;
 
 public class TelaEstatisticasController {
     @FXML
-    private Label totalVendasLabel, pecaMaisVendidaLabel, pecaMenosVendidaLabel, sessaoMaisOcupadaLabel, sessaoMenosOcupadaLabel,
+    private Label peca1CardTitulo, peca2CardTitulo, peca3CardTitulo, totalVendasLabel, pecaMaisVendidaLabel, pecaMenosVendidaLabel, sessaoMaisOcupadaLabel, sessaoMenosOcupadaLabel,
             lucroMedioLabel1, lucroMedioLabel2, lucroMedioLabel3, sessaoMais1Label, sessaoMenos1Label, sessaoMais2Label, sessaoMenos2Label, sessaoMais3Label, sessaoMenos3Label,
             receitaTotalLabel1, receitaTotalLabel2, receitaTotalLabel3, receitaMediaPlateiaA, receitaMediaPlateiaB, receitaMediaFrisa, receitaMediaCamarote, receitaMediaBalcao,
-            ingressosPeca1, ingressosPeca2, ingressosPeca3;
+            ingressosPeca1, ingressosPeca2, ingressosPeca3, ticketMedioLabel;
 
     @FXML
     private Button voltarBotao, botaoExportar, botaoGrafico;
@@ -64,6 +64,9 @@ public class TelaEstatisticasController {
 
     public void initialize() {
         configurarComboBox();
+        peca1CardTitulo.setText("Peça 1 (" + pecas.get(0).getNome() + ")");
+        peca2CardTitulo.setText("Peça 2 (" + pecas.get(3).getNome() + ")");
+        peca3CardTitulo.setText("Peça 3 (" + pecas.get(6).getNome() + ")");
         estatisticas.carregarEstatisticas();
         totalVendasLabel.setText(totalVendasLabel.getText() + " " + estatisticas.calcularTotalVendas());
         pecaMaisVendidaLabel.setText(pecaMaisVendidaLabel.getText() + " " + estatisticas.calcularPecaMaisVendida());
@@ -172,7 +175,7 @@ public class TelaEstatisticasController {
 //            bw.write(BUNDLE.getString("sessao_menos_vendida_peca2") + " " + estatisticas.getSessaoMenosLucrativaReiLeao());
             bw.write("Sessão Menos Vendida (Rei Leão)," + estatisticas.getSessaoMenosLucrativaReiLeao());
             bw.newLine();
-//            bw.write(BUNDLE.getString("sessao_mais_vendida_peca3") + " "  + estatisticas.getSessaoMaisLucrativaAuto());
+//            bw.write(BUNDLE.getString("sessao_mais_vendida_peca3") +   " "  + estatisticas.getSessaoMaisLucrativaAuto());
             bw.write("Sessão Mais Vendida (Auto da Compadecida)," + estatisticas.getSessaoMaisLucrativaAuto());
             bw.newLine();
 //            bw.write(BUNDLE.getString("sessao_menos_vendida_peca3") + " "  + estatisticas.getSessaoMenosLucrativaAuto());

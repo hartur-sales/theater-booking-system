@@ -4,6 +4,7 @@ import hmd.teatroABC.model.entities.Area;
 import hmd.teatroABC.model.entities.Ingresso;
 import hmd.teatroABC.model.entities.Pessoa;
 import hmd.teatroABC.model.entities.Teatro;
+import hmd.teatroABC.model.objects.AreaUtil;
 import hmd.teatroABC.util.FXMLLoaderUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static hmd.teatroABC.model.entities.AreaUtil.getAreaPorIdentificador;
+import static hmd.teatroABC.model.objects.AreaUtil.getAreaPorIdentificador;
 import static hmd.teatroABC.model.entities.Teatro.TELA_COMPRA_FINALIZADA;
 import static hmd.teatroABC.model.entities.Teatro.TELA_SELECIONAR_ASSENTOS;
 
@@ -212,7 +213,7 @@ public class FinalizarCompraController {
         for (String assento : assentosSelecionados) {
             char identificador = assento.charAt(0);
             int segundoNumero = assento.charAt(1) - '0';
-            double preco = TelaIngressoController.getPrecoPorIdentificador(identificador);
+            double preco = AreaUtil.getPrecoPorIdentificador(identificador);
             Ingresso ing = new Ingresso(getAreaPorIdentificador(identificador, segundoNumero), ingressoController.encontrarPeca(), assento, preco);
             ingressoController.encontrarPeca().adicionarAssento(assento);
             ingressoController.encontrarPeca().aumentarIngressosVendidos();

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static hmd.teatroABC.model.entities.AreaUtil.getAreaPorIdentificador;
+import static hmd.teatroABC.model.objects.AreaUtil.getAreaPorIdentificador;
 
 /**
  * @author Davy Lopes, Murilo Nunes, Hartur Sales

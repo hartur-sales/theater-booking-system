@@ -1,4 +1,6 @@
-package hmd.teatroABC.model.entities;
+package hmd.teatroABC.model.objects;
+
+import hmd.teatroABC.model.entities.Area;
 
 public class AreaUtil {
     public static Area getAreaPorIdentificador(char identificador, int segundoNumero) {
@@ -35,5 +37,16 @@ public class AreaUtil {
             default -> throw new IllegalStateException("Unexpected value: " + identificador);
         }
         return area;
+    }
+
+    public static double getPrecoPorIdentificador(char identificador) {
+        return switch (identificador) {
+            case 'A' -> Area.PLATEIA_A.getPreco();
+            case 'B' -> Area.PLATEIA_B.getPreco();
+            case 'F' -> Area.FRISA1.getPreco();
+            case 'C' -> Area.CAMAROTE1.getPreco();
+            case 'N' -> Area.BALCAO_NOBRE.getPreco();
+            default -> -1;
+        };
     }
 }

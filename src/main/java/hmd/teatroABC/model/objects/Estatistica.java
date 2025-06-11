@@ -109,7 +109,7 @@ public class Estatistica {
         }
         String assento = assentosVendidos.get(indice);
         char identificador = assento.charAt(0);
-        double preco = TelaIngressoController.getPrecoPorIdentificador(identificador);
+        double preco = AreaUtil.getPrecoPorIdentificador(identificador);
         switch (nome) {
             case "Wicked":
                 lucros[0] += preco;
@@ -327,7 +327,7 @@ public class Estatistica {
             List<String> assentos = peca.getAssentos();
             for (String assento : assentos) {
                 char area = assento.charAt(0);
-                double preco = TelaIngressoController.getPrecoPorIdentificador(area);
+                double preco = AreaUtil.getPrecoPorIdentificador(area);
                 switch (area) {
                     case 'A' -> {
                         totalA += preco;
