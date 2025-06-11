@@ -185,12 +185,27 @@ public class Estatistica {
     }
 
     private double calcularLucroMedioPeca(double lucro, int quantidadeVendas) {
+        if (quantidadeVendas == 0) return 0;
         return lucro / quantidadeVendas;
     }
 
     private double calcularLucroPorSessao(double lucro, int quantidadeVendas) {
+        if (quantidadeVendas == 0) return 0;
         return lucro / quantidadeVendas;
     }
+
+    //private double calcularLucroSessao(String nomePeca, String nomeSessao) {
+    //    double total = 0;
+    //    for (Peca peca : pecasEstatisticas) {
+    //        if (peca.getNome().equals(nomePeca) && peca.getSessao().getNome().equals(nomeSessao)) {
+    //            for (String assento : peca.getAssentos()) {
+    //                char identificador = assento.charAt(0);
+    //                total += TelaIngressoController.getPrecoPorIdentificador(identificador);
+    //            }
+    //        }
+    //    }
+    //    return total;
+    //}
 
     public String calcularSessaoMaisLucrativaWicked() {
         double lucroManha = calcularLucroPorSessao(lucroWicked, vendasManhaWicked);
@@ -286,6 +301,76 @@ public class Estatistica {
 //            return BUNDLE.getString("sessao.noite");
             return "Noite";
         }
+    }
+
+    public double getReceitaTotalPorPeca(String nome) {
+        return switch (nome) {
+            case "Wicked" -> lucroWicked;
+            case "Rei Leao" -> lucroReiLeao;
+            case "Auto da Compadecida" -> lucroAuto;
+            default -> 0;
+        };
+    }
+
+    public double getTicketMedioPorCliente(String nome) {
+        int totalIngressos = calcularTotalVendas();
+        double totalLucro = lucroWicked + lucroReiLeao + lucroAuto;
+        if (totalIngressos == 0) return 0;
+        return totalLucro / totalIngressos;
+    }
+
+    public double[] calcularReceitaMediaPorArea() {
+        double totalA = 0, totalB = 0, totalC = 0, totalF = 0, totalM = 0;
+        int qtdA = 0, qtdB = 0, qtdC = 0, qtdF = 0, qtdM = 0;
+
+        for (Peca peca : pecasEstatisticas) {
+            List<String> assentos = peca.getAssentos();
+            for (String assento : assentos) {
+                char area = assento.charAt(0);
+                double preco = TelaIngressoController.getPrecoPorIdentificador(area);
+                switch (area) {
+                    case 'A' -> {
+                        totalA += preco;
+                        qtdA++;
+                    }
+                    case 'B' -> {
+                        totalB += preco;
+                        qtdB++;
+                    }
+                    case 'C' -> {
+                        totalC += preco;
+                        qtdC++;
+                    }
+                    case 'F' -> {
+                        totalF += preco;
+                        qtdF++;
+                    }
+                    case 'M' -> {
+                        totalM += preco;
+                        qtdM++;
+                    }
+                }
+            }
+        }
+
+        double mediaA = qtdA > 0 ? totalA / qtdA : 0;
+        double mediaB = qtdB > 0 ? totalB / qtdB : 0;
+        double mediaC = qtdC > 0 ? totalC / qtdC : 0;
+        double mediaF = qtdF > 0 ? totalF / qtdF : 0;
+        double mediaM = qtdM > 0 ? totalM / qtdM : 0;
+        return new double[]{mediaA, mediaB, mediaC, mediaF, mediaM};
+    }
+
+    public int getVendasWicked() {
+        return vendasWicked;
+    }
+
+    public int getVendasReiLeao() {
+        return vendasReiLeao;
+    }
+
+    public int getVendasAuto() {
+        return vendasAuto;
     }
 
     public double getLucroMedioWicked() {

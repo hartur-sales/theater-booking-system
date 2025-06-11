@@ -70,15 +70,27 @@ public class TelaEstatisticasController {
         pecaMenosVendidaLabel.setText(pecaMenosVendidaLabel.getText() + " " + estatisticas.calcularPecaMenosVendida());
         sessaoMaisOcupadaLabel.setText(sessaoMaisOcupadaLabel.getText() + " " + estatisticas.calcularSessaoMaisOcupada());
         sessaoMenosOcupadaLabel.setText(sessaoMenosOcupadaLabel.getText() + " " + estatisticas.calcularSessaoMenosOcupada());
-        lucroMedioLabel1.setText(lucroMedioLabel1.getText() + estatisticas.getLucroMedioWicked());
-        lucroMedioLabel2.setText(lucroMedioLabel2.getText() + estatisticas.getLucroMedioReiLeao());
-        lucroMedioLabel3.setText(lucroMedioLabel3.getText() + estatisticas.getLucroMedioAuto());
+        lucroMedioLabel1.setText(lucroMedioLabel1.getText() + String.format("%.2f", estatisticas.getLucroMedioWicked()));
+        lucroMedioLabel2.setText(lucroMedioLabel2.getText() + String.format("%.2f", estatisticas.getLucroMedioReiLeao()));
+        lucroMedioLabel3.setText(lucroMedioLabel3.getText() + String.format("%.2f", estatisticas.getLucroMedioAuto()));
+        receitaTotalLabel1.setText(receitaTotalLabel1.getText() + " " + String.format("%.2f", estatisticas.getReceitaTotalPorPeca("Wicked")));
+        receitaTotalLabel2.setText(receitaTotalLabel2.getText() + " " + String.format("%.2f", estatisticas.getReceitaTotalPorPeca("Rei Leao")));
+        receitaTotalLabel3.setText(receitaTotalLabel3.getText() + " " + String.format("%.2f", estatisticas.getReceitaTotalPorPeca("Auto da Compadecida")));
         sessaoMais1Label.setText(sessaoMais1Label.getText() + " " + estatisticas.getSessaoMaisLucrativaWicked());
         sessaoMenos1Label.setText(sessaoMenos1Label.getText() + " " + estatisticas.getSessaoMenosLucrativaWicked());
         sessaoMais2Label.setText(sessaoMais2Label.getText() + " " + estatisticas.getSessaoMaisLucrativaReiLeao());
         sessaoMenos2Label.setText(sessaoMenos2Label.getText() + " " + estatisticas.getSessaoMenosLucrativaReiLeao());
         sessaoMais3Label.setText(sessaoMais3Label.getText() + " " + estatisticas.getSessaoMaisLucrativaAuto());
         sessaoMenos3Label.setText(sessaoMenos3Label.getText() + " " + estatisticas.getSessaoMenosLucrativaAuto());
+        ingressosPeca1.setText(ingressosPeca1.getText() + " " + estatisticas.getVendasWicked());
+        ingressosPeca2.setText(ingressosPeca2.getText() + " " + estatisticas.getVendasReiLeao());
+        ingressosPeca3.setText(ingressosPeca3.getText() + " " + estatisticas.getVendasAuto());
+        double[] receitaMediaAreas = estatisticas.calcularReceitaMediaPorArea();
+        receitaMediaPlateiaA.setText(receitaMediaPlateiaA.getText() + " " + String.format("%.2f", receitaMediaAreas[0]));
+        receitaMediaPlateiaB.setText(receitaMediaPlateiaB.getText() + " " + String.format("%.2f", receitaMediaAreas[1]));
+        receitaMediaBalcao.setText(receitaMediaBalcao.getText() + " " + String.format("%.2f", receitaMediaAreas[2]));
+        receitaMediaFrisa.setText(receitaMediaFrisa.getText() + " " + String.format("%.2f", receitaMediaAreas[3]));
+        receitaMediaCamarote.setText(receitaMediaCamarote.getText() + " " + String.format("%.2f", receitaMediaAreas[4]));
     }
 
     public void telaInicialTrigger() throws IOException {
