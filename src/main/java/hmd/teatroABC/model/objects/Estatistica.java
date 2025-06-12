@@ -1,6 +1,5 @@
 package hmd.teatroABC.model.objects;
 
-import hmd.teatroABC.controller.TelaIngressoController;
 import hmd.teatroABC.model.entities.Peca;
 import hmd.teatroABC.model.entities.Teatro;
 
@@ -56,6 +55,37 @@ public class Estatistica {
         sessaoMaisLucrativaAuto = calcularSessaoMaisLucrativaAuto();
         sessaoMenosLucrativaAuto = calcularSessaoMenosLucrativaAuto();
     }
+
+    //public void carregarEstatisticasFiltradas(String filtroPeca, hmd.teatroABC.model.entities.Sessao filtroSessao, hmd.teatroABC.model.entities.Area filtroArea) {
+    //        this.pecasEstatisticas = Teatro.getPecas().stream()
+    //            .filter(peca -> (filtroPeca == null || peca.getNome().equals(filtroPeca)))
+    //            .filter(peca -> (filtroSessao == null || peca.getSessao().equals(filtroSessao)))
+    //            .filter(peca -> {
+    //                if (filtroArea == null) return true;
+    //                // Verifica se algum assento vendido pertence à área filtrada
+    //                return peca.getAssentos().stream().anyMatch(a -> a.charAt(0) == filtroArea.getIdentificador());
+    //            })
+    //            .toList();
+    //        // Zera estatísticas antes de recalcular
+    //        vendasWicked = vendasReiLeao = vendasAuto = 0;
+    //        lucroWicked = lucroReiLeao = lucroAuto = 0;
+    //        vendasManha = vendasTarde = vendasNoite = 0;
+    //        vendasManhaWicked = vendasTardeWicked = vendasNoiteWicked = 0;
+    //        vendasManhaReiLeao = vendasTardeReiLeao = vendasNoiteReiLeao = 0;
+    //        vendasManhaAuto = vendasTardeAuto = vendasNoiteAuto = 0;
+    //        // Recalcula estatísticas apenas para as peças filtradas
+    //        calcularVendas();
+    //        calcularLucro();
+    //        lucroMedioWicked = calcularLucroMedioPeca(lucroWicked, vendasWicked);
+    //        lucroMedioReiLeao = calcularLucroMedioPeca(lucroReiLeao, vendasReiLeao);
+    //        lucroMedioAuto = calcularLucroMedioPeca(lucroAuto, vendasAuto);
+    //        sessaoMaisLucrativaWicked = calcularSessaoMaisLucrativaWicked();
+    //        sessaoMenosLucrativaWicked = calcularSessaoMenosLucrativaWicked();
+    //        sessaoMaisLucrativaReiLeao = calcularSessaoMaisLucrativaReiLeao();
+    //        sessaoMenosLucrativaReiLeao = calcularSessaoMenosLucrativaReiLeao();
+    //        sessaoMaisLucrativaAuto = calcularSessaoMaisLucrativaAuto();
+    //        sessaoMenosLucrativaAuto = calcularSessaoMenosLucrativaAuto();
+    //    }
 
     private void calcularVendas() {
         for (Peca peca : pecasEstatisticas) {
@@ -312,7 +342,7 @@ public class Estatistica {
         };
     }
 
-    public double getTicketMedioPorCliente(String nome) {
+    public double getTicketMedioPorCliente() {
         int totalIngressos = calcularTotalVendas();
         double totalLucro = lucroWicked + lucroReiLeao + lucroAuto;
         if (totalIngressos == 0) return 0;
