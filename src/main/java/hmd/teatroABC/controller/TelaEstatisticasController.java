@@ -108,95 +108,35 @@ public class TelaEstatisticasController {
     @FXML
     private void aplicarFiltro() {
         String filtroPeca = filtroPecaCombo.getSelectionModel().getSelectedItem();
-        Sessao filtroSessao = filtroSessaoCombo.getSelectionModel().getSelectedItem();
-        Area filtroArea = filtroAreaCombo.getSelectionModel().getSelectedItem();
+//        Sessao filtroSessao = filtroSessaoCombo.getSelectionModel().getSelectedItem();
+//        Area filtroArea = filtroAreaCombo.getSelectionModel().getSelectedItem();
 
         if (filtroPeca != null) {
             peca1Card.setVisible(pecas.get(0).getNome().equals(filtroPeca));
+            peca1Card.setManaged(pecas.get(0).getNome().equals(filtroPeca));
+
             peca2Card.setVisible(pecas.get(3).getNome().equals(filtroPeca));
+            peca2Card.setManaged(pecas.get(3).getNome().equals(filtroPeca));
+
             peca3Card.setVisible(pecas.get(6).getNome().equals(filtroPeca));
+            peca3Card.setManaged(pecas.get(6).getNome().equals(filtroPeca));
         } else {
             peca1Card.setVisible(true);
+            peca1Card.setManaged(true);
+
             peca2Card.setVisible(true);
+            peca2Card.setManaged(true);
+
             peca3Card.setVisible(true);
+            peca3Card.setManaged(true);
         }
 
-        if (filtroSessao != null) {
-            visaoGeralCard.setVisible(false);
-        } else {
-            visaoGeralCard.setVisible(true);
-        }
+        visaoGeralCard.setVisible(false);
+        visaoGeralCard.setManaged(false);
 
-        if (filtroArea != null) {
-            areasCard.setVisible(false);
-        } else {
-            areasCard.setVisible(true);
-        }
+        areasCard.setVisible(false);
+        areasCard.setManaged(false);
     }
-
-    //private void aplicarFiltro() {
-    //        String filtroPeca = filtroPecaCombo.getSelectionModel().getSelectedItem();
-    //        Sessao filtroSessao = filtroSessaoCombo.getSelectionModel().getSelectedItem();
-    //        Area filtroArea = filtroAreaCombo.getSelectionModel().getSelectedItem();
-    //
-    //        // Exibe ou oculta cards das peças conforme o filtro de peça
-    //        peca1Card.setVisible(filtroPeca == null || pecas.get(0).getNome().equals(filtroPeca));
-    //        peca2Card.setVisible(filtroPeca == null || pecas.get(3).getNome().equals(filtroPeca));
-    //        peca3Card.setVisible(filtroPeca == null || pecas.get(6).getNome().equals(filtroPeca));
-    //
-    //        // Exibe ou oculta o card de visão geral conforme o filtro de sessão
-    //        visaoGeralCard.setVisible(filtroSessao == null);
-    //
-    //        // Exibe ou oculta o card de áreas conforme o filtro de área
-    //        areasCard.setVisible(filtroArea == null);
-    //
-    //        // Atualiza os dados exibidos conforme os filtros
-    //        atualizarDadosFiltrados(filtroPeca, filtroSessao, filtroArea);
-    //    }
-    //
-    //    private void atualizarDadosFiltrados(String filtroPeca, Sessao filtroSessao, Area filtroArea) {
-    //        // Exemplo de atualização dos labels principais conforme os filtros.
-    //        // Aqui você pode refinar para atualizar apenas os dados dos cards visíveis.
-    //        Estatistica estatisticasFiltradas = new Estatistica();
-    //
-    //        // Carrega estatísticas filtrando as peças conforme os filtros selecionados
-    //        estatisticasFiltradas.carregarEstatisticasFiltradas(filtroPeca, filtroSessao, filtroArea);
-    //
-    //        // Atualiza os labels dos cards das peças
-    //        if (peca1Card.isVisible()) {
-    //            lucroMedioLabel1.setText("Lucro Médio: " + String.format("%.2f", estatisticasFiltradas.getLucroMedioWicked()));
-    //            receitaTotalLabel1.setText("Receita Total: " + String.format("%.2f", estatisticasFiltradas.getReceitaTotalPorPeca("Wicked")));
-    //            ingressosPeca1.setText("Ingressos: " + estatisticasFiltradas.getVendasWicked());
-    //        }
-    //        if (peca2Card.isVisible()) {
-    //            lucroMedioLabel2.setText("Lucro Médio: " + String.format("%.2f", estatisticasFiltradas.getLucroMedioReiLeao()));
-    //            receitaTotalLabel2.setText("Receita Total: " + String.format("%.2f", estatisticasFiltradas.getReceitaTotalPorPeca("Rei Leao")));
-    //            ingressosPeca2.setText("Ingressos: " + estatisticasFiltradas.getVendasReiLeao());
-    //        }
-    //        if (peca3Card.isVisible()) {
-    //            lucroMedioLabel3.setText("Lucro Médio: " + String.format("%.2f", estatisticasFiltradas.getLucroMedioAuto()));
-    //            receitaTotalLabel3.setText("Receita Total: " + String.format("%.2f", estatisticasFiltradas.getReceitaTotalPorPeca("Auto da Compadecida")));
-    //            ingressosPeca3.setText("Ingressos: " + estatisticasFiltradas.getVendasAuto());
-    //        }
-    //
-    //        // Atualiza visão geral e áreas se necessário
-    //        if (visaoGeralCard.isVisible()) {
-    //            totalVendasLabel.setText("Total de Vendas: " + estatisticasFiltradas.calcularTotalVendas());
-    //            pecaMaisVendidaLabel.setText("Peça Mais Vendida: " + estatisticasFiltradas.calcularPecaMaisVendida());
-    //            pecaMenosVendidaLabel.setText("Peça Menos Vendida: " + estatisticasFiltradas.calcularPecaMenosVendida());
-    //            sessaoMaisOcupadaLabel.setText("Sessão Mais Ocupada: " + estatisticasFiltradas.calcularSessaoMaisOcupada());
-    //            sessaoMenosOcupadaLabel.setText("Sessão Menos Ocupada: " + estatisticasFiltradas.calcularSessaoMenosOcupada());
-    //            ticketMedioLabel.setText("Ticket Médio: " + String.format("%.2f", estatisticasFiltradas.getTicketMedioPorCliente()));
-    //        }
-    //        if (areasCard.isVisible()) {
-    //            double[] receitaMediaAreas = estatisticasFiltradas.calcularReceitaMediaPorArea();
-    //            receitaMediaPlateiaA.setText("Plateia A: " + String.format("%.2f", receitaMediaAreas[0]));
-    //            receitaMediaPlateiaB.setText("Plateia B: " + String.format("%.2f", receitaMediaAreas[1]));
-    //            receitaMediaBalcao.setText("Balcão Nobre: " + String.format("%.2f", receitaMediaAreas[2]));
-    //            receitaMediaFrisa.setText("Frisa: " + String.format("%.2f", receitaMediaAreas[3]));
-    //            receitaMediaCamarote.setText("Camarote: " + String.format("%.2f", receitaMediaAreas[4]));
-    //        }
-    //    }
 
     @FXML
     private void limparFiltro() {
@@ -206,6 +146,21 @@ public class TelaEstatisticasController {
         filtroPecaCombo.setPromptText("Peça");
         filtroSessaoCombo.setPromptText("Sessão");
         filtroAreaCombo.setPromptText("Área");
+
+        peca1Card.setVisible(true);
+        peca1Card.setManaged(true);
+
+        peca2Card.setVisible(true);
+        peca2Card.setManaged(true);
+
+        peca3Card.setVisible(true);
+        peca3Card.setManaged(true);
+
+        visaoGeralCard.setVisible(true);
+        visaoGeralCard.setManaged(true);
+
+        areasCard.setVisible(true);
+        areasCard.setManaged(true);
     }
 
     @FXML
