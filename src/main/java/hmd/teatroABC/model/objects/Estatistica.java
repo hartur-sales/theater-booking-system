@@ -438,4 +438,13 @@ public class Estatistica {
     public String getSessaoMenosLucrativaAuto() {
         return sessaoMenosLucrativaAuto;
     }
+
+
+    public int getVendasManha() {
+        return vendasManha;
+    }
+
+    public void setVendasManha(int vendasManha) {
+        this.vendasManha = vendasManha;
+    }
 }
