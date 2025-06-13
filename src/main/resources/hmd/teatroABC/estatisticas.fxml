@@ -16,117 +16,134 @@
     <top>
         <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="top-bar" BorderPane.alignment="CENTER">
             <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../../images/teatro_abc_branco_cortado.png"/>
+                <Image url="@../../images/teatro_abc_branco_cortado.png" />
             </ImageView>
-            <Button fx:id="voltarBotao" mnemonicParsing="false" onAction="#telaInicialTrigger"
-                    styleClass="botao-voltar">
+            <Button fx:id="voltarBotao" mnemonicParsing="false" onAction="#telaInicialTrigger" styleClass="botao-voltar">
                 <graphic>
                     <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../images/voltar.png"/>
+                        <Image url="@../../images/voltar.png" />
                     </ImageView>
                 </graphic>
             </Button>
-            <Label styleClass="label-titulo" text="Estatísticas de Venda"/>
-            <HBox HBox.hgrow="ALWAYS"/>
+            <Label styleClass="label-titulo" text="Estatísticas de Venda" />
+            <HBox HBox.hgrow="ALWAYS" />
         </HBox>
     </top>
     <center>
         <VBox spacing="15.0" BorderPane.alignment="CENTER">
             <padding>
-                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
             </padding>
             <HBox alignment="CENTER_LEFT" spacing="12">
-                <Label text="Filtrar por:"/>
-                <ComboBox fx:id="filtroPecaCombo" promptText="Peça" styleClass="combo-filtro"/>
-                <ComboBox fx:id="filtroSessaoCombo" promptText="Sessão" styleClass="combo-filtro"/>
-                <ComboBox fx:id="filtroAreaCombo" promptText="Área" styleClass="combo-filtro"/>
-                <Button fx:id="aplicarFiltrosBotao" onAction="#aplicarFiltro" styleClass="botao-filtro"
-                        text="Aplicar"/>
-                <Button fx:id="limparFiltrosBotao" onAction="#limparFiltro" styleClass="botao-filtro"
-                        text="Limpar"/>
+                <Label text="Filtrar por:" />
+                <ComboBox fx:id="filtroPecaCombo" promptText="Peça" styleClass="combo-filtro" />
+                <ComboBox fx:id="filtroSessaoCombo" promptText="Sessão" styleClass="combo-filtro" />
+                <ComboBox fx:id="filtroAreaCombo" promptText="Área" styleClass="combo-filtro" />
+                <Button fx:id="aplicarFiltrosBotao" onAction="#aplicarFiltro" styleClass="botao-filtro" text="Aplicar" />
+                <Button fx:id="limparFiltrosBotao" onAction="#limparFiltro" styleClass="botao-filtro" text="Limpar" />
             </HBox>
-            <FlowPane columnHalignment="CENTER" hgap="10.0" vgap="10.0">
-                <VBox fx:id="visaoGeralCard" alignment="CENTER" spacing="10.0" styleClass="card">
+            <FlowPane fx:id="flowPaneCards" columnHalignment="CENTER" hgap="10.0" vgap="10.0">
+                <VBox fx:id="visaoGeralCard" alignment="TOP_CENTER" spacing="10.0" styleClass="card">
                     <Label styleClass="campo-label" text="Visão geral">
                         <font>
-                            <Font name="System Bold" size="14.0"/>
+                            <Font name="System Bold" size="14.0" />
                         </font>
                     </Label>
                     <VBox spacing="5.0">
-                        <Label fx:id="totalVendasLabel" text="Total de Vendas:"/>
-                        <Label fx:id="pecaMaisVendidaLabel" text="Peça com mais ingressos vendidos:"/>
-                        <Label fx:id="pecaMenosVendidaLabel" text="Peça com menos ingressos vendidos:"/>
-                        <Label fx:id="sessaoMaisOcupadaLabel" text="Sessão com maior ocupação:"/>
-                        <Label fx:id="sessaoMenosOcupadaLabel" text="Sessão com menor ocupação: "/>
-                        <Label fx:id="ticketMedioLabel" text="Ticket médio: R$"/>
+                        <Label fx:id="totalVendasLabel" text="Total de Vendas:" />
+                        <Label fx:id="pecaMaisVendidaLabel" text="Peça com mais ingressos vendidos:" />
+                        <Label fx:id="pecaMenosVendidaLabel" text="Peça com menos ingressos vendidos:" />
+                        <Label fx:id="sessaoMaisOcupadaLabel" text="Sessão com maior ocupação:" />
+                        <Label fx:id="sessaoMenosOcupadaLabel" text="Sessão com menor ocupação: " />
+                        <Label fx:id="ticketMedioLabel" text="Ticket médio: R$" />
                     </VBox>
                 </VBox>
-                <VBox fx:id="peca1Card" alignment="CENTER" layoutX="25.0" layoutY="25.0" spacing="10.0"
-                      styleClass="card">
+                <VBox fx:id="peca1Card" alignment="TOP_CENTER" layoutX="25.0" layoutY="25.0" spacing="10.0" styleClass="card">
                     <Label fx:id="peca1CardTitulo" styleClass="campo-label" text="Peça 1 (Wicked)">
                         <font>
-                            <Font name="System Bold" size="14.0"/>
+                            <Font name="System Bold" size="14.0" />
                         </font>
                     </Label>
                     <VBox spacing="5.0">
-                        <Label fx:id="ingressosPeca1" text="Total de ingressos vendidos na peça 1:"/>
-                        <Label fx:id="lucroMedioLabel1" text="Lucro médio da peça 1: R$"/>
-                        <Label fx:id="receitaTotalLabel1" text="Receita total da peça 1: R$"/>
-                        <Label fx:id="sessaoMais1Label" text="Sessão mais lucrativa da peça 1:"/>
-                        <Label fx:id="sessaoMenos1Label" text="Sessão menos lucrativa da peça 1:"/>
+                        <Label fx:id="ingressosPeca1" text="Ingressos vendidos para a peça 1:" />
+                        <Label fx:id="lucroLabel1" text="Lucro da peça 1: R$" />
+                        <Label fx:id="receitaTotalLabel1" text="Receita total da peça 1: R$" />
+                        <Label fx:id="sessaoMais1Label" text="Sessão mais lucrativa da peça 1:" />
+                        <Label fx:id="sessaoMenos1Label" text="Sessão menos lucrativa da peça 1:" />
                     </VBox>
                 </VBox>
-                <VBox fx:id="peca2Card" alignment="CENTER" layoutX="25.0" layoutY="224.0" spacing="10.0"
-                      styleClass="card">
+                <VBox fx:id="peca2Card" alignment="TOP_CENTER" layoutX="25.0" layoutY="224.0" spacing="10.0" styleClass="card">
                     <Label fx:id="peca2CardTitulo" styleClass="campo-label" text="Peça 2 (Rei Leão)">
                         <font>
-                            <Font name="System Bold" size="14.0"/>
+                            <Font name="System Bold" size="14.0" />
                         </font>
                     </Label>
                     <VBox spacing="5.0">
-                        <Label fx:id="ingressosPeca2" text="Total de ingressos vendidos na peça 2:"/>
-                        <Label fx:id="lucroMedioLabel2" text="Lucro médio da peça 2: R$"/>
-                        <Label fx:id="receitaTotalLabel2" text="Receita total da peça 2: R$"/>
-                        <Label fx:id="sessaoMais2Label" text="Sessão mais lucrativa da peça 2:"/>
-                        <Label fx:id="sessaoMenos2Label" text="Sessão menos lucrativa da peça 2:"/>
+                        <Label fx:id="ingressosPeca2" text="Ingressos vendidos para a peça 2:" />
+                        <Label fx:id="lucroLabel2" text="Lucro da peça 2: R$" />
+                        <Label fx:id="receitaTotalLabel2" text="Receita total da peça 2: R$" />
+                        <Label fx:id="sessaoMais2Label" text="Sessão mais lucrativa da peça 2:" />
+                        <Label fx:id="sessaoMenos2Label" text="Sessão menos lucrativa da peça 2:" />
                     </VBox>
                 </VBox>
-                <VBox fx:id="peca3Card" alignment="CENTER" layoutX="25.0" layoutY="422.0" spacing="10.0"
-                      styleClass="card">
+                <VBox fx:id="peca3Card" alignment="TOP_CENTER" layoutX="25.0" layoutY="422.0" spacing="10.0" styleClass="card">
                     <Label fx:id="peca3CardTitulo" styleClass="campo-label" text="Peça 3 (Auto da Compadecida)">
                         <font>
-                            <Font name="System Bold" size="14.0"/>
+                            <Font name="System Bold" size="14.0" />
                         </font>
                     </Label>
                     <VBox spacing="5.0">
-                        <Label fx:id="ingressosPeca3" text="Total de ingressos vendidos na peça 3:"/>
-                        <Label fx:id="lucroMedioLabel3" text="Lucro médio da peça 3: R$"/>
-                        <Label fx:id="receitaTotalLabel3" text="Receita total da peça 3: R$"/>
-                        <Label fx:id="sessaoMais3Label" text="Sessão mais lucrativa da peça 3:"/>
-                        <Label fx:id="sessaoMenos3Label" text="Sessão menos lucrativa da peça 3:"/>
+                        <Label fx:id="ingressosPeca3" text="Ingressos vendidos para a peça 3:" />
+                        <Label fx:id="lucroLabel3" text="Lucro da peça 3: R$" />
+                        <Label fx:id="receitaTotalLabel3" text="Receita total da peça 3: R$" />
+                        <Label fx:id="sessaoMais3Label" text="Sessão mais lucrativa da peça 3:" />
+                        <Label fx:id="sessaoMenos3Label" text="Sessão menos lucrativa da peça 3:" />
                     </VBox>
                 </VBox>
-                <VBox fx:id="areasCard" alignment="CENTER" layoutX="25.0" layoutY="620.0" spacing="10.0"
-                      styleClass="card">
+                <VBox fx:id="areasCard" alignment="TOP_CENTER" layoutX="25.0" layoutY="620.0" spacing="10.0" styleClass="card">
                     <Label styleClass="campo-label" text="Áreas">
                         <font>
-                            <Font name="System Bold" size="14.0"/>
+                            <Font name="System Bold" size="14.0" />
                         </font>
                     </Label>
-                    <VBox spacing="5.0">
-                        <Label fx:id="receitaMediaPlateiaA" text="Receita média da Plateia A: R$"/>
-                        <Label fx:id="receitaMediaPlateiaB" text="Receita média da Plateia B: R$"/>
-                        <Label fx:id="receitaMediaFrisa" text="Receita média da Frisa: R$"/>
-                        <Label fx:id="receitaMediaCamarote" text="Receita média do Camarote: R$"/>
-                        <Label fx:id="receitaMediaBalcao" text="Receita média do Balcão Nobre: R$"/>
+                    <VBox fx:id="areasCardBox" spacing="5.0">
+                  <Label fx:id="totalPlatALabel" text="Ingressos vendidos na Plateia A:  " />
+                        <Label fx:id="receitaMediaPlateiaA" text="Receita da Plateia A: R$" />
+                  <Label fx:id="totalPlatBLabel" layoutX="10.0" layoutY="10.0" text="Ingressos vendidos na Plateia B:  " />
+                        <Label fx:id="receitaMediaPlateiaB" text="Receita da Plateia B: R$" />
+                  <Label fx:id="totalFrisaLabel" layoutX="10.0" layoutY="62.0" text="Ingressos vendidos nas Frisas:  " />
+                        <Label fx:id="receitaMediaFrisa" text="Receita da Frisa: R$" />
+                  <Label fx:id="totalCamaroteLabel" layoutX="10.0" layoutY="114.0" text="Ingressos vendidos nos Camarotes:  " />
+                        <Label fx:id="receitaMediaCamarote" text="Receita do Camarote: R$" />
+                  <Label fx:id="totalBalcaoLabel" layoutX="10.0" layoutY="166.0" text="Ingressos vendidos nos Balcão Nobre:  " />
+                        <Label fx:id="receitaMediaBalcao" text="Receita do Balcão Nobre: R$" />
                     </VBox>
                 </VBox>
+            <VBox fx:id="sessaoCard" alignment="CENTER" layoutX="10.0" layoutY="812.0" spacing="10.0" styleClass="card">
+               <children>
+                  <Label styleClass="campo-label" text="Sessões">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <VBox fx:id="sessaoCardBox" spacing="5.0">
+                     <children>
+                        <Label fx:id="totalManhaLabel" text="Ingressos vendidos de manhã: " />
+                        <Label fx:id="receitaTotalManhaLabel" layoutX="10.0" layoutY="10.0" text="Receita total de manhã: R$" />
+                        <Label fx:id="lucroManhaLabel" layoutX="10.0" layoutY="36.0" text="Lucro da manhã: R$" />
+                        <Label fx:id="totalTardeLabel" layoutX="10.0" layoutY="10.0" text="Ingressos vendidos à tarde: " />
+                        <Label fx:id="receitaTotalTardeLabel" layoutX="10.0" layoutY="36.0" text="Receita total à tarde: R$" />
+                        <Label fx:id="lucroTardeLabel" layoutX="10.0" layoutY="62.0" text="Lucro da tarde: R$" />
+                        <Label fx:id="totalNoiteLabel" layoutX="10.0" layoutY="62.0" text="Ingressos vendidos à noite: " />
+                        <Label fx:id="receitaTotalNoiteLabel" layoutX="10.0" layoutY="88.0" text="Receita total à noite: R$" />
+                        <Label fx:id="lucroNoiteLabel" layoutX="10.0" layoutY="140.0" text="Lucro da noite: R$" />
+                     </children></VBox>
+               </children>
+            </VBox>
             </FlowPane>
             <HBox spacing="10.0">
-                <Button fx:id="botaoExportar" mnemonicParsing="false" onAction="#exportarCsv"
-                        styleClass="botao-exportar" text="Exportar para CSV"/>
-                <Button fx:id="botaoGrafico" layoutX="25.0" layoutY="10.0" mnemonicParsing="false"
-                        onAction="#abrirGrafico" styleClass="botao-exportar" text="Gerar gráficos"/>
+                <Button fx:id="botaoExportar" mnemonicParsing="false" onAction="#exportarCsv" styleClass="botao-exportar" text="Exportar para CSV" />
+                <Button fx:id="botaoGrafico" layoutX="25.0" layoutY="10.0" mnemonicParsing="false" onAction="#abrirGrafico" styleClass="botao-exportar" text="Gerar gráficos" />
             </HBox>
         </VBox>
     </center>

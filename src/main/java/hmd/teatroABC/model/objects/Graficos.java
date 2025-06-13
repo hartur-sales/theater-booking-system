@@ -3,8 +3,10 @@ package hmd.teatroABC.model.objects;
 import hmd.teatroABC.model.entities.Area;
 import hmd.teatroABC.model.entities.Peca;
 import hmd.teatroABC.model.entities.Sessao;
+import hmd.teatroABC.model.entities.Teatro;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -16,10 +18,10 @@ public class Graficos {
     private final int valorIngresso = 50;
 
     public Graficos() {
-        carregarDados("src/main/java/hmd/teatroABC/model/database/pecas.txt");
+        carregarDados(Teatro.pecasFile);
     }
 
-    private void carregarDados(String caminho) {
+    private void carregarDados(File caminho) {
         try (BufferedReader br = new BufferedReader(new FileReader(caminho))) {
             String linha;
             while ((linha = br.readLine()) != null) {

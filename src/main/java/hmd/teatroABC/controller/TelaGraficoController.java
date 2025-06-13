@@ -3,7 +3,6 @@ package hmd.teatroABC.controller;
 import hmd.teatroABC.model.entities.Peca;
 import hmd.teatroABC.model.entities.Sessao;
 import hmd.teatroABC.model.entities.Teatro;
-import hmd.teatroABC.model.objects.Estatistica;
 import hmd.teatroABC.model.objects.Graficos;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -16,7 +15,6 @@ import javafx.stage.Stage;
 import java.util.Arrays;
 
 public class TelaGraficoController {
-    //TODO talvez usar a classe Estatistica pra obter os dados dos gráficos
     @FXML
     private PieChart ocupacaoSessaoGrafico; //Ocupação por sessão
     @FXML
@@ -25,12 +23,8 @@ public class TelaGraficoController {
     @FXML
     private BarChart<String, Number> lucroPecaSessaoGrafico;//Lucro por peça/sessão
 
-
-
     @FXML
     private Button botaoVoltar;
-
-
 
     public void initialize() {
         //ex de código

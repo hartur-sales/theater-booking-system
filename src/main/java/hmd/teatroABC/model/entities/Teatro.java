@@ -17,7 +17,7 @@ public class Teatro {
     private static final List<Peca> pecas = new ArrayList<>();
     public static List<Pessoa> pessoas = new ArrayList<>();
     public static List<String> log = new ArrayList<>();
-    static File pecasFile = new File("src/main/java/hmd/teatroABC/model/database/pecas.txt");
+    public static File pecasFile = new File("src/main/java/hmd/teatroABC/model/database/pecas.txt");
     static File pessoasFile = new File("src/main/java/hmd/teatroABC/model/database/pessoas.txt");
     static File logFile = new File("src/main/resources/out/log.csv");
 

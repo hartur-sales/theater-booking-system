@@ -8,6 +8,7 @@ import hmd.teatroABC.model.objects.Estatistica;
 import hmd.teatroABC.util.FXMLLoaderUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -37,15 +38,16 @@ import static hmd.teatroABC.model.entities.Teatro.*;
 public class TelaEstatisticasController {
     @FXML
     private Label peca1CardTitulo, peca2CardTitulo, peca3CardTitulo, totalVendasLabel, pecaMaisVendidaLabel, pecaMenosVendidaLabel, sessaoMaisOcupadaLabel, sessaoMenosOcupadaLabel,
-            lucroMedioLabel1, lucroMedioLabel2, lucroMedioLabel3, sessaoMais1Label, sessaoMenos1Label, sessaoMais2Label, sessaoMenos2Label, sessaoMais3Label, sessaoMenos3Label,
+            lucroLabel1, lucroLabel2, lucroLabel3, sessaoMais1Label, sessaoMenos1Label, sessaoMais2Label, sessaoMenos2Label, sessaoMais3Label, sessaoMenos3Label,
             receitaTotalLabel1, receitaTotalLabel2, receitaTotalLabel3, receitaMediaPlateiaA, receitaMediaPlateiaB, receitaMediaFrisa, receitaMediaCamarote, receitaMediaBalcao,
-            ingressosPeca1, ingressosPeca2, ingressosPeca3, ticketMedioLabel;
+            ingressosPeca1, ingressosPeca2, ingressosPeca3, ticketMedioLabel, totalManhaLabel, totalTardeLabel, totalNoiteLabel, receitaTotalManhaLabel, receitaTotalTardeLabel,
+            receitaTotalNoiteLabel, lucroManhaLabel, lucroTardeLabel, lucroNoiteLabel, totalPlatALabel, totalPlatBLabel, totalFrisaLabel, totalCamaroteLabel, totalBalcaoLabel;
 
     @FXML
     private Button voltarBotao, botaoExportar, botaoGrafico;
 
     @FXML
-    private VBox visaoGeralCard, peca1Card, peca2Card, peca3Card, areasCard;
+    private VBox visaoGeralCard, peca1Card, peca2Card, peca3Card, areasCard, sessaoCard, sessaoCardBox, areasCardBox;
 
     @FXML
     private ComboBox<String> filtroPecaCombo;
@@ -63,19 +65,19 @@ public class TelaEstatisticasController {
     private final List<Peca> pecas = Teatro.getPecas();
 
     public void initialize() {
+        estatisticas.carregarEstatisticas();
         configurarComboBox();
         peca1CardTitulo.setText("Peça 1 (" + pecas.get(0).getNome() + ")");
         peca2CardTitulo.setText("Peça 2 (" + pecas.get(3).getNome() + ")");
         peca3CardTitulo.setText("Peça 3 (" + pecas.get(6).getNome() + ")");
-        estatisticas.carregarEstatisticas();
         totalVendasLabel.setText(totalVendasLabel.getText() + " " + estatisticas.calcularTotalVendas());
         pecaMaisVendidaLabel.setText(pecaMaisVendidaLabel.getText() + " " + estatisticas.calcularPecaMaisVendida());
         pecaMenosVendidaLabel.setText(pecaMenosVendidaLabel.getText() + " " + estatisticas.calcularPecaMenosVendida());
         sessaoMaisOcupadaLabel.setText(sessaoMaisOcupadaLabel.getText() + " " + estatisticas.calcularSessaoMaisOcupada());
         sessaoMenosOcupadaLabel.setText(sessaoMenosOcupadaLabel.getText() + " " + estatisticas.calcularSessaoMenosOcupada());
-        lucroMedioLabel1.setText(lucroMedioLabel1.getText() + String.format("%.2f", estatisticas.getLucroMedioWicked()));
-        lucroMedioLabel2.setText(lucroMedioLabel2.getText() + String.format("%.2f", estatisticas.getLucroMedioReiLeao()));
-        lucroMedioLabel3.setText(lucroMedioLabel3.getText() + String.format("%.2f", estatisticas.getLucroMedioAuto()));
+        lucroLabel1.setText(lucroLabel1.getText() + String.format("%.2f", estatisticas.getLucroWicked()));
+        lucroLabel2.setText(lucroLabel2.getText() + String.format("%.2f", estatisticas.getLucroReiLeao()));
+        lucroLabel3.setText(lucroLabel3.getText() + String.format("%.2f", estatisticas.getLucroAuto()));
         receitaTotalLabel1.setText(receitaTotalLabel1.getText() + " " + String.format("%.2f", estatisticas.getReceitaTotalPorPeca("Wicked")));
         receitaTotalLabel2.setText(receitaTotalLabel2.getText() + " " + String.format("%.2f", estatisticas.getReceitaTotalPorPeca("Rei Leao")));
         receitaTotalLabel3.setText(receitaTotalLabel3.getText() + " " + String.format("%.2f", estatisticas.getReceitaTotalPorPeca("Auto da Compadecida")));
@@ -90,11 +92,25 @@ public class TelaEstatisticasController {
         ingressosPeca3.setText(ingressosPeca3.getText() + " " + estatisticas.getVendasAuto());
         ticketMedioLabel.setText(ticketMedioLabel.getText() + " " + String.format("%.2f", estatisticas.getTicketMedioPorCliente()));
         double[] receitaMediaAreas = estatisticas.calcularReceitaMediaPorArea();
+        totalPlatALabel.setText(totalPlatALabel.getText() + estatisticas.getVendasPlatA());
+        totalPlatBLabel.setText(totalPlatBLabel.getText() + estatisticas.getVendasPlatB());
+        totalFrisaLabel.setText(totalFrisaLabel.getText() + estatisticas.getVendasFrisa());
+        totalCamaroteLabel.setText(totalCamaroteLabel.getText() + estatisticas.getVendasCamarote());
+        totalBalcaoLabel.setText(totalBalcaoLabel.getText() + estatisticas.getVendasBalcao());
         receitaMediaPlateiaA.setText(receitaMediaPlateiaA.getText() + " " + String.format("%.2f", receitaMediaAreas[0]));
         receitaMediaPlateiaB.setText(receitaMediaPlateiaB.getText() + " " + String.format("%.2f", receitaMediaAreas[1]));
-        receitaMediaBalcao.setText(receitaMediaBalcao.getText() + " " + String.format("%.2f", receitaMediaAreas[2]));
+        receitaMediaBalcao.setText(receitaMediaBalcao.getText() + " " + String.format("%.2f", receitaMediaAreas[4]));
         receitaMediaFrisa.setText(receitaMediaFrisa.getText() + " " + String.format("%.2f", receitaMediaAreas[3]));
-        receitaMediaCamarote.setText(receitaMediaCamarote.getText() + " " + String.format("%.2f", receitaMediaAreas[4]));
+        receitaMediaCamarote.setText(receitaMediaCamarote.getText() + " " + String.format("%.2f", receitaMediaAreas[2]));
+        totalManhaLabel.setText(totalManhaLabel.getText() + estatisticas.getVendasManha());
+        totalTardeLabel.setText(totalTardeLabel.getText() + estatisticas.getVendasTarde());
+        totalNoiteLabel.setText(totalNoiteLabel.getText() + estatisticas.getVendasNoite());
+        receitaTotalManhaLabel.setText(receitaTotalManhaLabel.getText() + String.format("%.2f", estatisticas.getReceitaManha()));
+        receitaTotalTardeLabel.setText(receitaTotalTardeLabel.getText() + String.format("%.2f", estatisticas.getReceitaTarde()));
+        receitaTotalNoiteLabel.setText(receitaTotalNoiteLabel.getText() + String.format("%.2f", estatisticas.getReceitaNoite()));
+        lucroManhaLabel.setText(lucroManhaLabel.getText() + String.format("%.2f", estatisticas.getLucroManha()));
+        lucroTardeLabel.setText(lucroTardeLabel.getText() + String.format("%.2f", estatisticas.getLucroTarde()));
+        lucroNoiteLabel.setText(lucroNoiteLabel.getText() + String.format("%.2f", estatisticas.getLucroNoite()));
     }
 
     public void telaInicialTrigger() throws IOException {
@@ -107,35 +123,117 @@ public class TelaEstatisticasController {
 
     @FXML
     private void aplicarFiltro() {
+        mostrarVisaoPadrao();
         String filtroPeca = filtroPecaCombo.getSelectionModel().getSelectedItem();
-//        Sessao filtroSessao = filtroSessaoCombo.getSelectionModel().getSelectedItem();
-//        Area filtroArea = filtroAreaCombo.getSelectionModel().getSelectedItem();
+        Sessao filtroSessao = filtroSessaoCombo.getSelectionModel().getSelectedItem();
+        Area filtroArea = filtroAreaCombo.getSelectionModel().getSelectedItem();
 
-        if (filtroPeca != null) {
-            peca1Card.setVisible(pecas.get(0).getNome().equals(filtroPeca));
-            peca1Card.setManaged(pecas.get(0).getNome().equals(filtroPeca));
-
-            peca2Card.setVisible(pecas.get(3).getNome().equals(filtroPeca));
-            peca2Card.setManaged(pecas.get(3).getNome().equals(filtroPeca));
-
-            peca3Card.setVisible(pecas.get(6).getNome().equals(filtroPeca));
-            peca3Card.setManaged(pecas.get(6).getNome().equals(filtroPeca));
-        } else {
-            peca1Card.setVisible(true);
-            peca1Card.setManaged(true);
-
-            peca2Card.setVisible(true);
-            peca2Card.setManaged(true);
-
-            peca3Card.setVisible(true);
-            peca3Card.setManaged(true);
+        if (filtroPeca == null && filtroSessao == null && filtroArea == null) {
+            mostrarVisaoPadrao();
+            return;
         }
+        if (filtroPeca != null && filtroSessao == null && filtroArea == null) {
+            if (filtroPeca.equals(pecas.get(0).getNome())) {
+                mostrarCardUnico(peca1Card);
+            } else if (filtroPeca.equals(pecas.get(3).getNome())) {
+                mostrarCardUnico(peca2Card);
+            } else if (filtroPeca.equals(pecas.get(6).getNome())) {
+                mostrarCardUnico(peca3Card);
+            }
+        }
+        if (filtroSessao != null && filtroPeca == null && filtroArea == null) {
+            mostrarCardUnico(sessaoCard);
+            configurarVisibilidadeLabelSessao(filtroSessao);
+        }
+        if (filtroArea != null && filtroPeca == null && filtroSessao == null) {
+            mostrarCardUnico(areasCard);
+            configurarVisibilidadeLabelArea(filtroArea);
+        }
+    }
 
-        visaoGeralCard.setVisible(false);
-        visaoGeralCard.setManaged(false);
+    private void configurarVisibilidadeLabelArea(Area filtroArea) {
+        Node[] componentesParaOcultar = {
+                receitaMediaPlateiaA, totalPlatALabel,
+                receitaMediaPlateiaB, totalPlatBLabel,
+                receitaMediaFrisa, totalFrisaLabel,
+                receitaMediaCamarote, totalCamaroteLabel,
+                receitaMediaBalcao, totalBalcaoLabel
+        };
+        for (Node componente : componentesParaOcultar) {
+            componente.setVisible(false);
+            componente.setManaged(false);
+        }
+        switch (filtroArea) {
+            case PLATEIA_A:
+                receitaMediaPlateiaA.setVisible(true);
+                receitaMediaPlateiaA.setManaged(true);
+                totalPlatALabel.setVisible(true);
+                totalPlatALabel.setManaged(true);
+                break;
+            case PLATEIA_B:
+                receitaMediaPlateiaB.setVisible(true);
+                receitaMediaPlateiaB.setManaged(true);
+                totalPlatBLabel.setVisible(true);
+                totalPlatBLabel.setManaged(true);
+                break;
+            case FRISA1:
+                receitaMediaFrisa.setVisible(true);
+                receitaMediaFrisa.setManaged(true);
+                totalFrisaLabel.setVisible(true);
+                totalFrisaLabel.setManaged(true);
+                break;
+            case CAMAROTE1:
+                receitaMediaCamarote.setVisible(true);
+                receitaMediaCamarote.setManaged(true);
+                totalCamaroteLabel.setVisible(true);
+                totalCamaroteLabel.setManaged(true);
+                break;
+            case BALCAO_NOBRE:
+                receitaMediaBalcao.setVisible(true);
+                receitaMediaBalcao.setManaged(true);
+                totalBalcaoLabel.setVisible(true);
+                totalBalcaoLabel.setManaged(true);
+                break;
+        }
+    }
 
-        areasCard.setVisible(false);
-        areasCard.setManaged(false);
+    private void configurarVisibilidadeLabelSessao(Sessao filtroSessao) {
+        Node[] componentesParaOcultar = {
+                totalManhaLabel, receitaTotalManhaLabel,
+                totalTardeLabel, receitaTotalTardeLabel,
+                totalNoiteLabel, receitaTotalNoiteLabel,
+                lucroManhaLabel, lucroTardeLabel, lucroNoiteLabel
+        };
+        for (Node componente : componentesParaOcultar) {
+            componente.setVisible(false);
+            componente.setManaged(false);
+        }
+        switch (filtroSessao) {
+            case MANHA:
+                totalManhaLabel.setVisible(true);
+                totalManhaLabel.setManaged(true);
+                receitaTotalManhaLabel.setVisible(true);
+                receitaTotalManhaLabel.setManaged(true);
+                lucroManhaLabel.setVisible(true);
+                lucroManhaLabel.setManaged(true);
+                break;
+            case TARDE:
+                totalTardeLabel.setVisible(true);
+                totalTardeLabel.setManaged(true);
+                receitaTotalTardeLabel.setVisible(true);
+                receitaTotalTardeLabel.setManaged(true);
+                lucroTardeLabel.setVisible(true);
+                lucroTardeLabel.setManaged(true);
+                break;
+            case NOITE:
+                totalNoiteLabel.setVisible(true);
+                totalNoiteLabel.setManaged(true);
+                receitaTotalNoiteLabel.setVisible(true);
+                receitaTotalNoiteLabel.setManaged(true);
+                lucroNoiteLabel.setVisible(true);
+                lucroNoiteLabel.setManaged(true);
+                break;
+        }
     }
 
     @FXML
@@ -143,24 +241,56 @@ public class TelaEstatisticasController {
         filtroPecaCombo.getSelectionModel().clearSelection();
         filtroSessaoCombo.getSelectionModel().clearSelection();
         filtroAreaCombo.getSelectionModel().clearSelection();
+        //https://bugs.openjdk.org/browse/JDK-8296653
         filtroPecaCombo.setPromptText("Peça");
         filtroSessaoCombo.setPromptText("Sessão");
         filtroAreaCombo.setPromptText("Área");
+        mostrarVisaoPadrao();
+    }
 
-        peca1Card.setVisible(true);
-        peca1Card.setManaged(true);
+    private void mostrarCardUnico(VBox card) {
+        visaoGeralCard.setVisible(false);
+        visaoGeralCard.setManaged(false);
+        peca1Card.setVisible(false);
+        peca1Card.setManaged(false);
+        peca2Card.setVisible(false);
+        peca2Card.setManaged(false);
+        peca3Card.setVisible(false);
+        peca3Card.setManaged(false);
+        areasCard.setVisible(false);
+        areasCard.setManaged(false);
+        sessaoCard.setVisible(false);
+        sessaoCard.setManaged(false);
 
-        peca2Card.setVisible(true);
-        peca2Card.setManaged(true);
+        card.setVisible(true);
+        card.setManaged(true);
+    }
 
-        peca3Card.setVisible(true);
-        peca3Card.setManaged(true);
-
+    private void mostrarVisaoPadrao() {
+        sessaoCard.setVisible(true);
+        sessaoCard.setManaged(true);
+        for (Node children : sessaoCardBox.getChildren()) {
+            if (children instanceof Label label) {
+                label.setVisible(true);
+                label.setManaged(true);
+            }
+        }
         visaoGeralCard.setVisible(true);
         visaoGeralCard.setManaged(true);
-
+        peca1Card.setVisible(true);
+        peca1Card.setManaged(true);
+        peca2Card.setVisible(true);
+        peca2Card.setManaged(true);
+        peca3Card.setVisible(true);
+        peca3Card.setManaged(true);
         areasCard.setVisible(true);
         areasCard.setManaged(true);
+        for (Node children : areasCardBox.getChildren()) {
+            if (children instanceof Label label) {
+                label.setVisible(true);
+                label.setManaged(true);
+            }
+        }
     }
 
     @FXML
@@ -200,13 +330,13 @@ public class TelaEstatisticasController {
             bw.write("Sessão Menos Ocupada," + estatisticas.calcularSessaoMenosOcupada());
             bw.newLine();
 //            bw.write(BUNDLE.getString("lucro_medio_peca1") + estatisticas.getLucroMedioWicked());
-            bw.write("Lucro Médio (Wicked)," + estatisticas.getLucroMedioWicked());
+            bw.write("Lucro Médio (Wicked)," + estatisticas.getLucroWicked());
             bw.newLine();
 //            bw.write(BUNDLE.getString("lucro_medio_peca2") + estatisticas.getLucroMedioReiLeao());
-            bw.write("Lucro Médio (Rei Leão)," + estatisticas.getLucroMedioReiLeao());
+            bw.write("Lucro Médio (Rei Leão)," + estatisticas.getLucroReiLeao());
             bw.newLine();
 //            bw.write(BUNDLE.getString("lucro_medio_peca3") + estatisticas.getLucroMedioAuto());
-            bw.write("Lucro Médio (Auto da Compadecida)," + estatisticas.getLucroMedioAuto());
+            bw.write("Lucro Médio (Auto da Compadecida)," + estatisticas.getLucroAuto());
             bw.newLine();
 //            bw.write(BUNDLE.getString("sessao_mais_vendida_peca1") + " " + estatisticas.getSessaoMaisLucrativaWicked());
             bw.write("Sessão Mais Vendida (Wicked)," + estatisticas.getSessaoMaisLucrativaWicked());
