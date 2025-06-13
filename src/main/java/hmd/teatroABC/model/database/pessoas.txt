@@ -1,0 +1,4 @@
+08422802198,false,Ingressos:Wicked-MANHA-B45-60.0;Wicked-MANHA-B46-60.0;Wicked-MANHA-B47-60.0
+08422802198,false,Ingressos:Auto da Compadecida-MANHA-B24-60.0;Auto da Compadecida-MANHA-B46-60.0;Auto da Compadecida-MANHA-B29-60.0
+32186207249,false,Ingressos:Rei Leao-MANHA-B28-60.0;Rei Leao-MANHA-B29-60.0;Rei Leao-MANHA-B30-60.0;Rei Leao-MANHA-B31-60.0
+91382610149,false,Ingressos:Auto da Compadecida-TARDE-B81-60.0;Auto da Compadecida-TARDE-F3-600.0;Auto da Compadecida-TARDE-C1-800.0;Auto da Compadecida-TARDE-N2-250.0;Auto da Compadecida-TARDE-A16-40.0

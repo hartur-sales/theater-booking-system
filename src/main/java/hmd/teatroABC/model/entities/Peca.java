@@ -16,6 +16,7 @@ import static hmd.teatroABC.util.FXMLLoaderUtil.BUNDLE;
  */
 
 public class Peca {
+    private final Object posterImg;
     private Sessao sessao;
     private String nome;
     private String descricao;
@@ -23,13 +24,28 @@ public class Peca {
     private int ingressosVendidos;
 
     private final File poster;
-    private Image posterImg;
+
+
+    // Construtor sem imagem, para uso interno/estatísticas
+    public Peca(Sessao sessao, String nome, String descricao) {
+        this.poster = null;
+        this.posterImg = null;
+        this.sessao = sessao;
+        this.nome = nome;
+        this.descricao = descricao;
+    }
+
+    // Para compatibilidade com o parser de texto
+    public void setAssentos(List<String> assentos) {
+        this.assentos = new ArrayList<>(assentos);
+    }
+
 
     public Peca(File poster, Sessao sessao, String nome, String descricao) {
         this.poster = poster;
         this.sessao = sessao;
         this.nome = nome;
-        this.posterImg = new Image(poster.toURI().toString());
+        this.posterImg = (poster != null) ? new Image(poster.toURI().toString()) : null;
         this.descricao = descricao;
     }
 
@@ -42,7 +58,7 @@ public class Peca {
     }
 
     public Image getPosterImg() {
-        return posterImg;
+        return (Image) posterImg;
     }
 
     public Sessao getSessao() {
@@ -92,4 +108,6 @@ public class Peca {
     public static String traduzirNome(String nomeOriginal) {
         return BUNDLE.containsKey(nomeOriginal) ? BUNDLE.getString(nomeOriginal) : nomeOriginal;
     }
+
+
 }
