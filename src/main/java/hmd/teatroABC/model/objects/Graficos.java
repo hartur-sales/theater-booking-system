@@ -82,7 +82,7 @@ public class Graficos {
                     case 'B' -> qtdB++;
                     case 'C' -> qtdC++;
                     case 'F' -> qtdF++;
-                    case 'M' -> qtdM++;
+                    case 'N' -> qtdM++;
                 }
             }
         }
@@ -92,7 +92,7 @@ public class Graficos {
             case "B" -> qtdB;
             case "C" -> qtdC;
             case "F" -> qtdF;
-            case "M" -> qtdM;
+            case "N" -> qtdM;
             default -> 0;
         };
     }

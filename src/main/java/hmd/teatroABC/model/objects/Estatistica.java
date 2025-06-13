@@ -13,16 +13,16 @@ import java.util.List;
  */
 
 public class Estatistica {
-    private List<Peca> pecasEstatisticas;
-    private int vendasWicked = 0;
-    private int vendasReiLeao = 0;
-    private int vendasAuto = 0;
-    private double receitaWicked = 0;
-    private double receitaReiLeao = 0;
-    private double receitaAuto = 0;
-    private double lucroWicked = 0;
-    private double lucroReiLeao = 0;
-    private double lucroAuto = 0;
+    private final List<Peca> pecas;
+    private int vendasPeca1 = 0;
+    private int vendasPeca2 = 0;
+    private int vendasPeca3 = 0;
+    private double receitaPeca1 = 0;
+    private double receitaPeca2 = 0;
+    private double receitaPeca3 = 0;
+    private double lucroPeca1 = 0;
+    private double lucroPeca2 = 0;
+    private double lucroPeca3 = 0;
     private double receitaManha = 0;
     private double receitaTarde = 0;
     private double receitaNoite = 0;
@@ -53,16 +53,16 @@ public class Estatistica {
     private String sessaoMaisLucrativaAuto = "";
     private String sessaoMenosLucrativaAuto = "";
 
-    public void carregarEstatisticas() {
-        this.pecasEstatisticas = Teatro.getPecas();
+    public Estatistica() {
+        this.pecas = Teatro.getPecas();
         calcularVendas();
         calcularReceita();
         lucroManha = calcularLucroSessao(receitaManha, vendasManha);
         lucroTarde = calcularLucroSessao(receitaTarde, vendasTarde);
         lucroNoite = calcularLucroSessao(receitaNoite, vendasNoite);
-        lucroWicked = calcularLucroPeca(receitaWicked, vendasWicked);
-        lucroReiLeao = calcularLucroPeca(receitaReiLeao, vendasReiLeao);
-        lucroAuto = calcularLucroPeca(receitaAuto, vendasAuto);
+        lucroPeca1 = calcularLucroPeca(receitaPeca1, vendasPeca1);
+        lucroPeca2 = calcularLucroPeca(receitaPeca2, vendasPeca2);
+        lucroPeca3 = calcularLucroPeca(receitaPeca3, vendasPeca3);
         sessaoMaisLucrativaWicked = calcularSessaoMaisLucrativaPeca1();
         sessaoMenosLucrativaWicked = calcularSessaoMenosLucrativaPeca1();
         sessaoMaisLucrativaReiLeao = calcularSessaoMaisLucrativaPeca2();
@@ -103,24 +103,24 @@ public class Estatistica {
     //    }
 
     private void calcularVendas() {
-        for (Peca peca : pecasEstatisticas) {
+        for (Peca peca : pecas) {
             String nome = peca.getNome();
             String sessao = peca.getSessao().getNome();
             int ingressosVendidos = peca.getIngressosVendidos();
             if (nome.equals("Wicked")) {
-                vendasWicked += ingressosVendidos;
+                vendasPeca1 += ingressosVendidos;
                 if (sessao.equals("Manha")) vendasManhaWicked += ingressosVendidos;
                 if (sessao.equals("Tarde")) vendasTardeWicked += ingressosVendidos;
                 if (sessao.equals("Noite")) vendasNoiteWicked += ingressosVendidos;
             }
             if (nome.equals("Rei Leao")) {
-                vendasReiLeao += ingressosVendidos;
+                vendasPeca2 += ingressosVendidos;
                 if (sessao.equals("Manha")) vendasManhaReiLeao += ingressosVendidos;
                 if (sessao.equals("Tarde")) vendasTardeReiLeao += ingressosVendidos;
                 if (sessao.equals("Noite")) vendasNoiteReiLeao += ingressosVendidos;
             }
             if (nome.equals("Auto da Compadecida")) {
-                vendasAuto += ingressosVendidos;
+                vendasPeca3 += ingressosVendidos;
                 if (sessao.equals("Manha")) vendasManhaAuto += ingressosVendidos;
                 if (sessao.equals("Tarde")) vendasTardeAuto += ingressosVendidos;
                 if (sessao.equals("Noite")) vendasNoiteAuto += ingressosVendidos;
@@ -141,14 +141,14 @@ public class Estatistica {
     private void calcularReceita() {
         double[] receitas = {0, 0, 0};
         double[] receitasPorSessao = {0, 0, 0};
-        for (Peca peca : pecasEstatisticas) {
+        for (Peca peca : pecas) {
             Sessao sessao = peca.getSessao();
             int idSessao = getIndiceSessao(sessao);
             adicionarReceita(peca.getNome(), peca.getAssentos(), 0, receitas, idSessao, receitasPorSessao);
         }
-        receitaWicked = receitas[0];
-        receitaReiLeao = receitas[1];
-        receitaAuto = receitas[2];
+        receitaPeca1 = receitas[0];
+        receitaPeca2 = receitas[1];
+        receitaPeca3 = receitas[2];
 
         receitaManha = receitasPorSessao[0];
         receitaTarde = receitasPorSessao[1];
@@ -178,35 +178,35 @@ public class Estatistica {
     }
 
     public int calcularTotalVendas() {
-        return vendasWicked + vendasReiLeao + vendasAuto;
+        return vendasPeca1 + vendasPeca2 + vendasPeca3;
     }
 
     public String calcularPecaMaisVendida() {
         String pecaMaisVendida;
-        if (vendasWicked == 0 && vendasReiLeao == 0 && vendasAuto == 0) {
+        if (vendasPeca1 == 0 && vendasPeca2 == 0 && vendasPeca3 == 0) {
             pecaMaisVendida = "Não há vendas para calcular";
-        } else if (vendasWicked >= vendasReiLeao && vendasWicked >= vendasAuto) {
-            pecaMaisVendida = "Wicked";
-        } else if (vendasReiLeao >= vendasWicked && vendasReiLeao >= vendasAuto) {
+        } else if (vendasPeca1 >= vendasPeca2 && vendasPeca1 >= vendasPeca3) {
+            pecaMaisVendida = "Peça 1 (" + pecas.getFirst().getNome() + ")";
+        } else if (vendasPeca2 >= vendasPeca1 && vendasPeca2 >= vendasPeca3) {
 //            pecaMaisVendida = BUNDLE.getString("Rei Leão");
-            pecaMaisVendida = "Rei Leao";
+            pecaMaisVendida = "Peça 2 (" + pecas.get(3).getNome() + ")";
         } else {
-            pecaMaisVendida = "Auto da Compadecida";
+            pecaMaisVendida = "Peça 3 (" + pecas.get(6).getNome() + ")";
         }
         return pecaMaisVendida;
     }
 
     public String calcularPecaMenosVendida() {
         String pecaMenosVendida;
-        if (vendasWicked == 0 && vendasReiLeao == 0 && vendasAuto == 0) {
+        if (vendasPeca1 == 0 && vendasPeca2 == 0 && vendasPeca3 == 0) {
             pecaMenosVendida = "Não há vendas para calcular";
-        } else if (vendasWicked <= vendasReiLeao && vendasWicked <= vendasAuto) {
-            pecaMenosVendida = "Wicked";
-        } else if (vendasReiLeao <= vendasWicked && vendasReiLeao <= vendasAuto) {
+        } else if (vendasPeca1 <= vendasPeca2 && vendasPeca1 <= vendasPeca3) {
+            pecaMenosVendida = "Peça 1 (" + pecas.getFirst().getNome() + ")";
+        } else if (vendasPeca2 <= vendasPeca1 && vendasPeca2 <= vendasPeca3) {
 //            pecaMenosVendida = BUNDLE.getString("Rei Leao");
-            pecaMenosVendida = "Rei Leao";
+            pecaMenosVendida = "Peça 2 (" + pecas.get(3).getNome() + ")";
         } else {
-            pecaMenosVendida = "Auto da Compadecida";
+            pecaMenosVendida = "Peça 3 (" + pecas.get(6).getNome() + ")";
         }
         return pecaMenosVendida;
     }
@@ -261,9 +261,9 @@ public class Estatistica {
     }
 
     public String calcularSessaoMaisLucrativaPeca1() {
-        double lucroManha = calcularLucroDaPecaPorSessao(receitaWicked, vendasManhaWicked);
-        double lucroTarde = calcularLucroDaPecaPorSessao(receitaWicked, vendasTardeWicked);
-        double lucroNoite = calcularLucroDaPecaPorSessao(receitaWicked, vendasNoiteWicked);
+        double lucroManha = calcularLucroDaPecaPorSessao(receitaPeca1, vendasManhaWicked);
+        double lucroTarde = calcularLucroDaPecaPorSessao(receitaPeca1, vendasTardeWicked);
+        double lucroNoite = calcularLucroDaPecaPorSessao(receitaPeca1, vendasNoiteWicked);
         if (lucroManha == 0 && lucroTarde == 0 && lucroNoite == 0) {
             return "Não há vendas para calcular";
         } else if (lucroManha >= lucroTarde && lucroManha >= lucroNoite) {
@@ -279,9 +279,9 @@ public class Estatistica {
     }
 
     public String calcularSessaoMenosLucrativaPeca1() {
-        double lucroManha = calcularLucroDaPecaPorSessao(receitaWicked, vendasManhaWicked);
-        double lucroTarde = calcularLucroDaPecaPorSessao(receitaWicked, vendasTardeWicked);
-        double lucroNoite = calcularLucroDaPecaPorSessao(receitaWicked, vendasNoiteWicked);
+        double lucroManha = calcularLucroDaPecaPorSessao(receitaPeca1, vendasManhaWicked);
+        double lucroTarde = calcularLucroDaPecaPorSessao(receitaPeca1, vendasTardeWicked);
+        double lucroNoite = calcularLucroDaPecaPorSessao(receitaPeca1, vendasNoiteWicked);
         if (lucroManha == 0 && lucroTarde == 0 && lucroNoite == 0) {
             return "Não há vendas para calcular";
         } else if (lucroManha <= lucroTarde && lucroManha <= lucroNoite) {
@@ -297,9 +297,9 @@ public class Estatistica {
     }
 
     public String calcularSessaoMaisLucrativaPeca2() {
-        double lucroManha = calcularLucroDaPecaPorSessao(receitaReiLeao, vendasManhaReiLeao);
-        double lucroTarde = calcularLucroDaPecaPorSessao(receitaReiLeao, vendasTardeReiLeao);
-        double lucroNoite = calcularLucroDaPecaPorSessao(receitaReiLeao, vendasNoiteReiLeao);
+        double lucroManha = calcularLucroDaPecaPorSessao(receitaPeca2, vendasManhaReiLeao);
+        double lucroTarde = calcularLucroDaPecaPorSessao(receitaPeca2, vendasTardeReiLeao);
+        double lucroNoite = calcularLucroDaPecaPorSessao(receitaPeca2, vendasNoiteReiLeao);
         if (lucroManha == 0 && lucroTarde == 0 && lucroNoite == 0) {
             return "Não há vendas para calcular";
         } else if (lucroManha >= lucroTarde && lucroManha >= lucroNoite) {
@@ -315,9 +315,9 @@ public class Estatistica {
     }
 
     public String calcularSessaoMenosLucrativaPeca2() {
-        double lucroManha = calcularLucroDaPecaPorSessao(receitaReiLeao, vendasManhaReiLeao);
-        double lucroTarde = calcularLucroDaPecaPorSessao(receitaReiLeao, vendasTardeReiLeao);
-        double lucroNoite = calcularLucroDaPecaPorSessao(receitaReiLeao, vendasNoiteReiLeao);
+        double lucroManha = calcularLucroDaPecaPorSessao(receitaPeca2, vendasManhaReiLeao);
+        double lucroTarde = calcularLucroDaPecaPorSessao(receitaPeca2, vendasTardeReiLeao);
+        double lucroNoite = calcularLucroDaPecaPorSessao(receitaPeca2, vendasNoiteReiLeao);
         if (lucroManha == 0 && lucroTarde == 0 && lucroNoite == 0) {
             return "Não há vendas para calcular";
         } else if (lucroManha <= lucroTarde && lucroManha <= lucroNoite) {
@@ -333,9 +333,9 @@ public class Estatistica {
     }
 
     public String calcularSessaoMaisLucrativaPeca3() {
-        double lucroManha = calcularLucroDaPecaPorSessao(receitaAuto, vendasManhaAuto);
-        double lucroTarde = calcularLucroDaPecaPorSessao(receitaAuto, vendasTardeAuto);
-        double lucroNoite = calcularLucroDaPecaPorSessao(receitaAuto, vendasNoiteAuto);
+        double lucroManha = calcularLucroDaPecaPorSessao(receitaPeca3, vendasManhaAuto);
+        double lucroTarde = calcularLucroDaPecaPorSessao(receitaPeca3, vendasTardeAuto);
+        double lucroNoite = calcularLucroDaPecaPorSessao(receitaPeca3, vendasNoiteAuto);
         if (lucroManha == 0 && lucroTarde == 0 && lucroNoite == 0) {
             return "Não há vendas para calcular";
         } else if (lucroManha >= lucroTarde && lucroManha >= lucroNoite) {
@@ -351,9 +351,9 @@ public class Estatistica {
     }
 
     public String calcularSessaoMenosLucrativaPeca3() {
-        double lucroManha = calcularLucroDaPecaPorSessao(receitaAuto, vendasManhaAuto);
-        double lucroTarde = calcularLucroDaPecaPorSessao(receitaAuto, vendasTardeAuto);
-        double lucroNoite = calcularLucroDaPecaPorSessao(receitaAuto, vendasNoiteAuto);
+        double lucroManha = calcularLucroDaPecaPorSessao(receitaPeca3, vendasManhaAuto);
+        double lucroTarde = calcularLucroDaPecaPorSessao(receitaPeca3, vendasTardeAuto);
+        double lucroNoite = calcularLucroDaPecaPorSessao(receitaPeca3, vendasNoiteAuto);
         if (lucroManha == 0 && lucroTarde == 0 && lucroNoite == 0) {
             return "Não há vendas para calcular";
         } else if (lucroManha <= lucroTarde && lucroManha <= lucroNoite) {
@@ -368,18 +368,9 @@ public class Estatistica {
         }
     }
 
-    public double getReceitaTotalPorPeca(String nome) {
-        return switch (nome) {
-            case "Wicked" -> receitaWicked;
-            case "Rei Leao" -> receitaReiLeao;
-            case "Auto da Compadecida" -> receitaAuto;
-            default -> 0;
-        };
-    }
-
     public double getTicketMedioPorCliente() {
         int totalIngressos = calcularTotalVendas();
-        double totalLucro = receitaWicked + receitaReiLeao + receitaAuto;
+        double totalLucro = receitaPeca1 + receitaPeca2 + receitaPeca3;
         if (totalIngressos == 0) return 0;
         return totalLucro / totalIngressos;
     }
@@ -388,7 +379,7 @@ public class Estatistica {
         double totalA = 0, totalB = 0, totalC = 0, totalF = 0, totalN = 0;
         int qtdA = 0, qtdB = 0, qtdC = 0, qtdF = 0, qtdN = 0;
 
-        for (Peca peca : pecasEstatisticas) {
+        for (Peca peca : pecas) {
             List<String> assentos = peca.getAssentos();
             for (String assento : assentos) {
                 char area = assento.charAt(0);
@@ -439,28 +430,28 @@ public class Estatistica {
         };
     }
 
-    public int getVendasWicked() {
-        return vendasWicked;
+    public int getVendasPeca1() {
+        return vendasPeca1;
     }
 
-    public int getVendasReiLeao() {
-        return vendasReiLeao;
+    public int getVendasPeca2() {
+        return vendasPeca2;
     }
 
-    public int getVendasAuto() {
-        return vendasAuto;
+    public int getVendasPeca3() {
+        return vendasPeca3;
     }
 
-    public double getLucroWicked() {
-        return lucroWicked;
+    public double getLucroPeca1() {
+        return lucroPeca1;
     }
 
-    public double getLucroReiLeao() {
-        return lucroReiLeao;
+    public double getLucroPeca2() {
+        return lucroPeca2;
     }
 
-    public double getLucroAuto() {
-        return lucroAuto;
+    public double getLucroPeca3() {
+        return lucroPeca3;
     }
 
     public double getReceitaManha() {
@@ -541,5 +532,17 @@ public class Estatistica {
 
     public int getVendasBalcao() {
         return vendasBalcao;
+    }
+
+    public double getReceitaPeca1() {
+        return receitaPeca1;
+    }
+
+    public double getReceitaPeca2() {
+        return receitaPeca2;
+    }
+
+    public double getReceitaPeca3() {
+        return receitaPeca3;
     }
 }

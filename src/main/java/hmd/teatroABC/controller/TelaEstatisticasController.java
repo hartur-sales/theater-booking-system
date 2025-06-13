@@ -65,7 +65,6 @@ public class TelaEstatisticasController {
     private final List<Peca> pecas = Teatro.getPecas();
 
     public void initialize() {
-        estatisticas.carregarEstatisticas();
         configurarComboBox();
         peca1CardTitulo.setText("Peça 1 (" + pecas.get(0).getNome() + ")");
         peca2CardTitulo.setText("Peça 2 (" + pecas.get(3).getNome() + ")");
@@ -75,21 +74,21 @@ public class TelaEstatisticasController {
         pecaMenosVendidaLabel.setText(pecaMenosVendidaLabel.getText() + " " + estatisticas.calcularPecaMenosVendida());
         sessaoMaisOcupadaLabel.setText(sessaoMaisOcupadaLabel.getText() + " " + estatisticas.calcularSessaoMaisOcupada());
         sessaoMenosOcupadaLabel.setText(sessaoMenosOcupadaLabel.getText() + " " + estatisticas.calcularSessaoMenosOcupada());
-        lucroLabel1.setText(lucroLabel1.getText() + String.format("%.2f", estatisticas.getLucroWicked()));
-        lucroLabel2.setText(lucroLabel2.getText() + String.format("%.2f", estatisticas.getLucroReiLeao()));
-        lucroLabel3.setText(lucroLabel3.getText() + String.format("%.2f", estatisticas.getLucroAuto()));
-        receitaTotalLabel1.setText(receitaTotalLabel1.getText() + " " + String.format("%.2f", estatisticas.getReceitaTotalPorPeca("Wicked")));
-        receitaTotalLabel2.setText(receitaTotalLabel2.getText() + " " + String.format("%.2f", estatisticas.getReceitaTotalPorPeca("Rei Leao")));
-        receitaTotalLabel3.setText(receitaTotalLabel3.getText() + " " + String.format("%.2f", estatisticas.getReceitaTotalPorPeca("Auto da Compadecida")));
+        lucroLabel1.setText(lucroLabel1.getText() + String.format("%.2f", estatisticas.getLucroPeca1()));
+        lucroLabel2.setText(lucroLabel2.getText() + String.format("%.2f", estatisticas.getLucroPeca2()));
+        lucroLabel3.setText(lucroLabel3.getText() + String.format("%.2f", estatisticas.getLucroPeca3()));
+        receitaTotalLabel1.setText(receitaTotalLabel1.getText() + " " + String.format("%.2f", estatisticas.getReceitaPeca1()));
+        receitaTotalLabel2.setText(receitaTotalLabel2.getText() + " " + String.format("%.2f", estatisticas.getReceitaPeca2()));
+        receitaTotalLabel3.setText(receitaTotalLabel3.getText() + " " + String.format("%.2f", estatisticas.getReceitaPeca3()));
         sessaoMais1Label.setText(sessaoMais1Label.getText() + " " + estatisticas.getSessaoMaisLucrativaWicked());
         sessaoMenos1Label.setText(sessaoMenos1Label.getText() + " " + estatisticas.getSessaoMenosLucrativaWicked());
         sessaoMais2Label.setText(sessaoMais2Label.getText() + " " + estatisticas.getSessaoMaisLucrativaReiLeao());
         sessaoMenos2Label.setText(sessaoMenos2Label.getText() + " " + estatisticas.getSessaoMenosLucrativaReiLeao());
         sessaoMais3Label.setText(sessaoMais3Label.getText() + " " + estatisticas.getSessaoMaisLucrativaAuto());
         sessaoMenos3Label.setText(sessaoMenos3Label.getText() + " " + estatisticas.getSessaoMenosLucrativaAuto());
-        ingressosPeca1.setText(ingressosPeca1.getText() + " " + estatisticas.getVendasWicked());
-        ingressosPeca2.setText(ingressosPeca2.getText() + " " + estatisticas.getVendasReiLeao());
-        ingressosPeca3.setText(ingressosPeca3.getText() + " " + estatisticas.getVendasAuto());
+        ingressosPeca1.setText(ingressosPeca1.getText() + " " + estatisticas.getVendasPeca1());
+        ingressosPeca2.setText(ingressosPeca2.getText() + " " + estatisticas.getVendasPeca2());
+        ingressosPeca3.setText(ingressosPeca3.getText() + " " + estatisticas.getVendasPeca3());
         ticketMedioLabel.setText(ticketMedioLabel.getText() + " " + String.format("%.2f", estatisticas.getTicketMedioPorCliente()));
         double[] receitaMediaAreas = estatisticas.calcularReceitaMediaPorArea();
         totalPlatALabel.setText(totalPlatALabel.getText() + estatisticas.getVendasPlatA());
@@ -330,13 +329,13 @@ public class TelaEstatisticasController {
             bw.write("Sessão Menos Ocupada," + estatisticas.calcularSessaoMenosOcupada());
             bw.newLine();
 //            bw.write(BUNDLE.getString("lucro_medio_peca1") + estatisticas.getLucroMedioWicked());
-            bw.write("Lucro Médio (Wicked)," + estatisticas.getLucroWicked());
+            bw.write("Lucro Médio (Wicked)," + estatisticas.getLucroPeca1());
             bw.newLine();
 //            bw.write(BUNDLE.getString("lucro_medio_peca2") + estatisticas.getLucroMedioReiLeao());
-            bw.write("Lucro Médio (Rei Leão)," + estatisticas.getLucroReiLeao());
+            bw.write("Lucro Médio (Rei Leão)," + estatisticas.getLucroPeca2());
             bw.newLine();
 //            bw.write(BUNDLE.getString("lucro_medio_peca3") + estatisticas.getLucroMedioAuto());
-            bw.write("Lucro Médio (Auto da Compadecida)," + estatisticas.getLucroAuto());
+            bw.write("Lucro Médio (Auto da Compadecida)," + estatisticas.getLucroPeca3());
             bw.newLine();
 //            bw.write(BUNDLE.getString("sessao_mais_vendida_peca1") + " " + estatisticas.getSessaoMaisLucrativaWicked());
             bw.write("Sessão Mais Vendida (Wicked)," + estatisticas.getSessaoMaisLucrativaWicked());
