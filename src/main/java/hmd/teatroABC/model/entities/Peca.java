@@ -25,22 +25,6 @@ public class Peca {
 
     private final File poster;
 
-
-    // Construtor sem imagem, para uso interno/estatísticas
-    public Peca(Sessao sessao, String nome, String descricao) {
-        this.poster = null;
-        this.posterImg = null;
-        this.sessao = sessao;
-        this.nome = nome;
-        this.descricao = descricao;
-    }
-
-    // Para compatibilidade com o parser de texto
-    public void setAssentos(List<String> assentos) {
-        this.assentos = new ArrayList<>(assentos);
-    }
-
-
     public Peca(File poster, Sessao sessao, String nome, String descricao) {
         this.poster = poster;
         this.sessao = sessao;

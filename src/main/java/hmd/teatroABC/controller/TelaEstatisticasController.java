@@ -6,6 +6,7 @@ import hmd.teatroABC.model.entities.Sessao;
 import hmd.teatroABC.model.entities.Teatro;
 import hmd.teatroABC.model.objects.Estatistica;
 import hmd.teatroABC.util.FXMLLoaderUtil;
+import hmd.teatroABC.util.Logging;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -69,28 +70,28 @@ public class TelaEstatisticasController {
         peca1CardTitulo.setText("Peça 1 (" + pecas.get(0).getNome() + ")");
         peca2CardTitulo.setText("Peça 2 (" + pecas.get(3).getNome() + ")");
         peca3CardTitulo.setText("Peça 3 (" + pecas.get(6).getNome() + ")");
-        totalVendasLabel.setText(totalVendasLabel.getText() + " " + estatisticas.calcularTotalVendas());
-        pecaMaisVendidaLabel.setText(pecaMaisVendidaLabel.getText() + " " + estatisticas.calcularPecaMaisVendida());
-        pecaMenosVendidaLabel.setText(pecaMenosVendidaLabel.getText() + " " + estatisticas.calcularPecaMenosVendida());
-        sessaoMaisOcupadaLabel.setText(sessaoMaisOcupadaLabel.getText() + " " + estatisticas.calcularSessaoMaisOcupada());
-        sessaoMenosOcupadaLabel.setText(sessaoMenosOcupadaLabel.getText() + " " + estatisticas.calcularSessaoMenosOcupada());
+        totalVendasLabel.setText(totalVendasLabel.getText() + " " + estatisticas.getTotalVendas());
+        pecaMaisVendidaLabel.setText(pecaMaisVendidaLabel.getText() + " " + estatisticas.getPecaMaisVendida());
+        pecaMenosVendidaLabel.setText(pecaMenosVendidaLabel.getText() + " " + estatisticas.getPecaMenosVendida());
+        sessaoMaisOcupadaLabel.setText(sessaoMaisOcupadaLabel.getText() + " " + estatisticas.getSessaoMaisOcupada());
+        sessaoMenosOcupadaLabel.setText(sessaoMenosOcupadaLabel.getText() + " " + estatisticas.getSessaoMenosOcupada());
         lucroLabel1.setText(lucroLabel1.getText() + String.format("%.2f", estatisticas.getLucroPeca1()));
         lucroLabel2.setText(lucroLabel2.getText() + String.format("%.2f", estatisticas.getLucroPeca2()));
         lucroLabel3.setText(lucroLabel3.getText() + String.format("%.2f", estatisticas.getLucroPeca3()));
         receitaTotalLabel1.setText(receitaTotalLabel1.getText() + " " + String.format("%.2f", estatisticas.getReceitaPeca1()));
         receitaTotalLabel2.setText(receitaTotalLabel2.getText() + " " + String.format("%.2f", estatisticas.getReceitaPeca2()));
         receitaTotalLabel3.setText(receitaTotalLabel3.getText() + " " + String.format("%.2f", estatisticas.getReceitaPeca3()));
-        sessaoMais1Label.setText(sessaoMais1Label.getText() + " " + estatisticas.getSessaoMaisLucrativaWicked());
-        sessaoMenos1Label.setText(sessaoMenos1Label.getText() + " " + estatisticas.getSessaoMenosLucrativaWicked());
-        sessaoMais2Label.setText(sessaoMais2Label.getText() + " " + estatisticas.getSessaoMaisLucrativaReiLeao());
-        sessaoMenos2Label.setText(sessaoMenos2Label.getText() + " " + estatisticas.getSessaoMenosLucrativaReiLeao());
-        sessaoMais3Label.setText(sessaoMais3Label.getText() + " " + estatisticas.getSessaoMaisLucrativaAuto());
-        sessaoMenos3Label.setText(sessaoMenos3Label.getText() + " " + estatisticas.getSessaoMenosLucrativaAuto());
+        sessaoMais1Label.setText(sessaoMais1Label.getText() + " " + estatisticas.getSessaoMaisLucrativaPeca1());
+        sessaoMenos1Label.setText(sessaoMenos1Label.getText() + " " + estatisticas.getSessaoMenosLucrativaPeca1());
+        sessaoMais2Label.setText(sessaoMais2Label.getText() + " " + estatisticas.getSessaoMaisLucrativaPeca2());
+        sessaoMenos2Label.setText(sessaoMenos2Label.getText() + " " + estatisticas.getSessaoMenosLucrativaPeca2());
+        sessaoMais3Label.setText(sessaoMais3Label.getText() + " " + estatisticas.getSessaoMaisLucrativaPeca3());
+        sessaoMenos3Label.setText(sessaoMenos3Label.getText() + " " + estatisticas.getSessaoMenosLucrativaPeca3());
         ingressosPeca1.setText(ingressosPeca1.getText() + " " + estatisticas.getVendasPeca1());
         ingressosPeca2.setText(ingressosPeca2.getText() + " " + estatisticas.getVendasPeca2());
         ingressosPeca3.setText(ingressosPeca3.getText() + " " + estatisticas.getVendasPeca3());
-        ticketMedioLabel.setText(ticketMedioLabel.getText() + " " + String.format("%.2f", estatisticas.getTicketMedioPorCliente()));
-        double[] receitaMediaAreas = estatisticas.calcularReceitaMediaPorArea();
+        ticketMedioLabel.setText(ticketMedioLabel.getText() + " " + String.format("%.2f", estatisticas.getTicketMedio()));
+        double[] receitaMediaAreas = estatisticas.getReceitasPorArea();
         totalPlatALabel.setText(totalPlatALabel.getText() + estatisticas.getVendasPlatA());
         totalPlatBLabel.setText(totalPlatBLabel.getText() + estatisticas.getVendasPlatB());
         totalFrisaLabel.setText(totalFrisaLabel.getText() + estatisticas.getVendasFrisa());
@@ -110,6 +111,7 @@ public class TelaEstatisticasController {
         lucroManhaLabel.setText(lucroManhaLabel.getText() + String.format("%.2f", estatisticas.getLucroManha()));
         lucroTardeLabel.setText(lucroTardeLabel.getText() + String.format("%.2f", estatisticas.getLucroTarde()));
         lucroNoiteLabel.setText(lucroNoiteLabel.getText() + String.format("%.2f", estatisticas.getLucroNoite()));
+        registrarNoLog("Estatísticas visualizadas");
     }
 
     public void telaInicialTrigger() throws IOException {
@@ -163,36 +165,36 @@ public class TelaEstatisticasController {
             componente.setManaged(false);
         }
         switch (filtroArea) {
-            case PLATEIA_A:
+            case PLATEIA_A -> {
                 receitaMediaPlateiaA.setVisible(true);
                 receitaMediaPlateiaA.setManaged(true);
                 totalPlatALabel.setVisible(true);
                 totalPlatALabel.setManaged(true);
-                break;
-            case PLATEIA_B:
+            }
+            case PLATEIA_B -> {
                 receitaMediaPlateiaB.setVisible(true);
                 receitaMediaPlateiaB.setManaged(true);
                 totalPlatBLabel.setVisible(true);
                 totalPlatBLabel.setManaged(true);
-                break;
-            case FRISA1:
+            }
+            case FRISA1 -> {
                 receitaMediaFrisa.setVisible(true);
                 receitaMediaFrisa.setManaged(true);
                 totalFrisaLabel.setVisible(true);
                 totalFrisaLabel.setManaged(true);
-                break;
-            case CAMAROTE1:
+            }
+            case CAMAROTE1 -> {
                 receitaMediaCamarote.setVisible(true);
                 receitaMediaCamarote.setManaged(true);
                 totalCamaroteLabel.setVisible(true);
                 totalCamaroteLabel.setManaged(true);
-                break;
-            case BALCAO_NOBRE:
+            }
+            case BALCAO_NOBRE -> {
                 receitaMediaBalcao.setVisible(true);
                 receitaMediaBalcao.setManaged(true);
                 totalBalcaoLabel.setVisible(true);
                 totalBalcaoLabel.setManaged(true);
-                break;
+            }
         }
     }
 
@@ -208,30 +210,30 @@ public class TelaEstatisticasController {
             componente.setManaged(false);
         }
         switch (filtroSessao) {
-            case MANHA:
+            case MANHA -> {
                 totalManhaLabel.setVisible(true);
                 totalManhaLabel.setManaged(true);
                 receitaTotalManhaLabel.setVisible(true);
                 receitaTotalManhaLabel.setManaged(true);
                 lucroManhaLabel.setVisible(true);
                 lucroManhaLabel.setManaged(true);
-                break;
-            case TARDE:
+            }
+            case TARDE -> {
                 totalTardeLabel.setVisible(true);
                 totalTardeLabel.setManaged(true);
                 receitaTotalTardeLabel.setVisible(true);
                 receitaTotalTardeLabel.setManaged(true);
                 lucroTardeLabel.setVisible(true);
                 lucroTardeLabel.setManaged(true);
-                break;
-            case NOITE:
+            }
+            case NOITE -> {
                 totalNoiteLabel.setVisible(true);
                 totalNoiteLabel.setManaged(true);
                 receitaTotalNoiteLabel.setVisible(true);
                 receitaTotalNoiteLabel.setManaged(true);
                 lucroNoiteLabel.setVisible(true);
                 lucroNoiteLabel.setManaged(true);
-                break;
+            }
         }
     }
 
@@ -311,55 +313,92 @@ public class TelaEstatisticasController {
     private void exportarCsv() {
         File estatisticaExportada = new File("src/main/resources/out/estatisticas.csv");
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(estatisticaExportada))) {
-//            bw.write(BUNDLE.getString("estatisticas_maiscula"));
             bw.write("Estatística,Valor");
             bw.newLine();
-//            bw.write(BUNDLE.getString("total_vendas") + " " + estatisticas.calcularTotalVendas());
+            bw.write("Total de Vendas," + estatisticas.getTotalVendas());
             bw.newLine();
-//            bw.write(BUNDLE.getString("peca_mais_vendida") + " " + estatisticas.calcularPecaMaisVendida());
-            bw.write("Peça Mais Vendida," + estatisticas.calcularPecaMaisVendida());
+            bw.write("Peça com mais ingressos vendidos," + estatisticas.getPecaMaisVendida());
             bw.newLine();
-//            bw.write(BUNDLE.getString("peca_menos_vendida") + " " + estatisticas.calcularPecaMenosVendida());
-            bw.write("Peça Menos Vendida," + estatisticas.calcularPecaMenosVendida());
+            bw.write("Peça com menos ingressos vendidos," + estatisticas.getPecaMenosVendida());
             bw.newLine();
-//            bw.write(BUNDLE.getString("sessao_mais_ocupada") + " " + estatisticas.calcularSessaoMaisOcupada());
-            bw.write("Sessão Mais Ocupada," + estatisticas.calcularSessaoMaisOcupada());
+            bw.write("Sessão com maior ocupação," + estatisticas.getSessaoMaisOcupada());
             bw.newLine();
-//            bw.write(BUNDLE.getString("sessao_menos_ocupada") + " " + estatisticas.calcularSessaoMenosOcupada());
-            bw.write("Sessão Menos Ocupada," + estatisticas.calcularSessaoMenosOcupada());
+            bw.write("Sessão com menor ocupação," + estatisticas.getSessaoMenosOcupada());
             bw.newLine();
-//            bw.write(BUNDLE.getString("lucro_medio_peca1") + estatisticas.getLucroMedioWicked());
-            bw.write("Lucro Médio (Wicked)," + estatisticas.getLucroPeca1());
+            bw.write("Ticket Médio," + String.format("%.2f", estatisticas.getTicketMedio()));
             bw.newLine();
-//            bw.write(BUNDLE.getString("lucro_medio_peca2") + estatisticas.getLucroMedioReiLeao());
-            bw.write("Lucro Médio (Rei Leão)," + estatisticas.getLucroPeca2());
+            bw.write("Ingressos vendidos para a peça 1 (" + pecas.get(0).getNome() + ")," + estatisticas.getVendasPeca1());
             bw.newLine();
-//            bw.write(BUNDLE.getString("lucro_medio_peca3") + estatisticas.getLucroMedioAuto());
-            bw.write("Lucro Médio (Auto da Compadecida)," + estatisticas.getLucroPeca3());
+            bw.write("Lucro da peça 1 (" + pecas.get(0).getNome() +")," + String.format("%.2f",estatisticas.getLucroPeca1()));
             bw.newLine();
-//            bw.write(BUNDLE.getString("sessao_mais_vendida_peca1") + " " + estatisticas.getSessaoMaisLucrativaWicked());
-            bw.write("Sessão Mais Vendida (Wicked)," + estatisticas.getSessaoMaisLucrativaWicked());
+            bw.write("Receita total da peça 1 (" + pecas.get(0).getNome() + ")," + String.format("%.2f", estatisticas.getReceitaPeca1()));
             bw.newLine();
-//            bw.write(BUNDLE.getString("sessao_menos_vendida_peca1") + " " + estatisticas.getSessaoMenosLucrativaWicked());
-            bw.write("Sessão Menos Vendida (Wicked)," + estatisticas.getSessaoMenosLucrativaWicked());
+            bw.write("Sessão mais lucrativa da peça 1 (" + pecas.get(0).getNome() + ")," + estatisticas.getSessaoMaisLucrativaPeca1());
             bw.newLine();
-//            bw.write(BUNDLE.getString("sessao_mais_vendida_peca2") + " " + estatisticas.getSessaoMaisLucrativaReiLeao());
-            bw.write("Sessão Mais Vendida (Rei Leão)," + estatisticas.getSessaoMaisLucrativaReiLeao());
+            bw.write("Sessão menos lucrativa da peça 1 (" + pecas.get(0).getNome() + ")," + estatisticas.getSessaoMenosLucrativaPeca1());
             bw.newLine();
-//            bw.write(BUNDLE.getString("sessao_menos_vendida_peca2") + " " + estatisticas.getSessaoMenosLucrativaReiLeao());
-            bw.write("Sessão Menos Vendida (Rei Leão)," + estatisticas.getSessaoMenosLucrativaReiLeao());
+            bw.write("Ingressos vendidos para a peça 2 (" + pecas.get(3).getNome() + ")," + estatisticas.getVendasPeca2());
             bw.newLine();
-//            bw.write(BUNDLE.getString("sessao_mais_vendida_peca3") +   " "  + estatisticas.getSessaoMaisLucrativaAuto());
-            bw.write("Sessão Mais Vendida (Auto da Compadecida)," + estatisticas.getSessaoMaisLucrativaAuto());
+            bw.write("Lucro da peça 2 (" + pecas.get(3).getNome() + ")," + String.format("%.2f", estatisticas.getLucroPeca2()));
             bw.newLine();
-//            bw.write(BUNDLE.getString("sessao_menos_vendida_peca3") + " "  + estatisticas.getSessaoMenosLucrativaAuto());
-            bw.write("Sessão Menos Vendida (Auto da Compadecida)," + estatisticas.getSessaoMenosLucrativaAuto());
+            bw.write("Receita total da peça 2 (" + pecas.get(3).getNome() + ")," + String.format("%.2f", estatisticas.getReceitaPeca2()));
+            bw.newLine();
+            bw.write("Sessão mais lucrativa da peça 2 (" + pecas.get(3).getNome() + ")," + estatisticas.getSessaoMaisLucrativaPeca2());
+            bw.newLine();
+            bw.write("Sessão menos lucrativa da peça 2 (" + pecas.get(3).getNome() + ")," + estatisticas.getSessaoMenosLucrativaPeca2());
+            bw.newLine();
+            bw.write("Ingressos vendidos para a peça 3 (" + pecas.get(6).getNome() + ")," + estatisticas.getVendasPeca3());
+            bw.newLine();
+            bw.write("Lucro da peça 3 (" + pecas.get(6).getNome() + ")," + String.format("%.2f", estatisticas.getLucroPeca3()));
+            bw.newLine();
+            bw.write("Receita total da peça 3 (" + pecas.get(6).getNome() + ")," + String.format("%.2f", estatisticas.getReceitaPeca3()));
+            bw.newLine();
+            bw.write("Sessão mais lucrativa da peça 3 (" + pecas.get(6).getNome() + ")," + estatisticas.getSessaoMaisLucrativaPeca3());
+            bw.newLine();
+            bw.write("Sessão menos lucrativa da peça 3 (" + pecas.get(6).getNome() + ")," + estatisticas.getSessaoMenosLucrativaPeca3());
+            bw.newLine();
+            bw.write("Ingressos vendidos na plateia A," + estatisticas.getVendasPlatA());
+            bw.newLine();
+            bw.write("Receita da plateia A," + String.format("%.2f", estatisticas.getReceitasPorArea()[0]));
+            bw.newLine();
+            bw.write("Ingressos vendidos na plateia B," + estatisticas.getVendasPlatB());
+            bw.newLine();
+            bw.write("Receita da plateia B," + String.format("%.2f", estatisticas.getReceitasPorArea()[1]));
+            bw.newLine();
+            bw.write("Ingressos vendidos nas frisas," + estatisticas.getVendasFrisa());
+            bw.newLine();
+            bw.write("Receita da frisa," + String.format("%.2f", estatisticas.getReceitasPorArea()[3]));
+            bw.newLine();
+            bw.write("Ingressos vendidos no camarote," + estatisticas.getVendasCamarote());
+            bw.newLine();
+            bw.write("Receita do camarote," + String.format("%.2f", estatisticas.getReceitasPorArea()[2]));
+            bw.newLine();
+            bw.write("Ingressos vendidos no balcão nobre," + estatisticas.getVendasBalcao());
+            bw.newLine();
+            bw.write("Receita do balcão nobre," + String.format("%.2f", estatisticas.getReceitasPorArea()[4]));
+            bw.newLine();
+            bw.write("Ingressos vendidos de manhã," + estatisticas.getVendasManha());
+            bw.newLine();
+            bw.write("Receita total de manhã," + String.format("%.2f", estatisticas.getReceitaManha()));
+            bw.newLine();
+            bw.write("Lucro de manhã," + String.format("%.2f", estatisticas.getLucroManha()));
+            bw.newLine();
+            bw.write("Ingressos vendidos à tarde," + estatisticas.getVendasTarde());
+            bw.newLine();
+            bw.write("Receita total à tarde," + String.format("%.2f", estatisticas.getReceitaTarde()));
+            bw.newLine();
+            bw.write("Lucro à tarde," + String.format("%.2f", estatisticas.getLucroTarde()));
+            bw.newLine();
+            bw.write("Ingressos vendidos à noite," + estatisticas.getVendasNoite());
+            bw.newLine();
+            bw.write("Receita total à noite," + String.format("%.2f", estatisticas.getReceitaNoite()));
+            bw.newLine();
+            bw.write("Lucro à noite," + String.format("%.2f", estatisticas.getLucroNoite()));
+            bw.newLine();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle(BUNDLE.getString("sucesso_alerta"));
             alert.setTitle("Sucesso");
             alert.setHeaderText(null);
-//            alert.setContentText(BUNDLE.getString("sucesso_estatisticas"));
             alert.setContentText("Estatisticas exportadas com sucesso!");
 
             Scene cenaAlerta = alert.getDialogPane().getScene();
@@ -368,7 +407,7 @@ public class TelaEstatisticasController {
             if (contentLabel != null) {
                 contentLabel.setStyle("-fx-text-fill: white;");
             }
-
+            registrarNoLog("Estatísticas exportadas");
             alert.showAndWait();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -415,5 +454,9 @@ public class TelaEstatisticasController {
                 return null;
             }
         });
+    }
+
+    private void registrarNoLog(String mensagem) {
+        Logging.registrarEvento(mensagem);
     }
 }

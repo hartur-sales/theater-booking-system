@@ -5,7 +5,11 @@ import hmd.teatroABC.model.entities.Ingresso;
 import hmd.teatroABC.model.entities.Pessoa;
 import hmd.teatroABC.model.entities.Teatro;
 import hmd.teatroABC.model.objects.AreaUtil;
+import hmd.teatroABC.util.CpfUtil;
 import hmd.teatroABC.util.FXMLLoaderUtil;
+import hmd.teatroABC.util.Logging;
+import hmd.teatroABC.util.NumeroUtil;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -16,15 +20,13 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static hmd.teatroABC.model.objects.AreaUtil.getAreaPorIdentificador;
 import static hmd.teatroABC.model.entities.Teatro.TELA_COMPRA_FINALIZADA;
 import static hmd.teatroABC.model.entities.Teatro.TELA_SELECIONAR_ASSENTOS;
+import static hmd.teatroABC.model.objects.AreaUtil.getAreaPorIdentificador;
 
 /**
  * @author Davy Lopes, Murilo Nunes, Hartur Sales
@@ -72,16 +74,6 @@ public class FinalizarCompraController {
                 "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO");
         ObservableList<String> list = FXCollections.observableArrayList(estados);
         estadoBox.setItems(list);
-
-        /*
-           cepField.textProperty().addListener((observable, oldValue, newValue) -> {
-            newValue = newValue.replaceAll("\\D", "");
-            if (newValue.length() > 5) {
-                newValue = newValue.substring(0, 5) + "-" + newValue.substring(5, Math.min(newValue.length(), 8));
-            }
-            cepField.setText(newValue);
-        });
-        */
         criarListeners();
     }
 
@@ -179,13 +171,12 @@ public class FinalizarCompraController {
         Pessoa pessoaCriada = cadastroFinal();
         criarIngresso(pessoaCriada);
         Teatro.adicionarPessoa(pessoaCriada);
-        Teatro.escreverLog();
         Teatro.atualizarPecas();
         FXMLLoader compraFinalizada = FXMLLoaderUtil.loadFXML(TELA_COMPRA_FINALIZADA);
         Scene compraFinalizadaScene = new Scene(compraFinalizada.getRoot());
         CompraFinalizadaController controller = compraFinalizada.getController();
         controller.setStageAnterior((Stage) finalizarBotao.getScene().getWindow());
-        controller.setCpfDigitado(cpfField.getText());
+        controller.setCpfDigitado(CpfUtil.removerMascaraCpf(cpfField.getText()));
         Stage compraFinalizadaStage = new Stage();
         compraFinalizadaStage.initOwner(finalizarBotao.getScene().getWindow());
         compraFinalizadaStage.initModality(Modality.WINDOW_MODAL);
@@ -194,14 +185,14 @@ public class FinalizarCompraController {
     }
 
     public Pessoa cadastroFinal() {
-        String cpf = cpfField.getText();
+        String cpf = CpfUtil.removerMascaraCpf(cpfField.getText());
 
         boolean naoFidelidade = fidelidadeNao.isSelected();
         boolean escolheuFidelidade = fidelidadeSim.isSelected();
 
-        if (naoFidelidade && Pessoa.validarCPF(Long.parseLong(cpf))) {
+        if (naoFidelidade && CpfUtil.validarCPF(Long.parseLong(cpf))) {
             return new Pessoa(cpf, false);
-        } else if (escolheuFidelidade && Pessoa.validarCPF(Long.parseLong(cpf))) {
+        } else if (escolheuFidelidade && CpfUtil.validarCPF(Long.parseLong(cpf))) {
             return new Pessoa(cpf, true, nomeField.getText(), telefoneField.getText(), ruaField.getText()
                     + " " + numeroField.getText() + " " + complementoField.getText() + " " + cepField.getText() + " " + bairroField.getText()
                     + " " + cidadeField.getText() + " " + estadoBox.getValue(), selecionarData.getValue());
@@ -218,7 +209,7 @@ public class FinalizarCompraController {
             ingressoController.encontrarPeca().adicionarAssento(assento);
             ingressoController.encontrarPeca().aumentarIngressosVendidos();
             pessoa.adicionarIngresso(ing);
-            criarLog(ing, pessoa);
+            registrarNoLog(ing, pessoa);
         }
     }
 
@@ -245,7 +236,7 @@ public class FinalizarCompraController {
         //impede que caracteres não numéricos sejam inseridos no campo
         numeroField.textProperty().addListener((_, _, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                numeroField.setText(newValue.replaceAll("\\D", ""));
+                numeroField.setText(NumeroUtil.removerDigitosNaoNumericos(newValue));
             }
             if (numeroField.getText().length() > 3) {
                 numeroField.setText(cpfField.getText().substring(0, 3));
@@ -253,16 +244,23 @@ public class FinalizarCompraController {
         });
 
         cpfField.textProperty().addListener((_, _, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                cpfField.setText(newValue.replaceAll("\\D", ""));
+            if (newValue == null) return;
+
+            String formatted = CpfUtil.adicionarMascaraTextField(newValue);
+            String digits = CpfUtil.removerMascaraCpf(formatted);
+
+            if (!formatted.equals(newValue)) {
+                Platform.runLater(
+                        () -> {
+                            cpfField.setText(formatted);
+                            cpfField.positionCaret(formatted.length());
+                        }
+                );
+                return;
             }
 
-            if (cpfField.getText().length() > 11) {
-                cpfField.setText(cpfField.getText().substring(0, 11));
-            }
-
-            if (cpfField.getText().length() == 11) {
-                cpfValido = Pessoa.validarCPF(Long.parseLong(cpfField.getText()));
+            if (digits.length() == 11) {
+                cpfValido = CpfUtil.validarCPF(Long.parseLong(digits));
                 if (!cpfValido) {
                     erroLabel.setVisible(true);
                     erroLabel.setText("CPF inválido");
@@ -275,20 +273,30 @@ public class FinalizarCompraController {
         });
 
         cepField.textProperty().addListener((_, _, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                cepField.setText(newValue.replaceAll("\\D", ""));
+            if (newValue == null) return;
+            String formatted = NumeroUtil.aplicarMascaraCep(newValue);
+            if (!formatted.equals(newValue)) {
+                Platform.runLater(() -> {
+                    cepField.setText(formatted);
+                    cepField.positionCaret(formatted.length());
+                });
             }
         });
 
         telefoneField.textProperty().addListener((_, _, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                telefoneField.setText(newValue.replaceAll("\\D", ""));
+            if (newValue == null) return;
+            String formatted = NumeroUtil.aplicarMascaraTelefone(newValue);
+            if (!formatted.equals(newValue)) {
+                Platform.runLater(() -> {
+                    telefoneField.setText(formatted);
+                    telefoneField.positionCaret(formatted.length());
+                });
             }
         });
     }
 
     private void desabilitarFinalizarCompra() {
-        boolean cpfPreenchido = cpfField.getText().length() == 11;
+        boolean cpfPreenchido = cpfField.getText().length() == 14;
         boolean pagamentoSelecionado = pagamento.getSelectedToggle() != null;
 
         if (cpfPreenchido && fidelidadeNao.isSelected()) {
@@ -310,21 +318,8 @@ public class FinalizarCompraController {
         }
     }
 
-    private void criarLog(Ingresso ing, Pessoa pessoa) {
-        String logMessage = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) +
-                " -> " +
-                pessoa.getCpf() +
-                " " +
-                pessoa.isEhFidelidade() +
-                " - ASSENTO: " +
-                ing.getAssento() +
-                ", AREA: " +
-                ing.getArea().getNomeLocal() +
-                ", PECA: " +
-                ing.getPeca().getNome() +
-                ", PAGAMENTO: " + getMetodoPagamento();
-
-        Teatro.log.add(logMessage);
+    private void registrarNoLog(Ingresso ing, Pessoa pessoa) {
+        Logging.registrarCompra(ing, pessoa, getMetodoPagamento());
     }
 
     private String getMetodoPagamento() {

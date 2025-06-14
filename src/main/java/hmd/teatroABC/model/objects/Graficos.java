@@ -1,57 +1,39 @@
 package hmd.teatroABC.model.objects;
 
-import hmd.teatroABC.model.entities.Area;
 import hmd.teatroABC.model.entities.Peca;
 import hmd.teatroABC.model.entities.Sessao;
 import hmd.teatroABC.model.entities.Teatro;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 
 public class Graficos {
-    private final Map<String, Map<Sessao, Integer>> vendasPorPecaESessao = new HashMap<>();
+    private final Map<String, Map<Sessao, Double>> vendasPorPecaESessao = new HashMap<>();
     private final Map<Sessao, Integer> totalPorSessao = new EnumMap<>(Sessao.class);
-    private final List<Peca> pecasEstatisticas = new ArrayList<>();
-    private final int valorIngresso = 50;
+    private final List<Peca> pecas = Teatro.getPecas();
+    private final Estatistica estatistica = new Estatistica();
 
     public Graficos() {
-        carregarDados(Teatro.pecasFile);
+        carregarDados();
     }
 
-    private void carregarDados(File caminho) {
-        try (BufferedReader br = new BufferedReader(new FileReader(caminho))) {
-            String linha;
-            while ((linha = br.readLine()) != null) {
-                String[] partes = linha.split(",", 6);
-                if (partes.length < 4) continue;
+    private void carregarDados() {
+        totalPorSessao.put(Sessao.MANHA, estatistica.getVendasManha());
+        totalPorSessao.put(Sessao.TARDE, estatistica.getVendasTarde());
+        totalPorSessao.put(Sessao.NOITE, estatistica.getVendasNoite());
 
-                String nomePeca = partes[0];
-                Sessao sessao = Sessao.valueOf(partes[1]);
-                int vendidos = Integer.parseInt(partes[2]);
-                String assentosStr = partes[3];
+        for (Peca peca : pecas) {
+            String nomePeca = peca.getNome();
+            Sessao sessao = peca.getSessao();
+            double total = 0;
 
-                List<String> assentos = assentosStr.isEmpty()
-                        ? new ArrayList<>()
-                        : Arrays.asList(assentosStr.split(";"));
-
-                // Cria Peca fictícia para guardar os assentos
-                Peca p = new Peca(null, sessao, nomePeca, "");
-                p.setAssentos(assentos);
-                pecasEstatisticas.add(p);
-
-                // Atualiza vendas por sessão
-                totalPorSessao.merge(sessao, vendidos, Integer::sum);
-
-                // Atualiza vendas por peça e sessão
-                vendasPorPecaESessao
-                        .computeIfAbsent(nomePeca, k -> new EnumMap<>(Sessao.class))
-                        .merge(sessao, vendidos, Integer::sum);
+            for (String assento : peca.getAssentos()) {
+                double preco = AreaUtil.getPrecoPorIdentificador(assento.charAt(0));
+                total += preco;
             }
-        } catch (IOException | IllegalArgumentException e) {
-            System.err.println("Erro ao carregar dados: " + e.getMessage());
+
+            vendasPorPecaESessao
+                    .computeIfAbsent(nomePeca, _ -> new EnumMap<>(Sessao.class))
+                    .merge(sessao, total, Double::sum);
         }
     }
 
@@ -59,17 +41,16 @@ public class Graficos {
         return totalPorSessao.getOrDefault(sessao, 0);
     }
 
-    public int getLucroPorPecaESessao(String nomePeca, Sessao sessao) {
-        int vendidos = vendasPorPecaESessao
+    public double getLucroPorPecaESessao(String nomePeca, Sessao sessao) {
+        return vendasPorPecaESessao
                 .getOrDefault(nomePeca, new EnumMap<>(Sessao.class))
-                .getOrDefault(sessao, 0);
-        return vendidos * valorIngresso;
+                .getOrDefault(sessao, 0.0);
     }
 
     public int getTotalArea(String area) {
         int qtdA = 0, qtdB = 0, qtdC = 0, qtdF = 0, qtdM = 0;
 
-        for (Peca peca : pecasEstatisticas) {
+        for (Peca peca : pecas) {
             List<String> assentos = peca.getAssentos();
             if (assentos == null) continue;
 
@@ -95,9 +76,5 @@ public class Graficos {
             case "N" -> qtdM;
             default -> 0;
         };
-    }
-
-    public Set<String> getNomesDasPecas() {
-        return vendasPorPecaESessao.keySet();
     }
 }
