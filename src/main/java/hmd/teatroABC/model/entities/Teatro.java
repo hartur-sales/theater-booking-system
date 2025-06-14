@@ -15,7 +15,8 @@ import static hmd.teatroABC.model.objects.AreaUtil.getAreaPorIdentificador;
 
 public class Teatro {
     private static final List<Peca> pecas = new ArrayList<>();
-    public static List<Pessoa> pessoas = new ArrayList<>();
+    private static final List<Pessoa> pessoas = new ArrayList<>();
+    private static final List<Ingresso> ingressos = new ArrayList<>();
     public static List<String> log = new ArrayList<>();
     public static File pecasFile = new File("src/main/java/hmd/teatroABC/model/database/pecas.txt");
     static File pessoasFile = new File("src/main/java/hmd/teatroABC/model/database/pessoas.txt");
@@ -144,6 +145,7 @@ public class Teatro {
                     Peca peca = buscarPeca(nomePeca, sessao);
                     if (peca != null) {
                         Ingresso ingresso = new Ingresso(getAreaPorIdentificador(identificador, segundoNumero), peca, assento, preco);
+                        ingressos.add(ingresso);
                         pessoa.adicionarIngresso(ingresso);
                     } else {
                         System.err.println("Peça não encontrada para ingresso: " + ingressoStr);
@@ -168,6 +170,19 @@ public class Teatro {
         peca.adicionarAssentos(assentosOcupados);
         peca.setIngressosVendidos(ingressosVendidos);
         return peca;
+    }
+
+    public static void adicionarIngresso(Ingresso ingresso) {
+        ingressos.add(ingresso);
+    }
+
+    public static void adicionarAoLog(String mensagem) {
+        log.add(mensagem);
+        escreverLog();
+    }
+
+    public static List<Ingresso> getIngressos() {
+        return new ArrayList<>(ingressos);
     }
 
     public static List<Peca> getPecas() {

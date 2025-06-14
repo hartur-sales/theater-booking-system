@@ -25,8 +25,7 @@ public class Logging {
                 ing.getPeca().getNome() +
                 ", PAGAMENTO: " + metodoPagamento;
 
-        Teatro.log.add(logMessage);
-        Teatro.escreverLog();
+        Teatro.adicionarAoLog(logMessage);
     }
 
     /**
@@ -36,7 +35,6 @@ public class Logging {
         String logMessage = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) +
                 " -> " + mensagem;
 
-        Teatro.log.add(logMessage);
-        Teatro.escreverLog();
+        Teatro.adicionarAoLog(logMessage);
     }
 }

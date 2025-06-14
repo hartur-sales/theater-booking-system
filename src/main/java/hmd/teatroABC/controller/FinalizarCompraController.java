@@ -208,6 +208,7 @@ public class FinalizarCompraController {
             Ingresso ing = new Ingresso(getAreaPorIdentificador(identificador, segundoNumero), ingressoController.encontrarPeca(), assento, preco);
             ingressoController.encontrarPeca().adicionarAssento(assento);
             ingressoController.encontrarPeca().aumentarIngressosVendidos();
+            Teatro.adicionarIngresso(ing);
             pessoa.adicionarIngresso(ing);
             registrarNoLog(ing, pessoa);
         }
