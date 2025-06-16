@@ -1,49 +1,55 @@
 # Theater booking system
 
-This project allows users to purchase tickets for 3 plays at a theater, print them, and generate statistics based on sales. 
+Este projeto permite que usuários comprem ingressos para 3 peças em um teatro, imprimam esses ingressos e gerem estatísticas baseadas nas vendas.
 
-## Functionalities
+![Showcase](screenshots/showcase.gif)
 
-- **Buy Tickets**: Users can choose from three plays (Wicked, The Lion King and Auto da Compadecida, by default), available in three shifts, and reserve seats.
-- **Choose different areas**: The theater has five distinct areas (Audience A, Audience B, Frieze, Box, and Grand Balcony), each with different prices and seat availability for the user to choose from.
-- **Print ticket**: Users can enter their CPF (Brazilian tax ID) and view all the tickets they've purchased.
-- **Show stats**: The system provides general sales statistics for the theater as well as individual stats for each play.
-- **Export data**: Users can easily export both their bought tickets and the theater's sales statistics to a `.csv` file.
+## Funcionalidades
+
+- **Comprar Ingressos**: Usuários podem escolher entre três peças (Wicked, O Rei Leão e Auto da Compadecida, por padrão), disponíveis em três turnos, e reservar assentos.
+- **Escolher diferentes áreas**: O teatro possui cinco áreas distintas (Plateia A, Plateia B, Frisa, Camarote e Balcâo Nobre), cada uma com preços e disponibilidade de assentos diferentes para o usuário escolher.
+- **Imprimir ingresso**: Usuários podem informar seu CPF e visualizar todos os ingressos que compraram.
+- **Mostrar estatísticas**: O sistema fornece estatísticas gerais de vendas do teatro, além de estatísticas individuais para cada peça, área e sessão, podendo escolher filtros para uma visualização mais específica.
+- **Exportar dados**: Usuários podem facilmente exportar tanto os ingressos comprados quanto as estatísticas de vendas do teatro para um arquivo `.csv`.
 
 ## Screenshots
 
-![Initial Screen](screenshots/tela_inicial.png)
+![Tela inicial](screenshots/tela_inicial.png)
 
-![Choose seats](screenshots/tela_comprar.png)
+![Escolher assentos](screenshots/tela_comprar.png)
 
-![Print tickets string](screenshots/imprimir_ingresso.png)
+![Imprimir ingressos](screenshots/imprimir_ingresso.png)
 
-![Sales stats](screenshots/estatisticas.png)
+![Estatísticas de Venda](screenshots/estatisticas.png)
 
-## Installing
+## Instalação
 
-### Prerequisites
+### Pré-requisitos
 
 - Java 23 or newer installed.
 
-### How to Install
-#### IDE Setup
-1. Make sure Git is installed.
-2. Go to the directory where you want the project folder to be.
-3. Clone the repository:
+### Como instalar
+#### Pelo Git CLI
+1. Certifique-se de que o Git está instalado.
+2. Vá até o diretório onde deseja que a pasta do projeto seja criada.
+3. Clone o repositório:
 ```bash
   git clone https://github.com/muriloonunes/theater-booking-system.git
 ```
-4. Open the project in your preferred IDE.
+4. Abra o projeto na sua IDE favorita.
 
-## Made with
+## Feito com
 
-- **Java**: Robust, object-oriented programming language.
-- **JavaFX**: Framework for building modern, responsive graphic interfaces.
-- **SceneBuilder**: Visual tool for creating and organizing JavaFX interfaces.
+- **Java**: Linguagem de programação robusta e orientada a objetos.
+- **JavaFX**: Framework para construir interfaces gráficas modernas e responsivas.
+- **SceneBuilder**: Ferramenta visual para criar e organizar interfaces JavaFX.
 
-## Authors
+## Autores
 
 - **Murilo Nunes** [muriloonunes](https://github.com/muriloonunes/)
 - **Hartur Sales** [hartur-sales](https://github.com/hartur-sales)
 - **Davy Lopes** [DavyL0](https://github.com/DavyL0)
+
+## Licença
+
+Este projeto está licenciado sob a **GNU General Public License v3.0**.
