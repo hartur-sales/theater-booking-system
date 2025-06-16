@@ -1,4 +1,4 @@
-package hmd.teatroABC.model.objects;
+package hmd.teatroABC.util;
 
 import hmd.teatroABC.model.entities.Area;
 

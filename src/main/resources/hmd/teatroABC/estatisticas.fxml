@@ -137,7 +137,18 @@
                         <Label fx:id="totalNoiteLabel" layoutX="10.0" layoutY="62.0" text="Ingressos vendidos à noite: " />
                         <Label fx:id="receitaTotalNoiteLabel" layoutX="10.0" layoutY="88.0" text="Receita total à noite: R$" />
                         <Label fx:id="lucroNoiteLabel" layoutX="10.0" layoutY="140.0" text="Lucro da noite: R$" />
+                        <Label fx:id="pecaMaisVistaSessao" layoutX="10.0" layoutY="221.0" text="Peça mais vista" />
                      </children></VBox>
+               </children>
+            </VBox>
+            <VBox fx:id="filtroCard" alignment="CENTER" layoutX="10.0" layoutY="962.0" spacing="10.0" styleClass="card">
+               <children>
+                  <Label fx:id="tituloFiltroLabel" styleClass="campo-label" text="Filtros">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <VBox fx:id="filtroCardBox" spacing="5.0" />
                </children>
             </VBox>
             </FlowPane>

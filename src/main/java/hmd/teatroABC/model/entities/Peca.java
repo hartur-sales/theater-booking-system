@@ -16,7 +16,7 @@ import static hmd.teatroABC.util.FXMLLoaderUtil.BUNDLE;
  */
 
 public class Peca {
-    private final Object posterImg;
+    private final Image posterImg;
     private Sessao sessao;
     private String nome;
     private String descricao;
@@ -29,7 +29,7 @@ public class Peca {
         this.poster = poster;
         this.sessao = sessao;
         this.nome = nome;
-        this.posterImg = (poster != null) ? new Image(poster.toURI().toString()) : null;
+        this.posterImg = new Image(poster.toURI().toString());
         this.descricao = descricao;
     }
 
@@ -42,7 +42,7 @@ public class Peca {
     }
 
     public Image getPosterImg() {
-        return (Image) posterImg;
+        return posterImg;
     }
 
     public Sessao getSessao() {
@@ -92,6 +92,4 @@ public class Peca {
     public static String traduzirNome(String nomeOriginal) {
         return BUNDLE.containsKey(nomeOriginal) ? BUNDLE.getString(nomeOriginal) : nomeOriginal;
     }
-
-
 }

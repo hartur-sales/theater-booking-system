@@ -26,7 +26,7 @@ Este projeto permite que usuários comprem ingressos para 3 peças em um teatro,
 
 ### Pré-requisitos
 
-- Java 23 or newer installed.
+- Java 23 ou mais recente instalado.
 
 ### Como instalar
 #### Pelo Git CLI

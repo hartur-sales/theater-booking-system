@@ -45,6 +45,7 @@ public class Ingresso {
                 "area=" + area +
                 ", peca=" + peca +
                 ", assento='" + assento + '\'' +
+                ", preco=" + preco +
                 '}';
     }
 }

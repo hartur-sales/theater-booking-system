@@ -25,18 +25,16 @@ public class Logging {
                 ing.getPeca().getNome() +
                 ", PAGAMENTO: " + metodoPagamento;
 
-        Teatro.log.add(logMessage);
-        Teatro.escreverLog();
+        Teatro.adicionarAoLog(logMessage);
     }
 
     /**
-     * Registra uma entrada no log do sistema quando um evento acontece no sistema.
+     * Registra uma entrada no log do sistema quando um evento acontece.
      */
     public static void registrarEvento(String mensagem) {
         String logMessage = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) +
                 " -> " + mensagem;
 
-        Teatro.log.add(logMessage);
-        Teatro.escreverLog();
+        Teatro.adicionarAoLog(logMessage);
     }
 }

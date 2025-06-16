@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static hmd.teatroABC.model.objects.AreaUtil.getAreaPorIdentificador;
+import static hmd.teatroABC.util.AreaUtil.getAreaPorIdentificador;
 
 /**
  * @author Davy Lopes, Murilo Nunes, Hartur Sales
@@ -15,11 +15,12 @@ import static hmd.teatroABC.model.objects.AreaUtil.getAreaPorIdentificador;
 
 public class Teatro {
     private static final List<Peca> pecas = new ArrayList<>();
-    public static List<Pessoa> pessoas = new ArrayList<>();
-    public static List<String> log = new ArrayList<>();
-    public static File pecasFile = new File("src/main/java/hmd/teatroABC/model/database/pecas.txt");
-    static File pessoasFile = new File("src/main/java/hmd/teatroABC/model/database/pessoas.txt");
-    static File logFile = new File("src/main/resources/out/log.csv");
+    private static final List<Pessoa> pessoas = new ArrayList<>();
+    private static final List<Ingresso> ingressos = new ArrayList<>();
+    private static final List<String> log = new ArrayList<>();
+    private static final File pecasFile = new File("src/main/java/hmd/teatroABC/model/database/pecas.txt");
+    private static final File pessoasFile = new File("src/main/java/hmd/teatroABC/model/database/pessoas.txt");
+    private static final File logFile = new File("src/main/resources/out/log.csv");
 
     public static final String TELA_SELECIONAR_ASSENTOS = "/hmd/teatroABC/tela_selecionar_assentos.fxml";
     public static final String TELA_DIGITAR_CPF = "/hmd/teatroABC/digitar_cpf.fxml";
@@ -144,6 +145,7 @@ public class Teatro {
                     Peca peca = buscarPeca(nomePeca, sessao);
                     if (peca != null) {
                         Ingresso ingresso = new Ingresso(getAreaPorIdentificador(identificador, segundoNumero), peca, assento, preco);
+                        ingressos.add(ingresso);
                         pessoa.adicionarIngresso(ingresso);
                     } else {
                         System.err.println("Peça não encontrada para ingresso: " + ingressoStr);
@@ -168,6 +170,19 @@ public class Teatro {
         peca.adicionarAssentos(assentosOcupados);
         peca.setIngressosVendidos(ingressosVendidos);
         return peca;
+    }
+
+    public static void adicionarIngresso(Ingresso ingresso) {
+        ingressos.add(ingresso);
+    }
+
+    public static void adicionarAoLog(String mensagem) {
+        log.add(mensagem);
+        escreverLog();
+    }
+
+    public static List<Ingresso> getIngressos() {
+        return new ArrayList<>(ingressos);
     }
 
     public static List<Peca> getPecas() {

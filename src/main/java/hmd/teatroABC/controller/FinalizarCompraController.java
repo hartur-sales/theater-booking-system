@@ -4,7 +4,7 @@ import hmd.teatroABC.model.entities.Area;
 import hmd.teatroABC.model.entities.Ingresso;
 import hmd.teatroABC.model.entities.Pessoa;
 import hmd.teatroABC.model.entities.Teatro;
-import hmd.teatroABC.model.objects.AreaUtil;
+import hmd.teatroABC.util.AreaUtil;
 import hmd.teatroABC.util.CpfUtil;
 import hmd.teatroABC.util.FXMLLoaderUtil;
 import hmd.teatroABC.util.Logging;
@@ -26,7 +26,7 @@ import java.util.List;
 
 import static hmd.teatroABC.model.entities.Teatro.TELA_COMPRA_FINALIZADA;
 import static hmd.teatroABC.model.entities.Teatro.TELA_SELECIONAR_ASSENTOS;
-import static hmd.teatroABC.model.objects.AreaUtil.getAreaPorIdentificador;
+import static hmd.teatroABC.util.AreaUtil.getAreaPorIdentificador;
 
 /**
  * @author Davy Lopes, Murilo Nunes, Hartur Sales
@@ -208,6 +208,7 @@ public class FinalizarCompraController {
             Ingresso ing = new Ingresso(getAreaPorIdentificador(identificador, segundoNumero), ingressoController.encontrarPeca(), assento, preco);
             ingressoController.encontrarPeca().adicionarAssento(assento);
             ingressoController.encontrarPeca().aumentarIngressosVendidos();
+            Teatro.adicionarIngresso(ing);
             pessoa.adicionarIngresso(ing);
             registrarNoLog(ing, pessoa);
         }
