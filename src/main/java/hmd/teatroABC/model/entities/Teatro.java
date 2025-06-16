@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static hmd.teatroABC.model.objects.AreaUtil.getAreaPorIdentificador;
+import static hmd.teatroABC.util.AreaUtil.getAreaPorIdentificador;
 
 /**
  * @author Davy Lopes, Murilo Nunes, Hartur Sales
@@ -17,10 +17,10 @@ public class Teatro {
     private static final List<Peca> pecas = new ArrayList<>();
     private static final List<Pessoa> pessoas = new ArrayList<>();
     private static final List<Ingresso> ingressos = new ArrayList<>();
-    public static List<String> log = new ArrayList<>();
-    public static File pecasFile = new File("src/main/java/hmd/teatroABC/model/database/pecas.txt");
-    static File pessoasFile = new File("src/main/java/hmd/teatroABC/model/database/pessoas.txt");
-    static File logFile = new File("src/main/resources/out/log.csv");
+    private static final List<String> log = new ArrayList<>();
+    private static final File pecasFile = new File("src/main/java/hmd/teatroABC/model/database/pecas.txt");
+    private static final File pessoasFile = new File("src/main/java/hmd/teatroABC/model/database/pessoas.txt");
+    private static final File logFile = new File("src/main/resources/out/log.csv");
 
     public static final String TELA_SELECIONAR_ASSENTOS = "/hmd/teatroABC/tela_selecionar_assentos.fxml";
     public static final String TELA_DIGITAR_CPF = "/hmd/teatroABC/digitar_cpf.fxml";

@@ -42,13 +42,14 @@ public class TelaEstatisticasController {
             lucroLabel1, lucroLabel2, lucroLabel3, sessaoMais1Label, sessaoMenos1Label, sessaoMais2Label, sessaoMenos2Label, sessaoMais3Label, sessaoMenos3Label,
             receitaTotalLabel1, receitaTotalLabel2, receitaTotalLabel3, receitaMediaPlateiaA, receitaMediaPlateiaB, receitaMediaFrisa, receitaMediaCamarote, receitaMediaBalcao,
             ingressosPeca1, ingressosPeca2, ingressosPeca3, ticketMedioLabel, totalManhaLabel, totalTardeLabel, totalNoiteLabel, receitaTotalManhaLabel, receitaTotalTardeLabel,
-            receitaTotalNoiteLabel, lucroManhaLabel, lucroTardeLabel, lucroNoiteLabel, totalPlatALabel, totalPlatBLabel, totalFrisaLabel, totalCamaroteLabel, totalBalcaoLabel;
+            receitaTotalNoiteLabel, lucroManhaLabel, lucroTardeLabel, lucroNoiteLabel, totalPlatALabel, totalPlatBLabel, totalFrisaLabel, totalCamaroteLabel, totalBalcaoLabel,
+            pecaMaisVistaSessao, tituloFiltroLabel;
 
     @FXML
     private Button voltarBotao, botaoExportar, botaoGrafico;
 
     @FXML
-    private VBox visaoGeralCard, peca1Card, peca2Card, peca3Card, areasCard, sessaoCard, sessaoCardBox, areasCardBox;
+    private VBox visaoGeralCard, peca1Card, peca2Card, peca3Card, areasCard, sessaoCard, sessaoCardBox, areasCardBox, filtroCard, filtroCardBox;
 
     @FXML
     private ComboBox<String> filtroPecaCombo;
@@ -66,7 +67,16 @@ public class TelaEstatisticasController {
     private final List<Peca> pecas = Teatro.getPecas();
 
     public void initialize() {
+        pecaMaisVistaSessao.setVisible(false);
+        pecaMaisVistaSessao.setManaged(false);
+        filtroCard.setManaged(false);
+        filtroCard.setVisible(false);
         configurarComboBox();
+        popularEstatisticas();
+        registrarNoLog("Estatísticas visualizadas");
+    }
+
+    private void popularEstatisticas() {
         peca1CardTitulo.setText("Peça 1 (" + pecas.get(0).getNome() + ")");
         peca2CardTitulo.setText("Peça 2 (" + pecas.get(3).getNome() + ")");
         peca3CardTitulo.setText("Peça 3 (" + pecas.get(6).getNome() + ")");
@@ -111,7 +121,6 @@ public class TelaEstatisticasController {
         lucroManhaLabel.setText(lucroManhaLabel.getText() + String.format("%.2f", estatisticas.getLucroManha()));
         lucroTardeLabel.setText(lucroTardeLabel.getText() + String.format("%.2f", estatisticas.getLucroTarde()));
         lucroNoiteLabel.setText(lucroNoiteLabel.getText() + String.format("%.2f", estatisticas.getLucroNoite()));
-        registrarNoLog("Estatísticas visualizadas");
     }
 
     public void telaInicialTrigger() throws IOException {
@@ -141,15 +150,58 @@ public class TelaEstatisticasController {
             } else if (filtroPeca.equals(pecas.get(6).getNome())) {
                 mostrarCardUnico(peca3Card);
             }
-        }
-        if (filtroSessao != null && filtroPeca == null && filtroArea == null) {
+        } else if (filtroSessao != null && filtroPeca == null && filtroArea == null) {
             mostrarCardUnico(sessaoCard);
             configurarVisibilidadeLabelSessao(filtroSessao);
-        }
-        if (filtroArea != null && filtroPeca == null && filtroSessao == null) {
+        } else if (filtroArea != null && filtroPeca == null && filtroSessao == null) {
             mostrarCardUnico(areasCard);
             configurarVisibilidadeLabelArea(filtroArea);
+        } else {
+            Estatistica estatisticaFiltros = new Estatistica(filtroPeca, filtroSessao, filtroArea);
+            filtroCardBox.getChildren().clear();
+            mostrarCardUnico(filtroCard);
+            mostrarResultadosFiltrados(estatisticaFiltros, filtroPeca, filtroSessao, filtroArea);
         }
+    }
+
+    private void mostrarResultadosFiltrados(Estatistica estatisticaFiltro, String filtroPeca, Sessao filtroSessao, Area filtroArea) {
+        tituloFiltroLabel.setText("Filtros: " +
+                (filtroPeca != null ? filtroPeca : "") +
+                (filtroSessao != null ? " - " + filtroSessao.getNome() : "") +
+                (filtroArea != null ? " - " + filtroArea.getNomeLocal() : "")
+        );
+        if (filtroPeca == null && filtroSessao == null && filtroArea == null) return;
+        //Peça + Sessão:
+        if (filtroPeca != null && filtroSessao != null && filtroArea == null) {
+            addLabel("Ingressos vendidos: " + estatisticaFiltro.getTotalVendas());
+            addLabel("Receita total: R$ " + estatisticaFiltro.calcularReceitaTotal());
+            addLabel("Área mais ocupada: " + estatisticaFiltro.calcularAreaMaisOcupada());
+            addLabel("Área menos ocupada: " + estatisticaFiltro.calcularAreaMenosOcupada());
+        }
+        //Sessão + Área
+        else if (filtroPeca == null && filtroSessao != null && filtroArea != null) {
+            addLabel("Ingressos vendidos: " + estatisticaFiltro.getTotalVendas());
+            addLabel("Receita: R$ " + estatisticaFiltro.calcularReceitaTotal());
+            addLabel("Peça mais vendida: " + estatisticaFiltro.calcularPecaMaisVendida());
+        }
+        // Peça + Área
+        else if (filtroPeca != null && filtroSessao == null && filtroArea != null) {
+            addLabel("Total de ingressos: " + estatisticaFiltro.getTotalVendas());
+            addLabel("Receita: R$ " + estatisticaFiltro.calcularReceitaTotal());
+            addLabel("Sessão mais ocupada: " + estatisticaFiltro.calcularSessaoMaisOcupada());
+            addLabel("Sessão menos ocupada: " + estatisticaFiltro.calcularSessaoMenosOcupada());
+        }
+        // Peça + Sessão + Área
+        else {
+            addLabel("Ingressos vendidos: " + estatisticaFiltro.getTotalVendas());
+            addLabel("Receita total: R$ " + estatisticaFiltro.calcularReceitaTotal());
+            addLabel("Porcentagem de ocupação: " + estatisticaFiltro.calcularPorcentagemOcupacao());
+        }
+    }
+
+    private void addLabel(String s) {
+        Label label = new Label(s);
+        filtroCardBox.getChildren().add(label);
     }
 
     private void configurarVisibilidadeLabelArea(Area filtroArea) {
@@ -217,6 +269,9 @@ public class TelaEstatisticasController {
                 receitaTotalManhaLabel.setManaged(true);
                 lucroManhaLabel.setVisible(true);
                 lucroManhaLabel.setManaged(true);
+                pecaMaisVistaSessao.setVisible(true);
+                pecaMaisVistaSessao.setManaged(true);
+                pecaMaisVistaSessao.setText("Peça mais vista de manhã: " + estatisticas.getPecaMaisVistaPorSessao());
             }
             case TARDE -> {
                 totalTardeLabel.setVisible(true);
@@ -225,6 +280,9 @@ public class TelaEstatisticasController {
                 receitaTotalTardeLabel.setManaged(true);
                 lucroTardeLabel.setVisible(true);
                 lucroTardeLabel.setManaged(true);
+                pecaMaisVistaSessao.setVisible(true);
+                pecaMaisVistaSessao.setManaged(true);
+                pecaMaisVistaSessao.setText("Peça mais vista à tarde: " + estatisticas.getPecaMaisVistaPorSessao());
             }
             case NOITE -> {
                 totalNoiteLabel.setVisible(true);
@@ -233,6 +291,9 @@ public class TelaEstatisticasController {
                 receitaTotalNoiteLabel.setManaged(true);
                 lucroNoiteLabel.setVisible(true);
                 lucroNoiteLabel.setManaged(true);
+                pecaMaisVistaSessao.setVisible(true);
+                pecaMaisVistaSessao.setManaged(true);
+                pecaMaisVistaSessao.setText("Peça mais vista à noite: " + estatisticas.getPecaMaisVistaPorSessao());
             }
         }
     }
@@ -286,6 +347,10 @@ public class TelaEstatisticasController {
         peca3Card.setManaged(true);
         areasCard.setVisible(true);
         areasCard.setManaged(true);
+        pecaMaisVistaSessao.setManaged(false);
+        pecaMaisVistaSessao.setVisible(false);
+        filtroCard.setManaged(false);
+        filtroCard.setVisible(false);
         for (Node children : areasCardBox.getChildren()) {
             if (children instanceof Label label) {
                 label.setVisible(true);
@@ -329,7 +394,7 @@ public class TelaEstatisticasController {
             bw.newLine();
             bw.write("Ingressos vendidos para a peça 1 (" + pecas.get(0).getNome() + ")," + estatisticas.getVendasPeca1());
             bw.newLine();
-            bw.write("Lucro da peça 1 (" + pecas.get(0).getNome() +")," + String.format("%.2f",estatisticas.getLucroPeca1()));
+            bw.write("Lucro da peça 1 (" + pecas.get(0).getNome() + ")," + String.format("%.2f", estatisticas.getLucroPeca1()));
             bw.newLine();
             bw.write("Receita total da peça 1 (" + pecas.get(0).getNome() + ")," + String.format("%.2f", estatisticas.getReceitaPeca1()));
             bw.newLine();

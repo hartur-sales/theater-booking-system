@@ -2,7 +2,9 @@ package hmd.teatroABC.model.objects;
 
 import hmd.teatroABC.model.entities.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Davy Lopes, Murilo Nunes, Hartur Sales
@@ -20,15 +22,15 @@ public class Estatistica {
     private double receitaPeca1;
     private double receitaPeca2;
     private double receitaPeca3;
-    private final double lucroPeca1;
-    private final double lucroPeca2;
-    private final double lucroPeca3;
+    private double lucroPeca1;
+    private double lucroPeca2;
+    private double lucroPeca3;
     private double receitaManha;
     private double receitaTarde;
     private double receitaNoite;
-    private final double lucroManha;
-    private final double lucroTarde;
-    private final double lucroNoite;
+    private double lucroManha;
+    private double lucroTarde;
+    private double lucroNoite;
     private int vendasManha;
     private int vendasTarde;
     private int vendasNoite;
@@ -46,22 +48,22 @@ public class Estatistica {
     private int vendasCamarote;
     private int vendasFrisa;
     private int vendasBalcao;
-    private final double ticketMedio;
-    private final String pecaMaisVendida;
-    private final String pecaMenosVendida;
-    private final String sessaoMaisLucrativaPeca1;
-    private final String sessaoMenosLucrativaPeca1;
-    private final String sessaoMaisLucrativaPeca2;
-    private final String sessaoMenosLucrativaPeca2;
-    private final String sessaoMaisLucrativaPeca3;
-    private final String sessaoMenosLucrativaPeca3;
-    private final String sessaoMaisOcupada;
-    private final String sessaoMenosOcupada;
-    private final double[] receitasPorArea;
+    private double ticketMedio;
+    private String pecaMaisVendida;
+    private String pecaMenosVendida;
+    private String sessaoMaisLucrativaPeca1;
+    private String sessaoMenosLucrativaPeca1;
+    private String sessaoMaisLucrativaPeca2;
+    private String sessaoMenosLucrativaPeca2;
+    private String sessaoMaisLucrativaPeca3;
+    private String sessaoMenosLucrativaPeca3;
+    private String sessaoMaisOcupada;
+    private String sessaoMenosOcupada;
+    private double[] receitasPorArea;
 
     public Estatistica() {
-        this.ingressos = Teatro.getIngressos();
         this.pecas = Teatro.getPecas();
+        this.ingressos = Teatro.getIngressos();
         totalVendas = ingressos.size();
         calcularVendas();
         calcularReceita();
@@ -85,36 +87,17 @@ public class Estatistica {
         sessaoMenosOcupada = calcularSessaoMaisMenosOcupadas()[1];
     }
 
-    //public void carregarEstatisticasFiltradas(String filtroPeca, hmd.teatroABC.model.entities.Sessao filtroSessao, hmd.teatroABC.model.entities.Area filtroArea) {
-    //        this.pecasEstatisticas = Teatro.getPecas().stream()
-    //            .filter(peca -> (filtroPeca == null || peca.getNome().equals(filtroPeca)))
-    //            .filter(peca -> (filtroSessao == null || peca.getSessao().equals(filtroSessao)))
-    //            .filter(peca -> {
-    //                if (filtroArea == null) return true;
-    //                // Verifica se algum assento vendido pertence à área filtrada
-    //                return peca.getAssentos().stream().anyMatch(a -> a.charAt(0) == filtroArea.getIdentificador());
-    //            })
-    //            .toList();
-    //        // Zera estatísticas antes de recalcular
-    //        vendasWicked = vendasReiLeao = vendasAuto = 0;
-    //        lucroWicked = lucroReiLeao = lucroAuto = 0;
-    //        vendasManha = vendasTarde = vendasNoite = 0;
-    //        vendasManhaWicked = vendasTardeWicked = vendasNoiteWicked = 0;
-    //        vendasManhaReiLeao = vendasTardeReiLeao = vendasNoiteReiLeao = 0;
-    //        vendasManhaAuto = vendasTardeAuto = vendasNoiteAuto = 0;
-    //        // Recalcula estatísticas apenas para as peças filtradas
-    //        calcularVendas();
-    //        calcularLucro();
-    //        lucroMedioWicked = calcularLucroMedioPeca(lucroWicked, vendasWicked);
-    //        lucroMedioReiLeao = calcularLucroMedioPeca(lucroReiLeao, vendasReiLeao);
-    //        lucroMedioAuto = calcularLucroMedioPeca(lucroAuto, vendasAuto);
-    //        sessaoMaisLucrativaWicked = calcularSessaoMaisLucrativaWicked();
-    //        sessaoMenosLucrativaWicked = calcularSessaoMenosLucrativaWicked();
-    //        sessaoMaisLucrativaReiLeao = calcularSessaoMaisLucrativaReiLeao();
-    //        sessaoMenosLucrativaReiLeao = calcularSessaoMenosLucrativaReiLeao();
-    //        sessaoMaisLucrativaAuto = calcularSessaoMaisLucrativaAuto();
-    //        sessaoMenosLucrativaAuto = calcularSessaoMenosLucrativaAuto();
-    //    }
+    public Estatistica(String filtroPeca, Sessao filtroSessao, Area filtroArea) {
+        this.ingressos = Teatro.getIngressos()
+                .stream()
+                .filter(i -> filtroPeca == null || i.getPeca().getNome().equals(filtroPeca))
+                .filter(i -> filtroSessao == null || i.getPeca().getSessao() == filtroSessao)
+                .filter(i -> filtroArea == null || i.getArea().getNomeLocal().equals(filtroArea.getNomeLocal()))
+                .collect(Collectors.toList());
+        this.pecas = Teatro.getPecas();
+        this.totalVendas = ingressos.size();
+        System.out.println(ingressos);
+    }
 
     /**
      * Calcula as vendas totais e por sessão para cada peça, utilizando a lista de ingressos vendidos.
@@ -365,6 +348,289 @@ public class Estatistica {
             medias[i] = quantidades[i] > 0 ? totais[i] / quantidades[i] : 0;
         }
         return medias;
+    }
+
+    public double calcularReceitaTotal() {
+        double total = 0;
+        for (Ingresso ingresso : ingressos) {
+            total += ingresso.getPreco();
+        }
+        return total;
+    }
+
+    /**
+     * Identifica a área do evento com a maior quantidade de ingressos vendidos.
+     * <p>
+     * Caso haja empate, retorna uma mensagem contendo todas as áreas empatadas, no formato:
+     * "Empate entre [Área 1] e [Área 2]".
+     * Caso exista apenas uma área com o maior número de vendas, retorna apenas o nome dessa área.
+     * Caso não haja vendas registradas, retorna uma mensagem padrão indicando ausência de vendas.
+     * <p>
+     * O processo de verificação percorre todas as áreas, encontra o maior número de vendas,
+     * e então busca todas as áreas que possuem essa mesma quantidade de ingressos vendidos
+     * para montar a mensagem de empate, caso necessário.
+     *
+     * @return o nome da área mais ocupada, uma mensagem de empate, ou uma mensagem padrão se não houver vendas.
+     */
+    public String calcularAreaMaisOcupada() {
+        int maiorContagem = 0;
+
+        // Descobre o maior valor de vendas
+        for (Area area : Area.values()) {
+            int contagem = 0;
+            for (Ingresso ingresso : ingressos) {
+                if (ingresso.getArea() == area) {
+                    contagem++;
+                }
+            }
+            if (contagem > maiorContagem) {
+                maiorContagem = contagem;
+            }
+        }
+
+        if (maiorContagem == 0) {
+            return "Não há vendas para calcular";
+        }
+
+        List<String> areasEmpatadas = new ArrayList<>();
+        for (Area area : Area.values()) {
+            int contagem = 0;
+            for (Ingresso ingresso : ingressos) {
+                if (ingresso.getArea() == area) {
+                    contagem++;
+                }
+            }
+            if (contagem == maiorContagem) {
+                areasEmpatadas.add(area.getNomeLocal());
+            }
+        }
+
+        if (areasEmpatadas.size() == 1) {
+            return areasEmpatadas.getFirst();
+        } else {
+            return "Empate entre " + String.join(" e ", areasEmpatadas);
+        }
+    }
+
+    /**
+     * Identifica a área do evento com a menor quantidade de ingressos vendidos,
+     * considerando apenas áreas que possuem pelo menos uma venda.
+     * <p>
+     * Caso haja empate, retorna uma mensagem contendo todas as áreas empatadas, no formato:
+     * "Empate entre [Área 1] e [Área 2]".
+     * Caso exista apenas uma área com o menor número de vendas, retorna apenas o nome dessa área.
+     * Caso não haja vendas registradas, retorna uma mensagem padrão indicando ausência de vendas.
+     * <p>
+     * O processo de verificação percorre todas as áreas, identifica o menor número de vendas (>0),
+     * e então busca todas as áreas que apresentam essa mesma quantidade de vendas para montar
+     * a mensagem de empate, caso seja o caso.
+     *
+     * @return o nome da área menos ocupada, uma mensagem de empate, ou uma mensagem padrão se não houver vendas.
+     */
+    public String calcularAreaMenosOcupada() {
+        Integer menorContagem = null;
+
+        for (Area area : Area.values()) {
+            int contagem = 0;
+            for (Ingresso ingresso : ingressos) {
+                if (ingresso.getArea() == area) {
+                    contagem++;
+                }
+            }
+            if (contagem > 0 && (menorContagem == null || contagem < menorContagem)) {
+                menorContagem = contagem;
+            }
+        }
+
+        if (menorContagem == null) {
+            return "Não há vendas para calcular";
+        }
+
+        List<String> areasEmpatadas = new ArrayList<>();
+        for (Area area : Area.values()) {
+            int contagem = 0;
+            for (Ingresso ingresso : ingressos) {
+                if (ingresso.getArea() == area) {
+                    contagem++;
+                }
+            }
+            if (contagem == menorContagem) {
+                areasEmpatadas.add(area.getNomeLocal());
+            }
+        }
+
+        if (areasEmpatadas.size() == 1) {
+            return areasEmpatadas.getFirst();
+        } else {
+            return "empate entre " + String.join(" e ", areasEmpatadas);
+        }
+    }
+
+    /**
+     * Identifica a peça com maior número de ingressos vendidos.
+     * <p>
+     * O método percorre todos os ingressos para contar a quantidade de vendas das peças.
+     * Caso não haja vendas, retorna a mensagem "Nenhuma venda registrada".
+     * Se houver empate entre duas ou mais peças na quantidade máxima de vendas,
+     * retorna uma mensagem indicando o empate e os nomes das peças empatadas, separados por vírgula.
+     * Caso apenas uma peça se destaque, retorna somente o seu nome.
+     * </p>
+     *
+     * @return O nome da peça mais vendida, ou uma mensagem indicando empate, ou uma mensagem padrão caso não haja vendas.
+     */
+    public String calcularPecaMaisVendida() {
+        String[] nomesDasPecas = {
+                pecas.get(0).getNome(),
+                pecas.get(3).getNome(),
+                pecas.get(6).getNome()
+        };
+
+        int[] contagens = new int[3];
+
+        for (Ingresso ingresso : ingressos) {
+            String nome = ingresso.getPeca().getNome();
+            if (nome.equals(nomesDasPecas[0])) {
+                contagens[0]++;
+            } else if (nome.equals(nomesDasPecas[1])) {
+                contagens[1]++;
+            } else if (nome.equals(nomesDasPecas[2])) {
+                contagens[2]++;
+            }
+        }
+
+        int maior = 0;
+        for (int cont : contagens) {
+            if (cont > maior) maior = cont;
+        }
+
+        if (maior == 0) {
+            return "Não há vendas para calcular";
+        }
+
+        List<String> pecasEmpatadas = new ArrayList<>();
+        for (int i = 0; i < contagens.length; i++)
+            if (contagens[i] == maior) pecasEmpatadas.add(nomesDasPecas[i]);
+
+        if (pecasEmpatadas.size() == 1) {
+            return pecasEmpatadas.getFirst();
+        } else {
+            return "empate entre " + String.join(" e ", pecasEmpatadas);
+        }
+    }
+
+    /**
+     * Identifica a sessão (Manhã, Tarde ou Noite) com o maior número de ingressos vendidos.
+     * <p>
+     * O método percorre todos os ingressos e contabiliza as vendas para cada sessão.
+     * Caso nenhuma venda tenha sido registrada, retorna "Nenhuma venda registrada.".
+     * Se houver empate entre duas ou três sessões na maior quantidade de vendas,
+     * retorna uma mensagem indicando o empate e os nomes das sessões empatadas, separados por vírgula.
+     * Caso apenas uma sessão se destaque, retorna somente o seu nome.
+     * </p>
+     *
+     * @return O nome da sessão mais ocupada, ou uma mensagem indicando empate, ou uma mensagem padrão caso não haja vendas.
+     */
+    public String calcularSessaoMaisOcupada() {
+        int manha = 0, tarde = 0, noite = 0;
+
+        for (Ingresso i : ingressos) {
+            Sessao sessao = i.getPeca().getSessao();
+            switch (sessao) {
+                case MANHA -> manha++;
+                case TARDE -> tarde++;
+                case NOITE -> noite++;
+            }
+        }
+
+        if (manha == 0 && tarde == 0 && noite == 0) {
+            return "Nenhuma venda registrada.";
+        }
+
+        int max = Math.max(manha, Math.max(tarde, noite));
+        List<String> sessoesEmpatadas = new ArrayList<>();
+
+        if (manha == max) sessoesEmpatadas.add("Manhã");
+        if (tarde == max) sessoesEmpatadas.add("Tarde");
+        if (noite == max) sessoesEmpatadas.add("Noite");
+
+        if (sessoesEmpatadas.size() == 1) {
+            return sessoesEmpatadas.getFirst();
+        } else {
+            return "empate entre " + String.join(", ", sessoesEmpatadas);
+        }
+    }
+
+    /**
+     * Retorna a sessão com o menor número de ingressos vendidos.
+     * <p>
+     * O método contabiliza o número de ingressos vendidos para cada sessão
+     * (manhã, tarde e noite). Utiliza a Stream API do Java para calcular o menor valor
+     * dentre as sessões ocupadas (aquelas com pelo menos uma venda), utilizando o método
+     * {@code Integer::compareTo} para comparar as quantidades.
+     * <br>
+     * Caso não haja vendas registradas, retorna uma mensagem indicando a ausência de vendas.
+     * Se houver empate no menor número de vendas entre sessões, a mensagem retorna o empate,
+     * listando as sessões empatadas separadas por "e".
+     * </p>
+     *
+     * @return Uma {@code String} indicando a sessão menos ocupada, ou "Empate entre ..." em caso de empate,
+     * ou "Nenhuma venda registrada." se não houver vendas.
+     */
+    public String calcularSessaoMenosOcupada() {
+        int manha = 0, tarde = 0, noite = 0;
+
+        for (Ingresso i : ingressos) {
+            Sessao sessao = i.getPeca().getSessao();
+            switch (sessao) {
+                case MANHA -> manha++;
+                case TARDE -> tarde++;
+                case NOITE -> noite++;
+            }
+        }
+
+        if (manha == 0 && tarde == 0 && noite == 0) {
+            return "Nenhuma venda registrada.";
+        }
+
+        List<Integer> valores = new ArrayList<>();
+        if (manha > 0) valores.add(manha);
+        if (tarde > 0) valores.add(tarde);
+        if (noite > 0) valores.add(noite);
+
+        int min = valores.stream().min(Integer::compareTo).orElse(0);
+        List<String> sessoesEmpatadas = new ArrayList<>();
+
+        if (manha == min && manha > 0) sessoesEmpatadas.add("Manhã");
+        if (tarde == min && tarde > 0) sessoesEmpatadas.add("Tarde");
+        if (noite == min && noite > 0) sessoesEmpatadas.add("Noite");
+
+        if (sessoesEmpatadas.size() == 1) {
+            return sessoesEmpatadas.getFirst();
+        } else {
+            return "empate entre " + String.join(", ", sessoesEmpatadas);
+        }
+    }
+
+    public String getPecaMaisVistaPorSessao() {
+        int[] vendasPorPeca = {vendasManhaPeca1, vendasTardePeca1, vendasNoitePeca1,
+                               vendasManhaPeca2, vendasTardePeca2, vendasNoitePeca2,
+                               vendasManhaPeca3, vendasTardePeca3, vendasNoitePeca3};
+
+        int maiorIndice = getMaiorIndice(vendasPorPeca);
+        return "Peça " + (maiorIndice / 3 + 1) + " (" + pecas.get(maiorIndice).getNome() + ")";
+    }
+
+    public String calcularPorcentagemOcupacao() {
+        if (ingressos.isEmpty()) {
+            return "Nenhum ingresso vendido para essa área.";
+        }
+
+        Area area = ingressos.getFirst().getArea();
+        int vendidos = ingressos.size();
+        int capacidade = area.getnLugares();
+
+        double porcentagem = ((double) vendidos / capacidade) * 100;
+        return String.format("%.2f%%", porcentagem);
     }
 
     private int getIndiceSessao(Sessao sessao) {

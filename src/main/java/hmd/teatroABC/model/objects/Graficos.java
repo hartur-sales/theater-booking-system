@@ -3,6 +3,7 @@ package hmd.teatroABC.model.objects;
 import hmd.teatroABC.model.entities.Peca;
 import hmd.teatroABC.model.entities.Sessao;
 import hmd.teatroABC.model.entities.Teatro;
+import hmd.teatroABC.util.AreaUtil;
 
 import java.util.*;
 

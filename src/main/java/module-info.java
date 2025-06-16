@@ -12,4 +12,6 @@ module hmd.teatroABC {
     opens hmd.teatroABC.model.entities to javafx.fxml;
     exports hmd.teatroABC.model.objects;
     opens hmd.teatroABC.model.objects to javafx.fxml;
+    exports hmd.teatroABC.util;
+    opens hmd.teatroABC.util to javafx.fxml;
 }

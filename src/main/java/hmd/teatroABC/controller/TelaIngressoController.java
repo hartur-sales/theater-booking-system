@@ -3,7 +3,7 @@ package hmd.teatroABC.controller;
 import hmd.teatroABC.model.entities.Peca;
 import hmd.teatroABC.model.entities.Sessao;
 import hmd.teatroABC.model.entities.Teatro;
-import hmd.teatroABC.model.objects.AreaUtil;
+import hmd.teatroABC.util.AreaUtil;
 import hmd.teatroABC.util.FXMLLoaderUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
